@@ -1,0 +1,30 @@
+proveedores:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Proveedores:index" }
+
+proveedores_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Proveedores:show" }
+
+proveedores_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Proveedores:new" }
+
+proveedores_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Proveedores:create" }
+    requirements: { _method: post }
+
+proveedores_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Proveedores:edit" }
+
+proveedores_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Proveedores:update" }
+    requirements: { _method: post }
+
+proveedores_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Proveedores:delete" }
+    requirements: { _method: post }

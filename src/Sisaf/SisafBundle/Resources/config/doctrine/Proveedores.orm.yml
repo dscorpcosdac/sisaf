@@ -1,0 +1,23 @@
+Sisaf\SisafBundle\Entity\Proveedores:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Nombre:
+            type: string
+            length: 255
+        RFC:
+            type: string
+            length: 255
+        Pais:
+            type: string
+            length: 255
+        Estatus:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

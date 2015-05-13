@@ -1,0 +1,11 @@
+Sisaf_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SisafBundle:Default:index }
+
+SisafBundle_clientes:
+        resource: "@SisafBundle/Resources/config/routing/clientes.yml"
+        prefix:   /Clientes
+
+SisafBundle_Proveedores:
+        resource: "@SisafBundle/Resources/config/routing/proveedores.yml"
+        prefix:   /Proveedores

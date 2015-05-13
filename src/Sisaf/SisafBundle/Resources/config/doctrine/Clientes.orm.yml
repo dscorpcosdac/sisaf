@@ -1,0 +1,23 @@
+Sisaf\SisafBundle\Entity\Clientes:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Nombres:
+            type: string
+            length: 255
+        Apellidos:
+            type: string
+            length: 255
+        Tipo:
+            type: string
+            length: 255
+        Genero:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

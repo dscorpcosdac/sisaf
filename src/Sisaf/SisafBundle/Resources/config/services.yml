@@ -1,0 +1,7 @@
+parameters:
+#    sisaf.example.class: Sisaf\SisafBundle\Example
+
+services:
+#    sisaf.example:
+#        class: %sisaf.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
