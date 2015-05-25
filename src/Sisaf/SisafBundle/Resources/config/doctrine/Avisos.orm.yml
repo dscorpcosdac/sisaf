@@ -1,0 +1,19 @@
+Sisaf\SisafBundle\Entity\Avisos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Titulo:
+            type: string
+            length: 255
+        Descripcion:
+            type: string
+            length: '1000'
+        Fecha:
+            type: date
+    lifecycleCallbacks: {  }

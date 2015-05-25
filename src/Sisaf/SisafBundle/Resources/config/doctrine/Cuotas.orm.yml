@@ -1,0 +1,24 @@
+Sisaf\SisafBundle\Entity\Cuotas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Persona:
+            type: string
+        Fecha:
+            type: date
+        Tipo:
+            type: string
+        Concepto:
+            type: string
+            length: 255
+        Monto:
+            type: integer
+        Abono:
+            type: integer
+    lifecycleCallbacks: {  }

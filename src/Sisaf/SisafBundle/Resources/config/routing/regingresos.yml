@@ -1,0 +1,30 @@
+regingresos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:RegIngresos:index" }
+
+regingresos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:RegIngresos:show" }
+
+regingresos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:RegIngresos:new" }
+
+regingresos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:RegIngresos:create" }
+    requirements: { _method: post }
+
+regingresos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:RegIngresos:edit" }
+
+regingresos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:RegIngresos:update" }
+    requirements: { _method: post }
+
+regingresos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:RegIngresos:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,30 @@
+inicio:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Inicio:index" }
+
+inicio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Inicio:show" }
+
+inicio_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Inicio:new" }
+
+inicio_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Inicio:create" }
+    requirements: { _method: post }
+
+inicio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Inicio:edit" }
+
+inicio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Inicio:update" }
+    requirements: { _method: post }
+
+inicio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Inicio:delete" }
+    requirements: { _method: post }

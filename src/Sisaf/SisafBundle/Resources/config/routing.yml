@@ -1,6 +1,11 @@
+
 Sisaf_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: SisafBundle:Default:index }
+
+sisafBundle_inicio:
+        resource: "@SisafBundle/Resources/config/routing/inicio.yml"
+        prefix:   /Inicio
 
 SisafBundle_clientes:
         resource: "@SisafBundle/Resources/config/routing/clientes.yml"
@@ -9,3 +14,24 @@ SisafBundle_clientes:
 SisafBundle_Proveedores:
         resource: "@SisafBundle/Resources/config/routing/proveedores.yml"
         prefix:   /Proveedores
+
+SisafBundle_regingresos:
+        resource: "@SisafBundle/Resources/config/routing/regingresos.yml"
+        prefix:   /RegIngresos
+
+sisafBundle_regegresos:
+        resource: "@SisafBundle/Resources/config/routing/regegresos.yml"
+        prefix:   /RegEgresos
+
+SisafBundle_visitantes:
+        resource: "@SisafBundle/Resources/config/routing/visitantes.yml"
+        prefix:   /Visitantes
+
+SisafBundle_Avisos:
+        resource: "@SisafBundle/Resources/config/routing/avisos.yml"
+        prefix:   /Avisos
+
+SisafBundle_cuotas:
+        resource: "@SisafBundle/Resources/config/routing/cuotas.yml"
+        prefix:   /Cuotas
+

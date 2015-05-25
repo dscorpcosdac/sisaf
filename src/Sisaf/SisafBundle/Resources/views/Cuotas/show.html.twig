@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>Cuotas</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Persona</th>
+            <td>{{ entity.Persona }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{{ entity.Fecha|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Tipo</th>
+            <td>{{ entity.Tipo }}</td>
+        </tr>
+        <tr>
+            <th>Concepto</th>
+            <td>{{ entity.Concepto }}</td>
+        </tr>
+        <tr>
+            <th>Monto</th>
+            <td>{{ entity.Monto }}</td>
+        </tr>
+        <tr>
+            <th>Abono</th>
+            <td>{{ entity.Abono }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('cuotas') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cuotas_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endblock %}

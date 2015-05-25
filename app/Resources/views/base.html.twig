@@ -54,7 +54,7 @@
     <div id="wrapper" class="preload">
         <div id="top-nav" class="skin-6 fixed">
             <div class="brand">
-                <span>Endless</span>
+                <span>SISAF</span>
                 <span class="text-toggle"> Admin</span>
             </div><!-- /brand -->
             <button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
@@ -79,7 +79,7 @@
                             <a class="clearfix" href="#">
                                 <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
                                 <div class="detail">
-                                    <strong>John Doe</strong>
+                                    <strong>{{ app.user.username }}</strong>
                                     <p class="no-margin">
                                         Lorem ipsum dolor sit amet...
                                     </p>
@@ -237,7 +237,7 @@
                 </li>
                 <li class="profile dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <strong>John Doe</strong>
+                        <strong>{{ app.user.username }}</strong>
                         <span><i class="fa fa-chevron-down"></i></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -245,13 +245,13 @@
                             <a class="clearfix" href="#">
                                 <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
                                 <div class="detail">
-                                    <strong>John Doe</strong>
+                                    <strong>{{ app.user.username }}</strong>
                                     <p class="grey">John_Doe@email.com</p> 
                                 </div>
                             </a>
                         </li>
-                        <li><a tabindex="-1" href="profile.html" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
-                        <li><a tabindex="-1" href="gallery.html" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Photo Gallery</a></li>
+                        <li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
+                        <li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Photo Gallery</a></li>
                         <li><a tabindex="-1" href="#" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Setting</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
@@ -276,10 +276,10 @@
                     <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
                     <!--<img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">-->
                     <div class="detail">
-                        <strong>John Doe</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
+                        <strong>{{ app.user.username }}</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
                         <ul class="list-inline">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="inbox.html" class="no-margin">Inbox</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#" class="no-margin">Inbox</a></li>
                         </ul>
                     </div>
                 </div><!-- /user-block -->
@@ -291,176 +291,79 @@
                         </span>
                     </div><!-- /input-group -->
                 </div><!-- /search-block -->
+
                 <div class="main-menu">
                     <ul>
                         <li>
-                            <a href="index.html">
+                            <a href="{{ path('inicio')}}">
                                 <span class="menu-icon">
                                     <i class="fa fa-desktop fa-lg"></i> 
                                 </span>
-                                <span class="text">
-                                    Dashboard
-                                </span>
+                                <span class="text">Inicio</span>
                                 <span class="menu-hover"></span>
                             </a>
                         </li>
-                        <li class="active openable open">
+                        <li class="openable">
                             <a href="#">
                                 <span class="menu-icon">
-                                    <i class="fa fa-file-text fa-lg"></i> 
+                                    <i class="fa fa-building-o fa-lg"></i> 
                                 </span>
-                                <span class="text">
-                                    Page
-                                </span>
+                                <span class="text">Condominio</span>
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="login.html"><span class="submenu-label">Sign in</span></a></li>
-                                <li><a href="register.html"><span class="submenu-label">Sign up</span></a></li>
-                                <li><a href="lock_screen.html"><span class="submenu-label">Lock Screen</span></a></li>
-                                <li><a href="profile.html"><span class="submenu-label">Profile</span></a></li>
-                                <li><a href="blog.html"><span class="submenu-label">Blog</span></a></li>
-                                <li><a href="single_post.html"><span class="submenu-label">Single Post</span></a></li>
-                                <li><a href="landing.html"><span class="submenu-label">Landing</span></a></li>
-                                <li><a href="search_result.html"><span class="submenu-label">Search Result</span></a></li>
-                                <li><a href="chat.html"><span class="submenu-label">Chat Room</span></a></li>
-                                <li><a href="movie.html"><span class="submenu-label">Movie Gallery</span></a></li>
-                                <li><a href="pricing.html"><span class="submenu-label">Pricing</span></a></li>
-                                <li><a href="invoice.html"><span class="submenu-label">Invoice</span></a></li>
-                                <li><a href="faq.html"><span class="submenu-label">FAQ</span></a></li>
-                                <li><a href="contact.html"><span class="submenu-label">Contact</span></a></li>
-                                <li><a href="error404.html"><span class="submenu-label">Error404</span></a></li>
-                                <li><a href="error500.html"><span class="submenu-label">Error500</span></a></li>
-                                <li class="active"><a href="blank.html"><span class="submenu-label">Blank</span></a></li>
+                                <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
                             </ul>
                         </li>
                         <li class="openable">
                             <a href="#">
                                 <span class="menu-icon">
-                                    <i class="fa fa-tag fa-lg"></i> 
+                                    <i class="fa fa-sitemap fa-lg"></i> 
                                 </span>
-                                <span class="text">
-                                    Component
-                                </span>
-                                <span class="badge badge-success bounceIn animation-delay5">9</span>
+                                <span class="text">Administracion</span>
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="ui_element.html"><span class="submenu-label">UI Features</span></a></li>
-                                <li><a href="button.html"><span class="submenu-label">Button & Icons</span></a></li>
-                                <li><a href="tab.html"><span class="submenu-label">Tab</span></a></li>
-                                <li><a href="nestable_list.html"><span class="submenu-label">Nestable List</span></a></li>
-                                <li><a href="calendar.html"><span class="submenu-label">Calendar</span></a></li>
-                                <li><a href="table.html"><span class="submenu-label">Table</span></a></li>
-                                <li><a href="widget.html"><span class="submenu-label">Widget</span></a></li>
-                                <li><a href="form_element.html"><span class="submenu-label">Form Element</span></a></li>
-                                <li><a href="form_wizard.html"><span class="submenu-label">Form Wizard</span></a></li>
+                                <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Usuarios</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
                             </ul>
                         </li>
                         
-                        <li>
-                            <a href="timeline.html">
-                                <span class="menu-icon">
-                                    <i class="fa fa-clock-o fa-lg"></i> 
-                                </span>
-                                <span class="text">
-                                    Timeline
-                                </span>
-                                <span class="menu-hover"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="gallery.html">
-                                <span class="menu-icon">
-                                    <i class="fa fa-picture-o fa-lg"></i> 
-                                </span>
-                                <span class="text">
-                                    Gallery
-                                </span>
-                                <span class="menu-hover"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="inbox.html">
-                                <span class="menu-icon">
-                                    <i class="fa fa-envelope fa-lg"></i> 
-                                </span>
-                                <span class="text">
-                                    Inbox
-                                </span>
-                                <span class="badge badge-danger bounceIn animation-delay6">4</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="email_selection.html">
-                                <span class="menu-icon">
-                                    <i class="fa fa-tasks fa-lg"></i> 
-                                </span>
-                                <span class="text">
-                                    Email Template
-                                </span>
-                                <small class="badge badge-warning bounceIn animation-delay7">New</small>
-                                <span class="menu-hover"></span>
-                            </a>
-                        </li>
                         <li class="openable">
                             <a href="#">
                                 <span class="menu-icon">
-                                    <i class="fa fa-magic fa-lg"></i> 
+                                    <i class="fa fa-dollar fa-lg"></i> 
                                 </span>
-                                <span class="text">
-                                    Multi-Level menu
-                                </span>
+                                <span class="text">Finanzas</span>
                                 <span class="menu-hover"></span>
                             </a>
-                            <ul class="submenu second-level">
-                                <li class="openable">
-                                    <a href="#">
-                                        <span class="submenu-label">menu 2.1</span>
-                                        <span class="badge badge-danger bounceIn animation-delay1 pull-right">3</span>
-                                    </a>
-                                    <ul class="submenu third-level">
-                                        <li><a href="#"><span class="submenu-label">menu 3.1</span></a></li>
-                                        <li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
-                                        <li class="openable">
-                                            <a href="#">
-                                                <span class="submenu-label">menu 3.3</span>
-                                                <span class="badge badge-danger bounceIn animation-delay1 pull-right">2</span>
-                                            </a>
-                                            <ul class="submenu fourth-level">
-                                                <li><a href="#"><span class="submenu-label">menu 4.1</span></a></li>
-                                                <li><a href="#"><span class="submenu-label">menu 4.2</span></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="openable">
-                                    <a href="#">
-                                        <span class="submenu-label">menu 2.2</span>
-                                        <span class="badge badge-success bounceIn animation-delay2 pull-right">3</span>
-                                    </a>
-                                    <ul class="submenu third-level">
-                                        <li class="openable">
-                                            <a href="#">
-                                                <span class="submenu-label">menu 3.1</span>
-                                                <span class="badge badge-success bounceIn animation-delay1 pull-right">2</span>
-                                            </a>
-                                            <ul class="submenu fourth-level">
-                                                <li><a href="#"><span class="submenu-label">menu 4.1</span></a></li>
-                                                <li><a href="#"><span class="submenu-label">menu 4.2</span></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
-                                        <li><a href="#"><span class="submenu-label">menu 3.2</span></a></li>
-                                    </ul>
-                                </li>
+                            <ul class="submenu">
+                                <li><a href="#"><span class="submenu-label">Cuotas</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Ingresos</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Egresos</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Gastos Fijos</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Estados Financieros</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="openable">
+                            <a href="#">
+                                <span class="menu-icon">
+                                    <i class="fa fa-unlock fa-lg"></i> 
+                                </span>
+                                <span class="text">Seguridad</span>
+                                <span class="menu-hover"></span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="#"><span class="submenu-label">AA</span></a></li>
+                                <li><a href="#"><span class="submenu-label">AA</span></a></li>
                             </ul>
                         </li>
                     </ul>
                     
                     <div class="alert alert-info">
-                        Welcome to Endless Admin. Do not forget to check all my pages. 
+                        I know you're powerfull! Keep working hard and you'll be free ;)
                     </div>
                 </div><!-- /main-menu -->
             </div><!-- /sidebar-inner -->
@@ -469,17 +372,132 @@
         <div id="main-container">
             <div id="breadcrumb">
                 <ul class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="index.html"> Home</a></li>
-                     <li class="active">Blank page</li>  
+                     <li><i class="fa fa-home"></i><a href="{{ path('inicio') }}"> Home</a></li>
+                     <li class="active">Direccion</li>  
                 </ul>
             </div><!-- breadcrumb -->
+            {% if dashboard is defined %}
+            <div class="main-header clearfix">
+                <div class="page-title">
+                    <h3 class="no-margin">Dashboard</h3>
+                    <span>Welcome back {{ app.user.username }}</span>
+                </div><!-- /page-title -->
+                
+                <ul class="page-stats">
+                    <li>
+                        <div class="value">
+                            <span>New visits</span>
+                            <h4 id="currentVisitor">4256</h4>
+                        </div>
+                        <span id="visits" class="sparkline"></span>
+                    </li>
+                    <li>
+                        <div class="value">
+                            <span>My balance</span>
+                            <h4>$<strong id="currentBalance">32153</strong></h4>
+                        </div>
+                        <span id="balances" class="sparkline"></span>
+                    </li>
+                </ul><!-- /page-stats -->
+            </div><!-- /main-header -->
+            {% endif %}
+
+            <div class="grey-container shortcut-wrapper">
+
+            {% if new is defined %}
+                <a href="{% if new is defined %} {{new}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span class="text">Nuevo</span>
+                </a>
+            {% endif %}
+
+            {% if edit is defined %}
+                <a href="{% if edit is defined %} {{edit}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-pencil"></i>
+                    </span>
+                    <span class="text">Editar</span>
+                </a>
+            {% endif %}
+
+            {% if delete is defined %}
+                <a href="{% if delete is defined %} {{delete}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-trash-o"></i>
+                    </span>
+                    <span class="text">Eliminar</span>
+                </a>
+            {% endif %}
+
+            {% if back is defined %}
+                <a href="{% if back is defined %} {{back}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-arrow-left"></i>
+                    </span>
+                    <span class="text">Regresar</span>
+                </a>
+            {% endif %}
+
+            {% if mensajes is defined %}
+                <a href="{% if mensajes is defined %} {{mensajes}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="shortcut-alert">
+                            5
+                        </span> 
+                    </span>
+                    <span class="text">Messages</span>
+                </a>
+            {% endif %}
+
+            {% if usuarios is defined %}
+                <a href="{% if usuarios is defined %} {{usuarios}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <span class="text">New Users</span>
+                </a>
+            {% endif %}
+
+            {% if notificaciones is defined %}
+                <a href="{% if notificaciones is defined %} {{notificaciones}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-globe"></i>
+                        <span class="shortcut-alert">
+                            7
+                        </span> 
+                    </span>
+                    <span class="text">Notification</span>
+                </a>
+            {% endif %}
+
+            {% if actividades is defined %}
+                <a href="{% if actividades is defined %} {{actividades}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-list"></i>
+                    </span>
+                    <span class="text">Activity</span>
+                </a>
+            {% endif %}
+
+            {% if configuracion is defined %}
+                <a href="{% if configuracion is defined %} {{configuracion}} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-cog"></i></span>
+                    <span class="text">Setting</span>
+                </a>
+            {% endif %}
+
+            </div>
 
             <!--==================================================-->
-
-            {% block body %}
-                {% block javascripts %}{% endblock %}
-            {% endblock %}
-
+            <div class="padding-md">
+                {% block body %}
+                    {% block javascripts %}{% endblock %}
+                {% endblock %}
+            </div>
             <!--==================================================-->
 
         </div><!-- /main-container -->
@@ -494,7 +512,7 @@
         </div>
 
         <div class="text-center">
-            <a class="btn btn-success m-right-sm" href="login.html">Logout</a>
+            <a class="btn btn-success m-right-sm" href="../logout">Logout</a>
             <a class="btn btn-danger logoutConfirm_close">Cancel</a>
         </div>
     </div>

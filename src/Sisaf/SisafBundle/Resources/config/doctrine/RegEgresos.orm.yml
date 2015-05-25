@@ -1,0 +1,33 @@
+Sisaf\SisafBundle\Entity\RegEgresos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Serie:
+            type: integer
+        Folio:
+            type: integer
+        Fecha:
+            type: string
+            length: 255
+        Proveedor:
+            type: string
+            length: 255
+        Nombre:
+            type: string
+            length: 255
+        Importe:
+            type: integer
+        Pagado:
+            type: integer
+        Saldo:
+            type: integer
+        Estatus:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -1,9 +1,9 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Agregar Proveedor</h1>
+<h1>Registro de Visitantes</h1>
 
-<form action="{{ path('proveedores_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('visitantes_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <button type="submit">Create</button>
@@ -12,7 +12,7 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('proveedores') }}">
+        <a href="{{ path('visitantes') }}">
             Back to the list
         </a>
     </li>

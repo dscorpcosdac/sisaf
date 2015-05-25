@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h4>MENSAJE NO. #{{entity.id }}</h4>
+<h3>Asunto:{{ entity.Titulo }}</h3>
+
+<p>{{ entity.Descripcion }}</p>
+<p><b>Fecha de envío:</b> {{ entity.Fecha|date('d/m/Y') }}</p>
+
+<a href="{{ path('Avisos') }}">Back to the list</a>
+<br>
+<a href="{{ path('Avisos_edit', { 'id': entity.id }) }}">Edit</a>
+
+<form action="{{ path('Avisos_delete', { 'id': entity.id }) }}" method="post">
+    {{ form_widget(delete_form) }}
+    <button type="submit">Delete</button>
+</form>
+
+{% endblock %}
