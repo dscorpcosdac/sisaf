@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>QuejSug list</h1>
+
+<table class="records_list table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('quejsug_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.Titulo }}</td>
+            <td>{{ entity.Descripcion }}</td>
+            <td>{% if entity.Fecha %}{{ entity.Fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.Hora }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('quejsug_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('quejsug_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

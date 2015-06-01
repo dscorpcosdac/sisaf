@@ -20,11 +20,6 @@ class Cuotas
     private $Persona;
 
     /**
-     * @var \DateTime
-     */
-    private $Fecha;
-
-    /**
      * @var string
      */
     private $Tipo;
@@ -32,17 +27,17 @@ class Cuotas
     /**
      * @var string
      */
-    private $Concepto;
+    private $Descripcion;
 
     /**
-     * @var integer
+     * @var \DateTime
+     */
+    private $Fecha;
+
+    /**
+     * @var string
      */
     private $Monto;
-
-    /**
-     * @var integer
-     */
-    private $Abono;
 
 
     /**
@@ -79,29 +74,6 @@ class Cuotas
     }
 
     /**
-     * Set Fecha
-     *
-     * @param \DateTime $fecha
-     * @return Cuotas
-     */
-    public function setFecha($fecha)
-    {
-        $this->Fecha = $fecha;
-
-        return $this;
-    }
-
-    /**
-     * Get Fecha
-     *
-     * @return \DateTime 
-     */
-    public function getFecha()
-    {
-        return $this->Fecha;
-    }
-
-    /**
      * Set Tipo
      *
      * @param string $tipo
@@ -125,32 +97,55 @@ class Cuotas
     }
 
     /**
-     * Set Concepto
+     * Set Descripcion
      *
-     * @param string $concepto
+     * @param string $descripcion
      * @return Cuotas
      */
-    public function setConcepto($concepto)
+    public function setDescripcion($descripcion)
     {
-        $this->Concepto = $concepto;
+        $this->Descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get Concepto
+     * Get Descripcion
      *
      * @return string 
      */
-    public function getConcepto()
+    public function getDescripcion()
     {
-        return $this->Concepto;
+        return $this->Descripcion;
+    }
+
+    /**
+     * Set Fecha
+     *
+     * @param \DateTime $fecha
+     * @return Cuotas
+     */
+    public function setFecha($fecha)
+    {
+        $this->Fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get Fecha
+     *
+     * @return \DateTime 
+     */
+    public function getFecha()
+    {
+        return $this->Fecha;
     }
 
     /**
      * Set Monto
      *
-     * @param integer $monto
+     * @param string $monto
      * @return Cuotas
      */
     public function setMonto($monto)
@@ -163,33 +158,10 @@ class Cuotas
     /**
      * Get Monto
      *
-     * @return integer 
+     * @return string 
      */
     public function getMonto()
     {
         return $this->Monto;
-    }
-
-    /**
-     * Set Abono
-     *
-     * @param integer $abono
-     * @return Cuotas
-     */
-    public function setAbono($abono)
-    {
-        $this->Abono = $abono;
-
-        return $this;
-    }
-
-    /**
-     * Get Abono
-     *
-     * @return integer 
-     */
-    public function getAbono()
-    {
-        return $this->Abono;
     }
 }

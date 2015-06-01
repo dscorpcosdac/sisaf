@@ -1,0 +1,21 @@
+Sisaf\SisafBundle\Entity\Ingresos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Tipo:
+            type: string
+            length: 255
+        Fecha:
+            type: date
+        Descripcion:
+            type: string
+            length: 255
+        Monto:
+            type: decimal
+    lifecycleCallbacks: {  }

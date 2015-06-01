@@ -10,15 +10,15 @@ Sisaf\SisafBundle\Entity\Cuotas:
     fields:
         Persona:
             type: string
-        Fecha:
-            type: date
+            length: 255
         Tipo:
             type: string
-        Concepto:
+            length: 255
+        Descripcion:
             type: string
             length: 255
+        Fecha:
+            type: date
         Monto:
-            type: integer
-        Abono:
-            type: integer
+            type: decimal
     lifecycleCallbacks: {  }

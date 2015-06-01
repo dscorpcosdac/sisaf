@@ -1,0 +1,30 @@
+egresos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Egresos:index" }
+
+egresos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Egresos:show" }
+
+egresos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Egresos:new" }
+
+egresos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Egresos:create" }
+    requirements: { _method: post }
+
+egresos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Egresos:edit" }
+
+egresos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Egresos:update" }
+    requirements: { _method: post }
+
+egresos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Egresos:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,21 @@
+Sisaf\SisafBundle\Entity\QuejSug:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Titulo:
+            type: string
+            length: 255
+        Descripcion:
+            type: string
+            length: 255
+        Fecha:
+            type: date
+        Hora:
+            type: time
+    lifecycleCallbacks: {  }

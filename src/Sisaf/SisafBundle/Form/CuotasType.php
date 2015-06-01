@@ -14,9 +14,8 @@ class CuotasType extends AbstractType
             ->add('Persona')
             ->add('Fecha')
             ->add('Tipo')
-            ->add('Concepto')
+            ->add('Descripcion')
             ->add('Monto')
-            ->add('Abono')
         ;
     }
 

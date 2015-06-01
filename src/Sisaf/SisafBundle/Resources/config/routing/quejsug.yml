@@ -1,0 +1,30 @@
+quejsug:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:QuejSug:index" }
+
+quejsug_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:QuejSug:show" }
+
+quejsug_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:QuejSug:new" }
+
+quejsug_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:QuejSug:create" }
+    requirements: { _method: post }
+
+quejsug_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:QuejSug:edit" }
+
+quejsug_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:QuejSug:update" }
+    requirements: { _method: post }
+
+quejsug_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:QuejSug:delete" }
+    requirements: { _method: post }

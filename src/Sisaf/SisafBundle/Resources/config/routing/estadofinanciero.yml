@@ -1,0 +1,30 @@
+estadofinanciero:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:index" }
+
+estadofinanciero_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:show" }
+
+estadofinanciero_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:new" }
+
+estadofinanciero_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:create" }
+    requirements: { _method: post }
+
+estadofinanciero_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:edit" }
+
+estadofinanciero_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:update" }
+    requirements: { _method: post }
+
+estadofinanciero_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:delete" }
+    requirements: { _method: post }

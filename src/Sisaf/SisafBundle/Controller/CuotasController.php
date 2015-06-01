@@ -26,6 +26,7 @@ class CuotasController extends Controller
 
         return $this->render('SisafBundle:Cuotas:index.html.twig', array(
             'entities' => $entities,
+            'new' => $this->generateUrl('cuotas_new'),
         ));
     }
 

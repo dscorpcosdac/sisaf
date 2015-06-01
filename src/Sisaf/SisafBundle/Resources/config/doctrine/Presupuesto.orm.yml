@@ -1,0 +1,21 @@
+Sisaf\SisafBundle\Entity\Presupuesto:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Nombre:
+            type: string
+            length: 255
+        Descripcion:
+            type: string
+            length: 255
+        Fecha:
+            type: date
+        Monto:
+            type: decimal
+    lifecycleCallbacks: {  }

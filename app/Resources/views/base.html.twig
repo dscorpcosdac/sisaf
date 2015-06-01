@@ -279,7 +279,7 @@
                         <strong>{{ app.user.username }}</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
                         <ul class="list-inline">
                             <li><a href="#">Profile</a></li>
-                            <li><a href="#" class="no-margin">Inbox</a></li>
+                            <li><a href="{{ path('Avisos') }}" class="no-margin">Inbox</a></li>
                         </ul>
                     </div>
                 </div><!-- /user-block -->
@@ -312,7 +312,11 @@
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
+                                <li><a href="#"><span class="submenu-label">Información</span></a></li>
                                 <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Areas Comunes</span></a></li>
+                                <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
+                                <li><a href="{{ path('documentos') }}"><span class="submenu-label">Documentos</span></a></li>
                             </ul>
                         </li>
                         <li class="openable">
@@ -324,9 +328,8 @@
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
                                 <li><a href="#"><span class="submenu-label">Usuarios</span></a></li>
-                                <li><a href="#"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
+                                <li><a href="{{ path('quejsug') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
                             </ul>
                         </li>
                         
@@ -339,11 +342,11 @@
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="#"><span class="submenu-label">Cuotas</span></a></li>
-                                <li><a href="#"><span class="submenu-label">Ingresos</span></a></li>
-                                <li><a href="#"><span class="submenu-label">Egresos</span></a></li>
-                                <li><a href="#"><span class="submenu-label">Gastos Fijos</span></a></li>
-                                <li><a href="#"><span class="submenu-label">Estados Financieros</span></a></li>
+                                <li><a href="{{ path('cuotas') }}"><span class="submenu-label">Cuotas</span></a></li>
+                                <li><a href="{{ path('ingresos') }}"><span class="submenu-label">Ingresos</span></a></li>
+                                <li><a href="{{ path('egresos') }}"><span class="submenu-label">Egresos</span></a></li>
+                                {#<li><a href="#"><span class="submenu-label">Gastos Fijos</span></a></li>#}
+                                <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
                             </ul>
                         </li>
 
@@ -358,6 +361,20 @@
                             <ul class="submenu">
                                 <li><a href="#"><span class="submenu-label">AA</span></a></li>
                                 <li><a href="#"><span class="submenu-label">AA</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="openable">
+                            <a href="#">
+                                <span class="menu-icon">
+                                    <i class="fa fa-gear fa-lg"></i> 
+                                </span>
+                                <span class="text">Configuración</span>
+                                <span class="menu-hover"></span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte</span></a></li>
+                                <li><a href="#"><span class="submenu-label">Editar Usuarios</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -495,7 +512,6 @@
             <!--==================================================-->
             <div class="padding-md">
                 {% block body %}
-                    {% block javascripts %}{% endblock %}
                 {% endblock %}
             </div>
             <!--==================================================-->
