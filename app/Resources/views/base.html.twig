@@ -316,7 +316,7 @@
                                 <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
                                 <li><a href="#"><span class="submenu-label">__Areas Comunes</span></a></li>
                                 <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
-                                <li><a href="{{ path('documentos') }}"><span class="submenu-label">Documentos</span></a></li>
+                                <li><a href="{#{{ path('documentos') }}#}"><span class="submenu-label">Documentos</span></a></li>
                             </ul>
                         </li>
                         <li class="openable">
@@ -550,5 +550,7 @@
     <!-- Endless -->
     <script src="{{ asset('bundles/sisaf/js/endless/endless.js') }}"></script>
 
+    {% block javascript %}
+    {% endblock %}
     </body>
 </html>

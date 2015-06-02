@@ -4,7 +4,38 @@
 <h1>Registro de Visitantes</h1>
 
 <form action="{{ path('visitantes_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    <div class="form-group">
+        <label>Nombre</label>
+        {{ form_widget(form.Nombre, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Nombre) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Automovil</label>
+        {{ form_widget(form.Automovil, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Automovil) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Destino</label>
+        {{ form_widget(form.Destino, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Destino) }}</span>
+    </div>
+    <div class="form-group">
+        <label>F_Entrada</label>
+        {{ form_widget(form.F_Entrada, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.F_Entrada) }}</span>
+    </div>
+    <div class="form-group">
+        <label>H_Entrada</label>
+        {{ form_widget(form.H_Entrada, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.H_Entrada) }}</span>
+    </div>
+    <div class="form-group">
+        <label>H_Salida</label>
+        {{ form_widget(form.H_Salida, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.H_Salida) }}</span>
+    </div>
+
+    {{ form_widget(form._token) }}
     <p>
         <button type="submit">Create</button>
     </p>

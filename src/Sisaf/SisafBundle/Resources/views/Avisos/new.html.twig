@@ -1,4 +1,15 @@
 {% extends '::base.html.twig' %}
+
+{# 
+{% block stylesheets %}
+        {{ asset('bundles/sisaf/css/datepicker.css') }}
+{% endblock %}
+
+{% block javascript %}
+{{ asset('bundles/sisaf/js/bootstrap-datepicker.min.js') }}
+{% endblock %}
+#}
+
 {% block body %}
 
 <h1>Avisos creation</h1>
@@ -21,7 +32,7 @@
 	<span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
 </div>
 
-{{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
+{{ form_widget(form._token) }}
 
     <p>
         <button type="submit">Create</button>

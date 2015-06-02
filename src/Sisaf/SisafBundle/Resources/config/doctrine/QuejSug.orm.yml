@@ -12,8 +12,8 @@ Sisaf\SisafBundle\Entity\QuejSug:
             type: string
             length: 255
         Descripcion:
-            type: string
-            length: 255
+            type: text
+            length: 1000
         Fecha:
             type: date
         Hora:

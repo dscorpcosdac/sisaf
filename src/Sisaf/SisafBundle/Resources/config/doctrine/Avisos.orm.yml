@@ -15,5 +15,6 @@ Sisaf\SisafBundle\Entity\Avisos:
             type: string
             length: '1000'
         Fecha:
-            type: date
+            type: string
+            length: 225 
     lifecycleCallbacks: {  }

@@ -25,7 +25,7 @@ class Avisos
     private $Descripcion;
 
     /**
-     * @var \DateTime
+     * @var \string
      */
     private $Fecha;
 
@@ -89,7 +89,7 @@ class Avisos
     /**
      * Set Fecha
      *
-     * @param \DateTime $fecha
+     * @param \string $fecha
      * @return Avisos
      */
     public function setFecha($fecha)
@@ -102,7 +102,7 @@ class Avisos
     /**
      * Get Fecha
      *
-     * @return \DateTime 
+     * @return \string 
      */
     public function getFecha()
     {

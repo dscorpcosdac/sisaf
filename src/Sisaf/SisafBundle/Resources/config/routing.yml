@@ -50,10 +50,6 @@ SisafBundle_morosos:
         resource: "@SisafBundle/Resources/config/routing/morosos.yml"
         prefix:   /Morosos
 
-SisafBundle_documentos:
-        resource: "@SisafBundle/Resources/config/routing/documentos.yml"
-        prefix:   /Documentos
-
 SisafBundle_soporte:
         resource: "@SisafBundle/Resources/config/routing/soporte.yml"
         prefix:   /Soporte
