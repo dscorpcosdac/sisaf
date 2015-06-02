@@ -53,10 +53,12 @@
     
     <div id="wrapper" class="preload">
         <div id="top-nav" class="skin-6 fixed">
-            <div class="brand">
-                <span>SISAF</span>
-                <span class="text-toggle"> Admin</span>
-            </div><!-- /brand -->
+            <a href="{{ path ('inicio') }}">
+                <div class="brand">
+                    <span>SISAF</span>
+                    <span class="text-toggle"> Admin</span>
+                </div>
+            </a><!-- /brand -->
             <button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -283,14 +285,14 @@
                         </ul>
                     </div>
                 </div><!-- /user-block -->
-                <div class="search-block">
+                {#<div class="search-block">
                     <div class="input-group">
                         <input type="text" class="form-control input-sm" placeholder="search here...">
                         <span class="input-group-btn">
                             <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
                         </span>
                     </div><!-- /input-group -->
-                </div><!-- /search-block -->
+                </div><!-- /search-block -->#}
 
                 <div class="main-menu">
                     <ul>
@@ -312,9 +314,9 @@
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="#"><span class="submenu-label">__Información</span></a></li>
+                                {#<li><a href="#"><span class="submenu-label">__Información</span></a></li>#}
                                 <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
-                                <li><a href="#"><span class="submenu-label">__Areas Comunes</span></a></li>
+                                {#<li><a href="#"><span class="submenu-label">__Areas Comunes</span></a></li>#}
                                 <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
                                 <li><a href="{#{{ path('documentos') }}#}"><span class="submenu-label">Documentos</span></a></li>
                             </ul>
@@ -324,11 +326,11 @@
                                 <span class="menu-icon">
                                     <i class="fa fa-sitemap fa-lg"></i> 
                                 </span>
-                                <span class="text">Administracion</span>
+                                <span class="text">Administración</span>
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="#"><span class="submenu-label">__Usuarios</span></a></li>
+                                {#<li><a href="#"><span class="submenu-label">__Usuarios</span></a></li>#}
                                 <li><a href="{{ path('quejsug') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
                                 <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
                             </ul>
@@ -346,23 +348,22 @@
                                 <li><a href="{{ path('cuotas') }}"><span class="submenu-label">Cuotas</span></a></li>
                                 <li><a href="{{ path('ingresos') }}"><span class="submenu-label">Ingresos</span></a></li>
                                 <li><a href="{{ path('egresos') }}"><span class="submenu-label">Egresos</span></a></li>
-                                <li><a href="#"><span class="submenu-label">__Gastos Fijos</span></a></li>
+                                <li><a href="{{ path ('gastosfijos') }}"><span class="submenu-label">Gastos Fijos</span></a></li>
                                 <li><a href="{{ path('presupuesto') }}"><span class="submenu-label">Presupuesto</span></a></li>
-                                <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
                             </ul>
                         </li>
 
                         <li class="openable">
                             <a href="#">
                                 <span class="menu-icon">
-                                    <i class="fa fa-unlock fa-lg"></i> 
+                                    <i class="fa fa-flag fa-lg"></i> 
                                 </span>
-                                <span class="text">Seguridad</span>
+                                <span class="text">Reportes</span>
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="#"><span class="submenu-label">AA</span></a></li>
-                                <li><a href="#"><span class="submenu-label">AA</span></a></li>
+                                <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
+                                <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
                             </ul>
                         </li>
 
@@ -375,14 +376,14 @@
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte</span></a></li>
-                                <li><a href="#"><span class="submenu-label">__Editar Usuarios</span></a></li>
+                                <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
+                                {#<li><a href="#"><span class="submenu-label">__Editar Usuarios</span></a></li>#}
                             </ul>
                         </li>
                     </ul>
                     
                     <div class="alert alert-info">
-                        I know you're powerfull! Keep working hard and you'll be free ;)
+                        Bienvenido al SISAF
                     </div>
                 </div><!-- /main-menu -->
             </div><!-- /sidebar-inner -->
@@ -399,7 +400,7 @@
             <div class="main-header clearfix">
                 <div class="page-title">
                     <h3 class="no-margin">Dashboard</h3>
-                    <span>Welcome back {{ app.user.username }}</span>
+                    <span>Bienvenido {{ app.user.username }}</span>
                 </div><!-- /page-title -->
                 
                 <ul class="page-stats">

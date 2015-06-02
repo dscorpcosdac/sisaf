@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>gastosfijos</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Nombre:</b> {{ entity.Nombre }}</p>
+        <p><b>Descripcion:</b> {{ entity.Descripcion }}</p>
+        <p><b>Monto:</b> {{ entity.Monto }}</p>
+
+        <a href="{{ path('gastosfijos') }}">Regresar</a>
+        <a href="{{ path('gastosfijos_edit', { 'id': entity.id }) }}">Editar</a>
+        <form action="{{ path('gastosfijos_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

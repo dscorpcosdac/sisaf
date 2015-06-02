@@ -22,7 +22,7 @@
             <td>{{ entity.Persona }}</td>
             <td>{{ entity.Tipo }}</td>
             <td>{{ entity.Descripcion }}</td>
-            <td>{% if entity.Fecha %}{{ entity.Fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.Fecha %}{{ entity.Fecha|date('Y-m-d') }}{% endif %}</td>
             <td>{{ entity.Monto }}</td>
             <td>
                 <ul>

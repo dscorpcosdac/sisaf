@@ -34,6 +34,10 @@ SisafBundle_presupuesto:
         resource: "@SisafBundle/Resources/config/routing/presupuesto.yml"
         prefix:   /Presupuesto
 
+SisafBundle_gastosfijos:
+        resource: "@SisafBundle/Resources/config/routing/gastosfijos.yml"
+        prefix:   /GastosFijos
+
 SisafBundle_estadofinanciero:
         resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
         prefix:   /EdoFinanciero
