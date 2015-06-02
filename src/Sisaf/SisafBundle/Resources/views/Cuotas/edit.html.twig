@@ -1,10 +1,36 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Cuotas edit</h1>
+<h1>Editar Cuota</h1>
 
 <form action="{{ path('cuotas_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
+    <div class="form-group">
+        <label>Persona</label>
+        {{ form_widget(edit_form.Persona, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Persona) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Fecha</label>
+        {{ form_widget(edit_form.Fecha, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Fecha) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Tipo</label>
+        {{ form_widget(edit_form.Tipo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Tipo) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Descripcion</label>
+        {{ form_widget(edit_form.Descripcion, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Descripcion) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Monto</label>
+        {{ form_widget(edit_form.Monto, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Monto) }}</span>
+    </div>
+
+    {{ form_widget(edit_form._token, {'attr': {'class': 'form-control'}}) }}
     <p>
         <button type="submit">Edit</button>
     </p>

@@ -1,10 +1,36 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Cuotas creation</h1>
+<h1>Crear Cuota</h1>
 
 <form action="{{ path('cuotas_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    <div class="form-group">
+        <label>Persona</label>
+        {{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Fecha</label>
+        {{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Tipo</label>
+        {{ form_widget(form.Tipo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Tipo) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Descripcion</label>
+        {{ form_widget(form.Descripcion, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Descripcion) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Monto</label>
+        {{ form_widget(form.Monto, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Monto) }}</span>
+    </div>
+
+    {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
     <p>
         <button type="submit">Create</button>
     </p>

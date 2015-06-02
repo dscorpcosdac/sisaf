@@ -1,50 +1,22 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Morosos</h1>
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>Moroso</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Persona:</b> {{ entity.Persona }}</p>
+        <p><b>Correo:</b> {{ entity.Correo }}</p>
+        <p><b>Telefono:</b> {{ entity.Telefono }}</p>
+        <p><b>Residencia:</b> {{ entity.Recidencia }}</p>
 
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Persona</th>
-            <td>{{ entity.Persona }}</td>
-        </tr>
-        <tr>
-            <th>Correo</th>
-            <td>{{ entity.Correo }}</td>
-        </tr>
-        <tr>
-            <th>Telefono</th>
-            <td>{{ entity.Telefono }}</td>
-        </tr>
-        <tr>
-            <th>Recidencia</th>
-            <td>{{ entity.Recidencia }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('morosos') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('morosos_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
+        <a href="{{ path('morosos') }}">Regresar</a>
+        <a href="{{ path('morosos_edit', { 'id': entity.id }) }}">Editar</a>
         <form action="{{ path('morosos_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Eliminar</button>
         </form>
-    </li>
-</ul>
+    </div>
+</div>
 
 {% endblock %}
