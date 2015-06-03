@@ -5,9 +5,9 @@ namespace Sisaf\SisafBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * QuejSug
+ * QuejasSugerencias
  */
-class QuejSug
+class QuejasSugerencias
 {
     /**
      * @var integer
@@ -15,7 +15,7 @@ class QuejSug
     private $id;
 
     /**
-     * @var choice
+     * @var string
      */
     private $Tipo;
 
@@ -25,7 +25,7 @@ class QuejSug
     private $Titulo;
 
     /**
-     * @var text
+     * @var string
      */
     private $Descripcion;
 
@@ -50,34 +50,34 @@ class QuejSug
         return $this->id;
     }
 
-        /**
-     * Set Titulo
+    /**
+     * Set Tipo
      *
-     * @param string $titulo
-     * @return QuejSug
+     * @param string $tipo
+     * @return QuejasSugerencias
      */
     public function setTipo($tipo)
     {
-        $this->Titulo = $titulo;
+        $this->Tipo = $tipo;
 
         return $this;
     }
 
     /**
-     * Get Titulo
+     * Get Tipo
      *
      * @return string 
      */
     public function getTipo()
     {
-        return $this->Titulo;
+        return $this->Tipo;
     }
 
     /**
      * Set Titulo
      *
      * @param string $titulo
-     * @return QuejSug
+     * @return QuejasSugerencias
      */
     public function setTitulo($titulo)
     {
@@ -99,8 +99,8 @@ class QuejSug
     /**
      * Set Descripcion
      *
-     * @param text $descripcion
-     * @return QuejSug
+     * @param string $descripcion
+     * @return QuejasSugerencias
      */
     public function setDescripcion($descripcion)
     {
@@ -112,7 +112,7 @@ class QuejSug
     /**
      * Get Descripcion
      *
-     * @return text 
+     * @return string 
      */
     public function getDescripcion()
     {
@@ -123,7 +123,7 @@ class QuejSug
      * Set Fecha
      *
      * @param \DateTime $fecha
-     * @return QuejSug
+     * @return QuejasSugerencias
      */
     public function setFecha($fecha)
     {
@@ -146,7 +146,7 @@ class QuejSug
      * Set Hora
      *
      * @param \DateTime $hora
-     * @return QuejSug
+     * @return QuejasSugerencias
      */
     public function setHora($hora)
     {

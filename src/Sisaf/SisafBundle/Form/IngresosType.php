@@ -11,7 +11,10 @@ class IngresosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Tipo')
+            ->add('Tipo', 'choice', array(
+                'choices'   => array('Fijo' => 'Fijo', 'Variable' => 'Variable'),
+                'required'  => true,
+                ))
             ->add('Fecha')
             ->add('Descripcion')
             ->add('Monto')

@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>Cuota</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Nombre:</b> {{ entity.Nombre }}</p>
+        <p><b>Persona:</b> {{ entity.Persona}}</p>
+        <p><b>Fecha:</b> {{ entity.Fecha|date('d/m/Y') }}</p>
+
+    <a href="{{ path('areascomunes') }}">Regresar</a>
+    <a href="{{ path('areascomunes_edit', { 'id': entity.id }) }}">Editar</a>
+    <form action="{{ path('areascomunes_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Eliminar</button>
+    </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+Sisaf\SisafBundle\Entity\QuejasSugerencias:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Tipo:
+            type: string
+            length: 255
+        Titulo:
+            type: string
+            length: 255
+        Descripcion:
+            type: text
+        Fecha:
+            type: date
+        Hora:
+            type: time
+    lifecycleCallbacks: {  }

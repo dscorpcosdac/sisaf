@@ -5,80 +5,74 @@ namespace Sisaf\SisafBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Sisaf\SisafBundle\Entity\Inicio;
-use Sisaf\SisafBundle\Form\InicioType;
+use Sisaf\SisafBundle\Entity\Gastos;
+use Sisaf\SisafBundle\Form\GastosType;
 
 /**
- * Inicio controller.
+ * Gastos controller.
  *
  */
-class InicioController extends Controller
+class GastosController extends Controller
 {
     /**
-     * Lists all Inicio entities.
+     * Lists all Gastos entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SisafBundle:Inicio')->findAll();
+        $entities = $em->getRepository('SisafBundle:Gastos')->findAll();
 
-        return $this->render('SisafBundle:Inicio:index.html.twig', array(
+        return $this->render('SisafBundle:Gastos:index.html.twig', array(
             'entities' => $entities,
-            'dashboard' => $this->generateUrl('Avisos'),
-            'mensajes' => $this->generateUrl('Avisos'),
-            'areascomunes' => $this->generateUrl('areascomunes'),
-            'notificaciones' => $this->generateUrl('Avisos'),
-            'actividades' => $this->generateUrl('Avisos'),
-            'configuracion' => $this->generateUrl('soporte'),
         ));
     }
 
     /**
-     * Finds and displays a Inicio entity.
+     * Finds and displays a Gastos entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:Inicio')->find($id);
+        $entity = $em->getRepository('SisafBundle:Gastos')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Inicio entity.');
+            throw $this->createNotFoundException('Unable to find Gastos entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SisafBundle:Inicio:show.html.twig', array(
+        return $this->render('SisafBundle:Gastos:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to create a new Inicio entity.
+     * Displays a form to create a new Gastos entity.
      *
      */
     public function newAction()
     {
-        $entity = new Inicio();
-        $form   = $this->createForm(new InicioType(), $entity);
+        $entity = new Gastos();
+        $form   = $this->createForm(new GastosType(), $entity);
 
-        return $this->render('SisafBundle:Inicio:new.html.twig', array(
+        return $this->render('SisafBundle:Gastos:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a new Inicio entity.
+     * Creates a new Gastos entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new Inicio();
-        $form = $this->createForm(new InicioType(), $entity);
+        $entity  = new Gastos();
+        $form = $this->createForm(new GastosType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -86,33 +80,33 @@ class InicioController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('inicio_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('gastos_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('SisafBundle:Inicio:new.html.twig', array(
+        return $this->render('SisafBundle:Gastos:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Inicio entity.
+     * Displays a form to edit an existing Gastos entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:Inicio')->find($id);
+        $entity = $em->getRepository('SisafBundle:Gastos')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Inicio entity.');
+            throw $this->createNotFoundException('Unable to find Gastos entity.');
         }
 
-        $editForm = $this->createForm(new InicioType(), $entity);
+        $editForm = $this->createForm(new GastosType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SisafBundle:Inicio:edit.html.twig', array(
+        return $this->render('SisafBundle:Gastos:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -120,31 +114,31 @@ class InicioController extends Controller
     }
 
     /**
-     * Edits an existing Inicio entity.
+     * Edits an existing Gastos entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:Inicio')->find($id);
+        $entity = $em->getRepository('SisafBundle:Gastos')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Inicio entity.');
+            throw $this->createNotFoundException('Unable to find Gastos entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new InicioType(), $entity);
+        $editForm = $this->createForm(new GastosType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('inicio_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('gastos_edit', array('id' => $id)));
         }
 
-        return $this->render('SisafBundle:Inicio:edit.html.twig', array(
+        return $this->render('SisafBundle:Gastos:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -152,7 +146,7 @@ class InicioController extends Controller
     }
 
     /**
-     * Deletes a Inicio entity.
+     * Deletes a Gastos entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -162,17 +156,17 @@ class InicioController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SisafBundle:Inicio')->find($id);
+            $entity = $em->getRepository('SisafBundle:Gastos')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Inicio entity.');
+                throw $this->createNotFoundException('Unable to find Gastos entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('inicio'));
+        return $this->redirect($this->generateUrl('gastos'));
     }
 
     private function createDeleteForm($id)

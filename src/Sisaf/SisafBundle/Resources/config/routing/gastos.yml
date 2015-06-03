@@ -1,0 +1,30 @@
+gastos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Gastos:index" }
+
+gastos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Gastos:show" }
+
+gastos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Gastos:new" }
+
+gastos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Gastos:create" }
+    requirements: { _method: post }
+
+gastos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Gastos:edit" }
+
+gastos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Gastos:update" }
+    requirements: { _method: post }
+
+gastos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Gastos:delete" }
+    requirements: { _method: post }

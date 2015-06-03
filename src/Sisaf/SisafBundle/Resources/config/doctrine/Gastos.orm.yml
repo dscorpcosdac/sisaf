@@ -1,0 +1,21 @@
+Sisaf\SisafBundle\Entity\Gastos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Tipo:
+            type: string
+            length: 255
+        Concepto:
+            type: string
+            length: 255
+        Descripcion:
+            type: text
+        Monto:
+            type: decimal
+    lifecycleCallbacks: {  }

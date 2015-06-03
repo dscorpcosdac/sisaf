@@ -6,30 +6,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EgresosType extends AbstractType
+class AreasComunesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Tipo', 'choice', array(
-                'choices'   => array('Fijo' => 'Fijo', 'Variable' => 'Variable'),
-                'required'  => true,
-                ))
+            ->add('Nombre')
+            ->add('Persona')
             ->add('Fecha')
-            ->add('Descripcion')
-            ->add('Monto')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Sisaf\SisafBundle\Entity\Egresos'
+            'data_class' => 'Sisaf\SisafBundle\Entity\AreasComunes'
         ));
     }
 
     public function getName()
     {
-        return 'sisaf_sisafbundle_egresostype';
+        return 'sisaf_sisafbundle_areascomunestype';
     }
 }

@@ -285,6 +285,7 @@
                         </ul>
                     </div>
                 </div><!-- /user-block -->
+
                 {#<div class="search-block">
                     <div class="input-group">
                         <input type="text" class="form-control input-sm" placeholder="search here...">
@@ -316,9 +317,9 @@
                             <ul class="submenu">
                                 {#<li><a href="#"><span class="submenu-label">__Información</span></a></li>#}
                                 <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
-                                {#<li><a href="#"><span class="submenu-label">__Areas Comunes</span></a></li>#}
+                                <li><a href=" {{ path ('areascomunes') }}"><span class="submenu-label">Areas Comunes</span></a></li>
                                 <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
-                                <li><a href="{#{{ path('documentos') }}#}"><span class="submenu-label">Documentos</span></a></li>
+                                <li><a href="{# {{ path('documentos') }} #}"><span class="submenu-label">__Documentos</span></a></li>
                             </ul>
                         </li>
                         <li class="openable">
@@ -331,7 +332,7 @@
                             </a>
                             <ul class="submenu">
                                 {#<li><a href="#"><span class="submenu-label">__Usuarios</span></a></li>#}
-                                <li><a href="{{ path('quejsug') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
+                                <li><a href="{{ path('quejassugerencias') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
                                 <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
                             </ul>
                         </li>
@@ -348,7 +349,7 @@
                                 <li><a href="{{ path('cuotas') }}"><span class="submenu-label">Cuotas</span></a></li>
                                 <li><a href="{{ path('ingresos') }}"><span class="submenu-label">Ingresos</span></a></li>
                                 <li><a href="{{ path('egresos') }}"><span class="submenu-label">Egresos</span></a></li>
-                                <li><a href="{{ path ('gastosfijos') }}"><span class="submenu-label">Gastos Fijos</span></a></li>
+                                <li><a href="{{ path ('gastos') }}"><span class="submenu-label">Gastos Fijos</span></a></li>
                                 <li><a href="{{ path('presupuesto') }}"><span class="submenu-label">Presupuesto</span></a></li>
                             </ul>
                         </li>
@@ -399,7 +400,7 @@
             {% if dashboard is defined %}
             <div class="main-header clearfix">
                 <div class="page-title">
-                    <h3 class="no-margin">Dashboard</h3>
+                    <h3 class="no-margin">Panel de Inicio</h3>
                     <span>Bienvenido {{ app.user.username }}</span>
                 </div><!-- /page-title -->
                 
@@ -463,7 +464,7 @@
             {% if mensajes is defined %}
                 <a href="{% if mensajes is defined %} {{mensajes}} {% endif %}" class="shortcut-link">
                     <span class="shortcut-icon">
-                        <i class="fa fa-envelope-o"></i>
+                        <i class="fa fa-envelope"></i>
                         <span class="shortcut-alert">
                             5
                         </span> 
@@ -472,12 +473,12 @@
                 </a>
             {% endif %}
 
-            {% if usuarios is defined %}
-                <a href="{% if usuarios is defined %} {{usuarios}} {% endif %}" class="shortcut-link">
+            {% if areascomunes is defined %}
+                <a href="{% if areascomunes is defined %} {{areascomunes}} {% endif %}" class="shortcut-link">
                     <span class="shortcut-icon">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-users"></i>
                     </span>
-                    <span class="text">New Users</span>
+                    <span class="text">Areas Comunes</span>
                 </a>
             {% endif %}
 

@@ -13,7 +13,10 @@ class CuotasType extends AbstractType
         $builder
             ->add('Persona')
             ->add('Fecha')
-            ->add('Tipo')
+            ->add('Tipo', 'choice', array(
+                'choices'   => array('Fija' => 'Fija', 'Variable' => 'Variable'),
+                'required'  => true,
+                ))
             ->add('Descripcion')
             ->add('Monto')
         ;

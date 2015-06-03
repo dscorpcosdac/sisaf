@@ -38,9 +38,9 @@ SisafBundle_presupuesto:
         resource: "@SisafBundle/Resources/config/routing/presupuesto.yml"
         prefix:   /Presupuesto
 
-SisafBundle_gastosfijos:
-        resource: "@SisafBundle/Resources/config/routing/gastosfijos.yml"
-        prefix:   /GastosFijos
+SisafBundle_gastos:
+        resource: "@SisafBundle/Resources/config/routing/gastos.yml"
+        prefix:   /Gastos
 
 SisafBundle_estadofinanciero:
         resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
@@ -50,8 +50,8 @@ SisafBundle_cuotas:
         resource: "@SisafBundle/Resources/config/routing/cuotas.yml"
         prefix:   /Cuotas
 
-SisafBundle_quejsug:
-        resource: "@SisafBundle/Resources/config/routing/quejsug.yml"
+SisafBundle_quejassugerencias:
+        resource: "@SisafBundle/Resources/config/routing/quejassugerencias.yml"
         prefix:   /Quejas_Sugerencias
 
 SisafBundle_morosos:
@@ -61,3 +61,7 @@ SisafBundle_morosos:
 SisafBundle_soporte:
         resource: "@SisafBundle/Resources/config/routing/soporte.yml"
         prefix:   /Soporte
+
+SisafBundle_areascomunes:
+        resource: "@SisafBundle/Resources/config/routing/areascomunes.yml"
+        prefix:   /AreasComunes
