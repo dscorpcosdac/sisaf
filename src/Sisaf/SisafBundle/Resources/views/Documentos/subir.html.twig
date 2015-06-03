@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+	{% for flashMessage in app.session.flashbag.get('mensaje') %}
+	<span class="alert-danger">
+		<h4>" {{ flashMessage }} "</h4>
+		<hr />
+	</span>
+	{% endfor %}
+    
+	<h1>Subir Archivo</h1>
+	<form role="form" enctype="multipart/form-data" method="post" action="{{path('Sisaf_subir')}}">
+
+	<div class="input-group">
+		<label class="sr-only" for="exampleInputEmail2">Archivo</label>
+		<input type="file" name="archivo" class="form-control" id="exampleInputEmail2" />
+	</div>
+	<hr>
+	<button type="submit" class="btn btn-default">Enviar</button>
+</form>
+
+{% endblock %}

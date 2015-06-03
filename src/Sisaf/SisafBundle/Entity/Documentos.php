@@ -3,56 +3,81 @@
 namespace Sisaf\SisafBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * Documentos
  */
 class Documentos
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var integer
      */
-    public $id;
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
+     * @var string
      */
-    public $nombre;
+    private $Docs;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+    * @var string
+    */
+    private $archivos;
+
+    /**
+     * Get id
+     *
+     * @return integer 
      */
-    public $path;
-
-    public function getAbsolutePath()
+    public function getId()
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+        return $this->id;
     }
 
-    public function getWebPath()
+    /**
+     * Set Docs
+     *
+     * @param string $docs
+     * @return Documentos
+     */
+    public function setDocs($docs)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
+        $this->Docs = $docs;
+
+        return $this;
     }
 
-    protected function getUploadRootDir()
+    /**
+     * Get Docs
+     *
+     * @return string 
+     */
+    public function getDocs()
     {
-        // la ruta absoluta del directorio donde se deben
-        // guardar los archivos cargados
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return $this->Docs;
     }
 
-    protected function getUploadDir()
+    
+    /**
+     * Set archivos
+     *
+     * @param string $archivos
+     * @return Archivos
+     */
+    public function setArchivos($archivos)
     {
-        // se deshace del __DIR__ para no meter la pata
-        // al mostrar el documento/imagen cargada en la vista.
-        return 'uploads/documentos';
+        $this->archivos = $archivos;
+
+        return $this;
+    }
+
+    /**
+     * Get archivos
+     *
+     * @return string 
+     */
+    public function getArchivos()
+    {
+        return $this->archivos;
     }
 }
