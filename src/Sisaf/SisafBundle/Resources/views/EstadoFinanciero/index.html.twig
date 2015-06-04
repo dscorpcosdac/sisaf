@@ -1,7 +1,15 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Estado Financiero</h1>
+
+<ul>
+	{% for dato in datos %}
+		<li>{{ dato.Monto }}</li>
+	{% endfor %}
+</ul>
+
+
+{#<h1>Estado Financiero</h1>
 
 <p><b>Ingresos:</b>	$400</p>
 
@@ -9,6 +17,5 @@
 
 <p><b>Cuotas:</b>	$100</p>
 
-<p><b>Presupuesto disponible:</b>	$ 1000</p>
-
+<p><b>Presupuesto disponible:</b>	$ 1000</p>#}
 {% endblock %}

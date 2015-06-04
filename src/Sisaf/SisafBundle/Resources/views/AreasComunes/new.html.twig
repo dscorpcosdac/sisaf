@@ -20,7 +20,13 @@
 	{{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
 	<span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
 </div>
-
+<div style="display:none;">
+	<div class="form-group">
+		<label>Fecha de Registro</label>
+		{{ form_widget(form.FechaRegistro, {'attr': {'class': 'form-control'}}) }}
+		<span class="help-block m-b-none">{{ form_errors(form.FechaRegistro) }}</span>
+	</div>
+</div>
 {{ form_widget(form._token) }}
 
     <p>

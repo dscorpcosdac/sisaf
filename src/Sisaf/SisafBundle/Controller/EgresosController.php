@@ -58,6 +58,7 @@ class EgresosController extends Controller
     public function newAction()
     {
         $entity = new Egresos();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new EgresosType(), $entity);
 
         return $this->render('SisafBundle:Egresos:new.html.twig', array(

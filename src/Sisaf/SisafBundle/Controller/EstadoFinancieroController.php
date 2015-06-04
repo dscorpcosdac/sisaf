@@ -21,13 +21,23 @@ class EstadoFinancieroController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('SisafBundle:EstadoFinanciero')->findAll();
-
-        return $this->render('SisafBundle:EstadoFinanciero:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        $query = $em->createQuery
+        (
+            'SELECT c.id as id,c.Monto as Ingresos
+               FROM SisafBundle:EstadoFinanciero p
+               JOIN SisafBundle:Ingresos c WITH c.id =p.id
+               '
+        );
+         
+        $datos = $query->getResult();
+        //print_r($datos);exit;
+        return $this->render('SisafBundle:EstadoFinanciero:index.html.twig',compact("datos"));
     }
+
+
+
+
+
 
     /**
      * Finds and displays a EstadoFinanciero entity.

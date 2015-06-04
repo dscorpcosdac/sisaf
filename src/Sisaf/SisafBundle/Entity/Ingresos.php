@@ -4,11 +4,25 @@ namespace Sisaf\SisafBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Ingresos
  */
 class Ingresos
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="EstadoFinanciero", mappedBy="ingresos")
+     */
+    protected $EstadoFinanciero;
+ 
+    public function __construct()
+    {
+        $this->$estadofinanciero = new ArrayCollection();
+    }
+
+
     /**
      * @var integer
      */

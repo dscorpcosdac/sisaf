@@ -58,6 +58,7 @@ class AreasComunesController extends Controller
     public function newAction()
     {
         $entity = new AreasComunes();
+        $entity->setFechaRegistro(new \DateTime("now"));
         $form   = $this->createForm(new AreasComunesType(), $entity);
 
         return $this->render('SisafBundle:AreasComunes:new.html.twig', array(

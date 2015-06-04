@@ -14,6 +14,7 @@ class AreasComunesType extends AbstractType
             ->add('Nombre')
             ->add('Persona')
             ->add('Fecha')
+            ->add('FechaRegistro')
         ;
     }
 

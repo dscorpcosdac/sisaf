@@ -58,6 +58,8 @@ class VisitantesController extends Controller
     public function newAction()
     {
         $entity = new Visitantes();
+        $entity->setFEntrada(new \DateTime("now"));
+        $entity->setHEntrada(new \DateTime("now"));
         $form   = $this->createForm(new VisitantesType(), $entity);
 
         return $this->render('SisafBundle:Visitantes:new.html.twig', array(
@@ -73,6 +75,7 @@ class VisitantesController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Visitantes();
+
         $form = $this->createForm(new VisitantesType(), $entity);
         $form->bind($request);
 
@@ -103,7 +106,7 @@ class VisitantesController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Visitantes entity.');
         }
-
+        $entity->setHSalida(new \DateTime("now"));
         $editForm = $this->createForm(new VisitantesType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 

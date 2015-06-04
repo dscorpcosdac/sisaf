@@ -9,6 +9,7 @@
         <p><b>Nombre:</b> {{ entity.Nombre }}</p>
         <p><b>Persona:</b> {{ entity.Persona}}</p>
         <p><b>Fecha:</b> {{ entity.Fecha|date('d/m/Y') }}</p>
+        <p><b>Fecha de Registro:</b> {{ entity.FechaRegistro|date('d/m/Y') }}</p>
 
     <a href="{{ path('areascomunes') }}">Regresar</a>
     <a href="{{ path('areascomunes_edit', { 'id': entity.id }) }}">Editar</a>

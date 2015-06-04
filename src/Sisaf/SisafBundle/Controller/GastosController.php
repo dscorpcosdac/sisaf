@@ -26,6 +26,7 @@ class GastosController extends Controller
 
         return $this->render('SisafBundle:Gastos:index.html.twig', array(
             'entities' => $entities,
+            'new' => $this->generateUrl('gastos_new'),
         ));
     }
 

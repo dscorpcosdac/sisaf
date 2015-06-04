@@ -58,6 +58,7 @@ class CuotasController extends Controller
     public function newAction()
     {
         $entity = new Cuotas();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new CuotasType(), $entity);
 
         return $this->render('SisafBundle:Cuotas:new.html.twig', array(

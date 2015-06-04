@@ -58,6 +58,7 @@ class IngresosController extends Controller
     public function newAction()
     {
         $entity = new Ingresos();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new IngresosType(), $entity);
 
         return $this->render('SisafBundle:Ingresos:new.html.twig', array(

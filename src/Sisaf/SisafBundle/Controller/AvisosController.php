@@ -59,6 +59,7 @@ class AvisosController extends Controller
     public function newAction()
     {
         $entity = new Avisos();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new AvisosType(), $entity);
 
         return $this->render('SisafBundle:Avisos:new.html.twig', array(

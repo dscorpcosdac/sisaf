@@ -19,6 +19,14 @@
         {{ form_widget(edit_form.Fecha, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.Fecha) }}</span>
     </div>
+    <div style="display:none;">
+        <div class="form-group">
+            <label>Fecha de Registro</label>
+            {{ form_widget(edit_form.FechaRegistro, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(edit_form.FechaRegistro) }}</span>
+        </div>
+    </div>
+    
     {{ form_widget(edit_form._token) }}
     <p>
         <button type="submit">Edit</button>

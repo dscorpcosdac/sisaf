@@ -25,10 +25,14 @@ class AreasComunes
     private $Persona;
 
     /**
-     * @var string
+     * @var DateTime
      */
     private $Fecha;
 
+    /**
+     * @var DateTime
+     */
+    private $FechaRegistro;
 
     /**
      * Get id
@@ -107,5 +111,28 @@ class AreasComunes
     public function getFecha()
     {
         return $this->Fecha;
+    }
+
+    /**
+     * Set FechaRegistro
+     *
+     * @param string $fecharegistro
+     * @return AreasComunes
+     */
+    public function setFechaRegistro($fecharegistro)
+    {
+        $this->FechaRegistro = $fecharegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get FechaRegistro
+     *
+     * @return string 
+     */
+    public function getFechaRegistro()
+    {
+        return $this->FechaRegistro;
     }
 }
