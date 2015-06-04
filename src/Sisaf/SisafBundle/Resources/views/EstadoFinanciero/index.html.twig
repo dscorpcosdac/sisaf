@@ -3,19 +3,21 @@
 
 
 <ul>
-	{% for dato in datos %}
+	{% for id in datos %}
 		<li>{{ dato.Monto }}</li>
 	{% endfor %}
 </ul>
 
 
-{#<h1>Estado Financiero</h1>
+<h1>Estado Financiero</h1>
 
-<p><b>Ingresos:</b>	$400</p>
+<p><b>Ingresos de Cuotas:</b>	$4000</p>
 
-<p><b>Egresos:</b>	$-400</p>
+<p><b>Ingresos:</b>	$1200</p>
 
-<p><b>Cuotas:</b>	$100</p>
+<p><b>Egresos:</b>	$-1000</p>
 
-<p><b>Presupuesto disponible:</b>	$ 1000</p>#}
+<p><b>Gastos fijos:</b>	$-1000</p>
+
+<p><b>Presupuesto disponible:</b>	$ 3200</p>
 {% endblock %}

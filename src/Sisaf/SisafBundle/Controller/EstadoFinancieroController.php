@@ -23,14 +23,14 @@ class EstadoFinancieroController extends Controller
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery
         (
-            'SELECT c.id as id,c.Monto as Ingresos
+            'SELECT c.id as id,c.Monto as Monto
                FROM SisafBundle:EstadoFinanciero p
-               JOIN SisafBundle:Ingresos c WITH c.id =p.id
+               JOIN SisafBundle:Ingresos c WITH p.id =c.id
                '
         );
          
         $datos = $query->getResult();
-        //print_r($datos);exit;
+        print_r($datos);exit;
         return $this->render('SisafBundle:EstadoFinanciero:index.html.twig',compact("datos"));
     }
 

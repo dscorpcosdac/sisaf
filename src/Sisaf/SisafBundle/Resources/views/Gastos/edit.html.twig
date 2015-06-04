@@ -5,9 +5,14 @@
 
 <form action="{{ path('gastos_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="form-group">
-        <label>Nombre</label>
-        {{ form_widget(edit_form.Nombre, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(edit_form.Nombre) }}</span>
+        <label>Tipo</label>
+        {{ form_widget(edit_form.Tipo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Tipo) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Concepto</label>
+        {{ form_widget(edit_form.Concepto, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Concepto) }}</span>
     </div>
     <div class="form-group">
         <label>Descripcion</label>
