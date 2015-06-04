@@ -35,12 +35,6 @@ class QuejasSugerencias
     private $Fecha;
 
     /**
-     * @var \DateTime
-     */
-    private $Hora;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -140,28 +134,5 @@ class QuejasSugerencias
     public function getFecha()
     {
         return $this->Fecha;
-    }
-
-    /**
-     * Set Hora
-     *
-     * @param \DateTime $hora
-     * @return QuejasSugerencias
-     */
-    public function setHora($hora)
-    {
-        $this->Hora = $hora;
-
-        return $this;
-    }
-
-    /**
-     * Get Hora
-     *
-     * @return \DateTime 
-     */
-    public function getHora()
-    {
-        return $this->Hora;
     }
 }

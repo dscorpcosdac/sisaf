@@ -76,58 +76,13 @@
                         <span class="notification-label bounceIn animation-delay4">7</span>
                     </a>
                     <ul class="dropdown-menu message dropdown-1">
-                        <li><a>You have 4 new unread messages</a></li>                    
-                        <li>
-                            <a class="clearfix" href="#">
-                                <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
-                                <div class="detail">
-                                    <strong>{{ app.user.username }}</strong>
-                                    <p class="no-margin">
-                                        Lorem ipsum dolor sit amet...
-                                    </p>
-                                    <small class="text-muted"><i class="fa fa-check text-success"></i> 27m ago</small>
-                                </div>
-                            </a>    
-                        </li>
-                        <li>
-                            <a class="clearfix" href="#">
-                                <img src="{{ asset('bundles/sisaf/img/user2.jpg')}}" alt="User Avatar">
-                                <div class="detail">
-                                    <strong>Jane Doe</strong>
-                                    <p class="no-margin">
-                                        Lorem ipsum dolor sit amet...
-                                    </p>
-                                    <small class="text-muted"><i class="fa fa-check text-success"></i> 5hr ago</small>
-                                </div>
-                            </a>    
-                        </li>
-                        <li>
-                            <a class="clearfix" href="#">
-                                <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
-                                <div class="detail">
-                                    <strong>Bill Doe</strong>
-                                    <p class="no-margin">
-                                        Lorem ipsum dolor sit amet...
-                                    </p>
-                                    <small class="text-muted"><i class="fa fa-reply"></i> Yesterday</small>
-                                </div>
-                            </a>    
-                        </li>
-                        <li>
-                            <a class="clearfix" href="#">
-                                <img src="{{ asset('bundles/sisaf/img/user2.jpg')}}" alt="User Avatar">
-                                <div class="detail">
-                                    <strong>Baby Doe</strong>
-                                    <p class="no-margin">
-                                        Lorem ipsum dolor sit amet...
-                                    </p>
-                                    <small class="text-muted"><i class="fa fa-reply"></i> 9 Feb 2013</small>
-                                </div>
-                            </a>    
-                        </li>
-                        <li><a href="#">View all messages</a></li>                      
+                        <li><a href="{{ path('Avisos') }}">Ver todos los mensajes</a></li>
+                        <li><a href="{{ path('quejassugerencias_new') }}">Nueva Queja o Sugerencia</a></li>
                     </ul>
                 </li>
+
+
+                {#
                 <li class="dropdown hidden-xs">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-tasks fa-lg"></i>
@@ -236,7 +191,9 @@
                         </li>
                         <li><a href="#">View all notifications</a></li>                     
                     </ul>
-                </li>
+                </li>#}
+
+
                 <li class="profile dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <strong>{{ app.user.username }}</strong>
@@ -507,7 +464,7 @@
                 <a href="{% if configuracion is defined %} {{configuracion}} {% endif %}" class="shortcut-link">
                     <span class="shortcut-icon">
                         <i class="fa fa-cog"></i></span>
-                    <span class="text">Setting</span>
+                    <span class="text">Soporte</span>
                 </a>
             {% endif %}
 
@@ -521,6 +478,19 @@
             <!--==================================================-->
 
         </div><!-- /main-container -->
+        <hr>
+        <footer>
+            <div class="row">
+                <div class="col-sm-6">
+                    <span class="footer-brand">
+                        <strong class="text-danger">SISAF</strong> Admin
+                    </span>
+                    <p class="no-margin">
+                        © 2013 <strong>SISAF Admin</strong>. All Rights Reserved. 
+                    </p>
+                </div><!-- /.col -->
+            </div><!-- /.row-->
+        </footer>
     </div><!-- /wrapper -->
 
     <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
@@ -528,12 +498,12 @@
     <!-- Logout confirmation -->
     <div class="custom-popup width-100" id="logoutConfirm">
         <div class="padding-md">
-            <h4 class="m-top-none"> Do you want to logout?</h4>
+            <h4 class="m-top-none"> Quiere cerrar la sesión?</h4>
         </div>
 
         <div class="text-center">
-            <a class="btn btn-success m-right-sm" href="../logout">Logout</a>
-            <a class="btn btn-danger logoutConfirm_close">Cancel</a>
+            <a class="btn btn-success m-right-sm" href="{{ path('logout')}}">salir</a>
+            <a class="btn btn-danger logoutConfirm_close">Cancelar</a>
         </div>
     </div>
     <!-- ==========SCRIPTS========== -->    

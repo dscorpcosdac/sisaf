@@ -18,7 +18,6 @@ class QuejasSugerenciasType extends AbstractType
             ->add('Titulo')
             ->add('Descripcion', 'textarea' )
             ->add('Fecha')
-            ->add('Hora')
         ;
     }
 

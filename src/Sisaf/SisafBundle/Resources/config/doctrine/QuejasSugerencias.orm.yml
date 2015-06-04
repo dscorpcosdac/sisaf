@@ -18,6 +18,4 @@ Sisaf\SisafBundle\Entity\QuejasSugerencias:
             type: text
         Fecha:
             type: date
-        Hora:
-            type: time
     lifecycleCallbacks: {  }

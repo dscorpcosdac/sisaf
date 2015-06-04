@@ -13,7 +13,7 @@ class EstadoFinanciero
      * @ORM\ManyToOne(targetEntity="Ingresos", inversedBy="estadofinanciero")
      * @ORM\JoinColumn(name="id", referencedColumnName="Monto")
      */
-    protected $categoria;
+    protected $ingresos;
 
     /**
      * @var integer

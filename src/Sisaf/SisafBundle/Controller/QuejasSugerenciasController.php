@@ -58,6 +58,7 @@ class QuejasSugerenciasController extends Controller
     public function newAction()
     {
         $entity = new QuejasSugerencias();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new QuejasSugerenciasType(), $entity);
 
         return $this->render('SisafBundle:QuejasSugerencias:new.html.twig', array(

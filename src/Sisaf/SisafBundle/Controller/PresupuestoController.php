@@ -58,6 +58,7 @@ class PresupuestoController extends Controller
     public function newAction()
     {
         $entity = new Presupuesto();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new PresupuestoType(), $entity);
 
         return $this->render('SisafBundle:Presupuesto:new.html.twig', array(
