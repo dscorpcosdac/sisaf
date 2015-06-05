@@ -22,7 +22,7 @@ class EgresosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SisafBundle:Egresos')->find($monto);
+        $entities = $em->getRepository('SisafBundle:Egresos')->findAll();
 
         return $this->render('SisafBundle:Egresos:index.html.twig', array(
             'entities' => $entities,

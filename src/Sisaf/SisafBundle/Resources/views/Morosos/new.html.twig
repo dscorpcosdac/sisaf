@@ -29,16 +29,8 @@
     {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
 
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('morosos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('morosos') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 
 {% endblock %}

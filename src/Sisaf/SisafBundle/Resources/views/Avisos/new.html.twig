@@ -36,16 +36,8 @@
 {{ form_widget(form._token) }}
 
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('Avisos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('Avisos') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 
 {% endblock %}
