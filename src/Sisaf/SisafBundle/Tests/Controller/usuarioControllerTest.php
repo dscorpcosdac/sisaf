@@ -4,7 +4,7 @@ namespace Sisaf\SisafBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GastosControllerTest extends WebTestCase
+class usuarioControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class GastosControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/gastos/');
+        $crawler = $client->request('GET', '/usuario/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'sisaf_sisafbundle_gastostype[field_name]'  => 'Test',
+            'sisaf_sisafbundle_usuariotype[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class GastosControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'sisaf_sisafbundle_gastostype[field_name]'  => 'Foo',
+            'sisaf_sisafbundle_usuariotype[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

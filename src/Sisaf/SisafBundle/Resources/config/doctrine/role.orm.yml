@@ -1,4 +1,4 @@
-Sisaf\SisafBundle\Entity\Gastos:
+Sisaf\SisafBundle\Entity\role:
     type: entity
     table: null
     id:
@@ -8,14 +8,7 @@ Sisaf\SisafBundle\Entity\Gastos:
             generator:
                 strategy: AUTO
     fields:
-        Tipo:
+        name:
             type: string
             length: 255
-        Concepto:
-            type: string
-            length: 255
-        Descripcion:
-            type: text
-        Monto:
-            type: decimal
     lifecycleCallbacks: {  }

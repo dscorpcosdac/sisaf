@@ -1,0 +1,39 @@
+Sisaf\SisafBundle\Entity\usuario:
+    type: entity
+    table: null
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: '100'
+        salt:
+            type: string
+            length: '125'
+        password:
+            type: string
+            length: '125'
+        isActive:
+            type: boolean
+        fCreacion:
+            type: datetime
+    manyToMany:
+        roles:
+            targetEntity: Sisaf\SisafBundle\Entity\role
+            joinTable:
+                name: user_role
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    role_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

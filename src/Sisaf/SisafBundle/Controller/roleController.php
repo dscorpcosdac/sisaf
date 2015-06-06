@@ -5,76 +5,74 @@ namespace Sisaf\SisafBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Sisaf\SisafBundle\Entity\AreasComunes;
-use Sisaf\SisafBundle\Form\AreasComunesType;
+use Sisaf\SisafBundle\Entity\role;
+use Sisaf\SisafBundle\Form\roleType;
 
 /**
- * AreasComunes controller.
+ * role controller.
  *
  */
-class AreasComunesController extends Controller
+class roleController extends Controller
 {
     /**
-     * Lists all AreasComunes entities.
+     * Lists all role entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SisafBundle:AreasComunes')->findAll();
+        $entities = $em->getRepository('SisafBundle:role')->findAll();
 
-        return $this->render('SisafBundle:AreasComunes:index.html.twig', array(
+        return $this->render('SisafBundle:role:index.html.twig', array(
             'entities' => $entities,
-            'new' => $this->generateUrl('areascomunes_new'),
         ));
     }
 
     /**
-     * Finds and displays a AreasComunes entity.
+     * Finds and displays a role entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:AreasComunes')->find($id);
+        $entity = $em->getRepository('SisafBundle:role')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find AreasComunes entity.');
+            throw $this->createNotFoundException('Unable to find role entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SisafBundle:AreasComunes:show.html.twig', array(
+        return $this->render('SisafBundle:role:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to create a new AreasComunes entity.
+     * Displays a form to create a new role entity.
      *
      */
     public function newAction()
     {
-        $entity = new AreasComunes();
-        $entity->setFechaRegistro(new \DateTime("now"));
-        $form   = $this->createForm(new AreasComunesType(), $entity);
+        $entity = new role();
+        $form   = $this->createForm(new roleType(), $entity);
 
-        return $this->render('SisafBundle:AreasComunes:new.html.twig', array(
+        return $this->render('SisafBundle:role:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a new AreasComunes entity.
+     * Creates a new role entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new AreasComunes();
-        $form = $this->createForm(new AreasComunesType(), $entity);
+        $entity  = new role();
+        $form = $this->createForm(new roleType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -82,33 +80,33 @@ class AreasComunesController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('areascomunes_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('role_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('SisafBundle:AreasComunes:new.html.twig', array(
+        return $this->render('SisafBundle:role:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing AreasComunes entity.
+     * Displays a form to edit an existing role entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:AreasComunes')->find($id);
+        $entity = $em->getRepository('SisafBundle:role')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find AreasComunes entity.');
+            throw $this->createNotFoundException('Unable to find role entity.');
         }
 
-        $editForm = $this->createForm(new AreasComunesType(), $entity);
+        $editForm = $this->createForm(new roleType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SisafBundle:AreasComunes:edit.html.twig', array(
+        return $this->render('SisafBundle:role:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -116,31 +114,31 @@ class AreasComunesController extends Controller
     }
 
     /**
-     * Edits an existing AreasComunes entity.
+     * Edits an existing role entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:AreasComunes')->find($id);
+        $entity = $em->getRepository('SisafBundle:role')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find AreasComunes entity.');
+            throw $this->createNotFoundException('Unable to find role entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new AreasComunesType(), $entity);
+        $editForm = $this->createForm(new roleType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('areascomunes_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('role_edit', array('id' => $id)));
         }
 
-        return $this->render('SisafBundle:AreasComunes:edit.html.twig', array(
+        return $this->render('SisafBundle:role:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -148,7 +146,7 @@ class AreasComunesController extends Controller
     }
 
     /**
-     * Deletes a AreasComunes entity.
+     * Deletes a role entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -158,17 +156,17 @@ class AreasComunesController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SisafBundle:AreasComunes')->find($id);
+            $entity = $em->getRepository('SisafBundle:role')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find AreasComunes entity.');
+                throw $this->createNotFoundException('Unable to find role entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('areascomunes'));
+        return $this->redirect($this->generateUrl('role'));
     }
 
     private function createDeleteForm($id)

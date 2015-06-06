@@ -2,6 +2,14 @@ Sisaf_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: SisafBundle:Default:index }
 
+SisafBundle_usuario:
+        resource: "@SisafBundle/Resources/config/routing/usuario.yml"
+        prefix:   /usuario
+
+SisafBundle_role:
+        resource: "@SisafBundle/Resources/config/routing/role.yml"
+        prefix:   /role
+
 Sisaf_subir:
     pattern:  /Documentos
     defaults: { _controller: SisafBundle:Default:subir }

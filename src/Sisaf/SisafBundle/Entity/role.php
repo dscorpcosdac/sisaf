@@ -5,9 +5,9 @@ namespace Sisaf\SisafBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Archivos
+ * role
  */
-class Archivos
+class role
 {
     /**
      * @var integer
@@ -17,7 +17,7 @@ class Archivos
     /**
      * @var string
      */
-    private $archivos;
+    private $name;
 
 
     /**
@@ -31,25 +31,25 @@ class Archivos
     }
 
     /**
-     * Set archivos
+     * Set name
      *
-     * @param string $archivos
-     * @return Archivos
+     * @param string $name
+     * @return role
      */
-    public function setArchivos($archivos)
+    public function setName($name)
     {
-        $this->archivos = $archivos;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get archivos
+     * Get name
      *
      * @return string 
      */
-    public function getArchivos()
+    public function getName()
     {
-        return $this->archivos;
+        return $this->name;
     }
 }

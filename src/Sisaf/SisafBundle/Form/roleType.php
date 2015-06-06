@@ -6,27 +6,34 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AreasComunesType extends AbstractType
+class roleType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Nombre')
-            ->add('Persona')
-            ->add('Fecha')
-            ->add('FechaRegistro')
+            ->add('name')
         ;
     }
 
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Sisaf\SisafBundle\Entity\AreasComunes'
+            'data_class' => 'Sisaf\SisafBundle\Entity\role'
         ));
     }
 
+    /**
+     * @return string
+     */s
     public function getName()
     {
-        return 'sisaf_sisafbundle_areascomunestype';
+        return 'sisaf_sisafbundle_roletype';
     }
 }

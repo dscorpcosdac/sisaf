@@ -1,0 +1,30 @@
+usuario:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:usuario:index" }
+
+usuario_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:usuario:show" }
+
+usuario_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:usuario:new" }
+
+usuario_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:usuario:edit" }
+
+usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:usuario:update" }
+    requirements: { _method: post }
+
+usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:usuario:delete" }
+    requirements: { _method: post }
