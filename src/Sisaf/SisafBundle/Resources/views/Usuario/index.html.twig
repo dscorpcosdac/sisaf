@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>Usuarios</h1>
+
+<div class="alert alert-danger" role="alert">
+    <div class="align-center">
+      <span class="fa fa-exclamation-triangle font-size-24"></span>
+      <span class="sr-only">Error:</span>
+      <span>El uso indebido de este modulo afectaría a uno o más usuarios del sistema, usese con precaucion.</span>
+    </div>
+</div>
+<div class="panel panel-default">
+<table class="records_list table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Contraseña</th>
+            <th>Correo</th>
+            <th>Isactive</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.username }}</td>
+            <td>{{ entity.password }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.isActive }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('usuario_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
