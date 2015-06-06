@@ -10,12 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 class EstadoFinanciero
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Ingresos", inversedBy="estadofinanciero")
-     * @ORM\JoinColumn(name="id", referencedColumnName="Monto")
-     */
-    protected $ingresos;
-
-    /**
      * @var integer
      */
     private $id;

@@ -16,7 +16,7 @@
 	<span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
 </div>
 <div class="form-group">
-	<label>Fecha</label>
+	<label>Fecha a reservar</label>
 	{{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
 	<span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
 </div>
@@ -30,16 +30,8 @@
 {{ form_widget(form._token) }}
 
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('areascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('areascomunes') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 
 {% endblock %}

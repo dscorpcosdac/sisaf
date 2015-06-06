@@ -38,23 +38,12 @@
     </div>
     
     {{ form_widget(edit_form._token) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('visitantes') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
+        <button class="btn btn-success" type="submit"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+        <a class="btn btn-warning" href="{{ path('visitantes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
         <form action="{{ path('visitantes_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
         </form>
-    </li>
-</ul>
 
 {% endblock %}
