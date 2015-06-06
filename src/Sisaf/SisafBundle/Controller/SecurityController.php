@@ -18,11 +18,11 @@ class SecurityController extends Controller
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
         } else {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            //$session->remove(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
          $em = $this->getDoctrine()->getManager();
-         $entity = new usuario();
-         $form   = $this->CreateFormUser($entity);
+         //$entity = new usuario();
+         //$form   = $this->CreateFormUser($entity);
 
 
 
@@ -30,31 +30,13 @@ class SecurityController extends Controller
                 array(
                     // last username entered by the user
                     'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-                    'form'   => $form->createView(),'id'=>0,
+                    //'form'   => $form->createView(),'id'=>0,
                     'error'         => $error,
-                    'directorio'  => $template->getRuta(),
+                    //'directorio'  => $template->getRuta(),
                 )
             );
     }
 
-    /**
-     * Creates a form to create a usuario entity.
-     *
-     * @param usuario $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function CreateFormUser(usuario $entity)
-    {
-        $form = $this->createForm(new usuarioType(), $entity, array(
-            'action' => $this->generateUrl('inicio'),
-            'method' => 'POST',
-        ));
-
-        $form->add('Guardar', 'submit', array('label'=>'','attr' => array('class' => 'btn btn-primary')));
-
-        return $form;
-    }
 }
 
 
