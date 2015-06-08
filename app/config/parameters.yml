@@ -2,9 +2,9 @@ parameters:
     database_driver:   pdo_pgsql
     database_host:     127.0.0.1
     database_port:     
-    database_name:     mypgdatabase
+    database_name:     sisaf
     database_user:     mypguser
-    database_password: dscorp2000
+    database_password: dev
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1

@@ -1,0 +1,30 @@
+areascomunes:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:AreasComunes:index" }
+
+areascomunes_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:AreasComunes:show" }
+
+areascomunes_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:AreasComunes:new" }
+
+areascomunes_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:AreasComunes:create" }
+    requirements: { _method: post }
+
+areascomunes_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:AreasComunes:edit" }
+
+areascomunes_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:AreasComunes:update" }
+    requirements: { _method: post }
+
+areascomunes_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:AreasComunes:delete" }
+    requirements: { _method: post }

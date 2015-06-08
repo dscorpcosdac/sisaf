@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>{{ entity.Tipo }}</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Tipo:</b> {{ entity.Tipo }}</p>
+        <p><b>Titulo:</b> {{ entity.Titulo }}</p>
+        <p><b>Descripcion:</b> {{ entity.Descripcion }}</p>
+        <p><b>Fecha:</b> {{ entity.Fecha|date('d/m/Y') }}</p>
+
+        <form action="{{ path('quejassugerencias_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-warning" href="{{ path('quejassugerencias') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            <a class="btn btn-success" href="{{ path('quejassugerencias_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

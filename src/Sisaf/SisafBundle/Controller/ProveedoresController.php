@@ -26,6 +26,7 @@ class ProveedoresController extends Controller
 
         return $this->render('SisafBundle:Proveedores:index.html.twig', array(
             'entities' => $entities,
+            'new' => $this->generateUrl('proveedores_new'),
         ));
     }
 

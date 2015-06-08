@@ -1,0 +1,30 @@
+morosos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Morosos:index" }
+
+morosos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Morosos:show" }
+
+morosos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Morosos:new" }
+
+morosos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Morosos:create" }
+    requirements: { _method: post }
+
+morosos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Morosos:edit" }
+
+morosos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Morosos:update" }
+    requirements: { _method: post }
+
+morosos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Morosos:delete" }
+    requirements: { _method: post }

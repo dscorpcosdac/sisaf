@@ -1,0 +1,30 @@
+presupuesto:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Presupuesto:index" }
+
+presupuesto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Presupuesto:show" }
+
+presupuesto_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Presupuesto:new" }
+
+presupuesto_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Presupuesto:create" }
+    requirements: { _method: post }
+
+presupuesto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Presupuesto:edit" }
+
+presupuesto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Presupuesto:update" }
+    requirements: { _method: post }
+
+presupuesto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Presupuesto:delete" }
+    requirements: { _method: post }

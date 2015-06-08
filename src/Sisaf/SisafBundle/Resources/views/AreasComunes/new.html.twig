@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>AreasComunes creation</h1>
+
+<form action="{{ path('areascomunes_create') }}" method="post" {{ form_enctype(form) }}>
+    
+<div class="form-group">
+	<label>Nombre</label>
+	{{ form_widget(form.Nombre, {'attr': {'class': 'form-control'}}) }}
+	<span class="help-block m-b-none">{{ form_errors(form.Nombre) }}</span>
+</div>
+<div class="form-group">
+	<label>Persona</label>
+	{{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
+	<span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
+</div>
+<div class="form-group">
+	<label>Fecha a reservar</label>
+	{{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
+	<span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
+</div>
+<div style="display:none;">
+	<div class="form-group">
+		<label>Fecha de Registro</label>
+		{{ form_widget(form.FechaRegistro, {'attr': {'class': 'form-control'}}) }}
+		<span class="help-block m-b-none">{{ form_errors(form.FechaRegistro) }}</span>
+	</div>
+</div>
+{{ form_widget(form._token) }}
+
+    <p>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('areascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+    </p>
+
+{% endblock %}

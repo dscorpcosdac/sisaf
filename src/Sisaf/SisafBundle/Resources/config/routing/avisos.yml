@@ -1,0 +1,30 @@
+Avisos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Avisos:index" }
+
+Avisos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Avisos:show" }
+
+Avisos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Avisos:new" }
+
+Avisos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Avisos:create" }
+    requirements: { _method: post }
+
+Avisos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Avisos:edit" }
+
+Avisos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Avisos:update" }
+    requirements: { _method: post }
+
+Avisos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Avisos:delete" }
+    requirements: { _method: post }

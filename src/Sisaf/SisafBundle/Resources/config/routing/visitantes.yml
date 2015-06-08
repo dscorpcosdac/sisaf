@@ -1,0 +1,30 @@
+visitantes:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Visitantes:index" }
+
+visitantes_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Visitantes:show" }
+
+visitantes_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Visitantes:new" }
+
+visitantes_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Visitantes:create" }
+    requirements: { _method: post }
+
+visitantes_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Visitantes:edit" }
+
+visitantes_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Visitantes:update" }
+    requirements: { _method: post }
+
+visitantes_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Visitantes:delete" }
+    requirements: { _method: post }

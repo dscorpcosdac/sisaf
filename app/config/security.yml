@@ -4,18 +4,46 @@ jms_security_extra:
 
 security:
     encoders:
+        Sisaf\SisafBundle\Entity\Usuario: plaintext
+#            algorithm: sha512
+#            encode-as-base64: true
+#            iterations: 10
+
         Symfony\Component\Security\Core\User\User: plaintext
+#    encoders:
+#        Sisaf\SisafBundle\Entity\usuario:
+#            algorithm: sha512
+#            encode-as-base64: true
+#            iterations: 10
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
+        ROLE_COLONO:       ROLE_USER
+        ROLE_TESORERO:       ROLE_USER
+        ROLE_MESADIRECTIVA:       ROLE_USER
+#        ROLE_DEVELOPER: [ROLE_USER, ROLE_ADMIN, ROLE_COLONO, ROLE_TESORERO, ROLE_MESADIRECTIVA]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, Usuario]
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    admin: 
+                        password: dev
+                        roles: 'ROLE_ADMIN'
+                    Dev: 
+                        password: DscropDeveloper
+                        roles: 'ROLE_ADMIN'
+                    colono: 
+                        password: dev
+                        roles: 'ROLE_COLONO'
+        Usuario:
+            entity:
+                class: SisafBundle:Usuario
+#                property: username
 
     firewalls:
         dev:
@@ -23,22 +51,46 @@ security:
             security: false
 
         login:
-            pattern:  ^/demo/secured/login$
+            pattern:  ^/login$
             security: false
 
+        login_firewall:
+            pattern:    ^/login$
+            anonymous:  ~
+
         secured_area:
-            pattern:    ^/demo/secured/
+            pattern:    ^/
+            anonymous:  ~
             form_login:
-                check_path: /demo/secured/login_check
-                login_path: /demo/secured/login
+                login_path:  login
+                check_path:  login_check
+#                remember_me: true
             logout:
-                path:   /demo/secured/logout
-                target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
+                path:   /logout
+                target: /login
+            remember_me:
+                key: holysoymuyseguro
+                lifetime: 1800
+#                path: /.*
+#                domain: ~
+        main:
+            http_basic: ~
+            stateless:  true
+#           #anonymous: ~
+#            #http_basic:
+#            #    realm: "Secured Demo Area"
+        default:
+            pattern:    ^/
+            http_basic: ~
+            provider: usuario
+
 
     access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: ROLE_USER }
+    - { path: ^/, roles: ROLE_COLONO }
+    - { path: ^/, roles: ROLE_ADMIN }
+
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #
         # You must uncomment the two following rules to restrict access to paths

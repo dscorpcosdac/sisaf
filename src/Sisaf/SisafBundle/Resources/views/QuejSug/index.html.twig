@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>Quejas/Sugerencias</h1>
+
+<table class="records_list table table-hover panel panel-default">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('quejsug_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.Titulo }}</td>
+            <td>{{ entity.Descripcion }}</td>
+            <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
+            <td>{{ entity.Hora|date('H:i:s') }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('quejsug_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('quejsug_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

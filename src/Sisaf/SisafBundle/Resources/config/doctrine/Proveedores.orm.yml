@@ -13,11 +13,11 @@ Sisaf\SisafBundle\Entity\Proveedores:
             length: 255
         RFC:
             type: string
-            length: 255
+            length: 12
         Pais:
             type: string
             length: 255
         Estatus:
             type: string
-            length: 255
+            length: 20
     lifecycleCallbacks: {  }

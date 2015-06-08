@@ -1,0 +1,30 @@
+role:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:role:index" }
+
+role_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:role:show" }
+
+role_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:role:new" }
+
+role_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:role:create" }
+    requirements: { _method: post }
+
+role_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:role:edit" }
+
+role_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:role:update" }
+    requirements: { _method: post }
+
+role_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:role:delete" }
+    requirements: { _method: post }

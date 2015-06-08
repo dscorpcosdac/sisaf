@@ -26,6 +26,7 @@ class ClientesController extends Controller
 
         return $this->render('SisafBundle:Clientes:index.html.twig', array(
             'entities' => $entities,
+            'new' => $this->generateUrl('clientes_new'),
         ));
     }
 

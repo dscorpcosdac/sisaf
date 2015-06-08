@@ -1,6 +1,9 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
 <h1>Clientes list</h1>
 
-<table class="records_list">
+<table class="records_list table table-hover panel panel-default">
     <thead>
         <tr>
             <th>Id</th>
@@ -34,10 +37,4 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('clientes_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+{% endblock %}
