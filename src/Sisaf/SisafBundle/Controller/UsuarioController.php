@@ -26,7 +26,7 @@ class UsuarioController extends Controller
 
         return $this->render('SisafBundle:Usuario:index.html.twig', array(
             'entities' => $entities,
-            'new' => $this->generateUrl('clientes_new'),
+            'new' => $this->generateUrl('usuario_new'),
         ));
     }
 

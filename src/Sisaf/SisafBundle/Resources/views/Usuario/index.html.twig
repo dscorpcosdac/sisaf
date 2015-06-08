@@ -10,15 +10,14 @@
       <span>El uso indebido de este modulo afectaría a uno o más usuarios del sistema, usese con precaucion.</span>
     </div>
 </div>
-<div class="panel panel-default">
-<table class="records_list table table-hover">
+<table class="records_list table table-hover panel panel-default">
     <thead>
         <tr>
             <th>Id</th>
             <th>Nombre</th>
             <th>Contraseña</th>
             <th>Correo</th>
-            <th>Isactive</th>
+            {#<th>Permisos</th>#}
             <th>Actions</th>
         </tr>
     </thead>
@@ -29,7 +28,7 @@
             <td>{{ entity.username }}</td>
             <td>{{ entity.password }}</td>
             <td>{{ entity.email }}</td>
-            <td>{{ entity.isActive }}</td>
+            {#<td>{{ entity.roles|join }}</td>#}
             <td>
                 <ul>
                     <li>

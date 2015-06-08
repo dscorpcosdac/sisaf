@@ -42,9 +42,9 @@ SisafBundle_gastos:
         resource: "@SisafBundle/Resources/config/routing/gastos.yml"
         prefix:   /Gastos
 
-SisafBundle_estadofinanciero:
-        resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
-        prefix:   /EdoFinanciero
+#SisafBundle_estadofinanciero:
+#        resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
+#        prefix:   /EdoFinanciero
 
 SisafBundle_cuotas:
         resource: "@SisafBundle/Resources/config/routing/cuotas.yml"

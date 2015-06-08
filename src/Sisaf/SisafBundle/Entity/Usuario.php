@@ -4,6 +4,7 @@ namespace Sisaf\SisafBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="Usuario")
@@ -38,16 +39,9 @@ class Usuario implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(type="string", length=25)
      */
-    private $isActive;
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
+    private $roles;
 
     /**
      * Get id
@@ -112,11 +106,6 @@ class Usuario implements UserInterface, \Serializable
         return $this->password;
     }
 
-    public function getRoles()
-    {
-        return array('ROLE_ADMIN');
-    }
-
     public function eraseCredentials()
     {
     }
@@ -169,25 +158,14 @@ class Usuario implements UserInterface, \Serializable
     }
 
     /**
-     * Set isActive
+     * Get roles
      *
-     * @param boolean $isActive
-     * @return Usuario
+     * @return string 
      */
-    public function setIsActive($isActive)
+    public function getRoles()
     {
-        $this->isActive = $isActive;
-
-        return $this;
+        //return array($this->roles);
+        return array('ROLE_ADMIN');
     }
 
-    /**
-     * Get isActive
-     *
-     * @return boolean 
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
 }

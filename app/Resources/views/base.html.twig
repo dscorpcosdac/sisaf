@@ -205,7 +205,13 @@
                                 <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
                                 <div class="detail">
                                     <strong>{{ app.user.username }}</strong>
-                                    <p class="grey">John_Doe@email.com</p> 
+                                    <p class="grey">
+                                        {% if is_granted('ROLE_ADMIN') %} ADMINISTRADOR {% endif %}
+                                        {% if is_granted('ROLE_COLONO') %} COLONO {% endif %}
+                                        {% if is_granted('ROLE_TESORERO') %} TESORERO {% endif %}
+                                        {% if is_granted('ROLE_MESADIRECTIVA') %} MESA DIRECTIVA {% endif %}
+                                        {% if is_granted('ROLE_SUPER_ADMIN') %} ROLE_SUPER_ADMIN {% endif %}
+                                    </p> 
                                 </div>
                             </a>
                         </li>
@@ -320,7 +326,7 @@
                                 <span class="menu-hover"></span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
+                                <li><a href="{#   {{ path('estadofinanciero') }}   #}"><span class="submenu-label">Estado Financiero</span></a></li>
                                 <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
                             </ul>
                         </li>
@@ -335,7 +341,7 @@
                             </a>
                             <ul class="submenu">
                                 <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
-                                {#<li><a href="#"><span class="submenu-label">__Editar Usuarios</span></a></li>#}
+                                <li><a href="{{ path('usuario') }}"><span class="submenu-label">Usuarios</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -502,7 +508,7 @@
         </div>
 
         <div class="text-center">
-            <a class="btn btn-success m-right-sm" href="{{ path('logout')}}">salir</a>
+            <a class="btn btn-success m-right-sm" href="{{ path('logout')}}">Salir</a>
             <a class="btn btn-danger logoutConfirm_close">Cancelar</a>
         </div>
     </div>

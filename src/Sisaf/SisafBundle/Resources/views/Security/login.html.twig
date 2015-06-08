@@ -29,18 +29,18 @@
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <div class="pull-left">
-                        <i class="fa fa-lock fa-lg"></i> Login
+                        <i class="fa fa-lock fa-lg"></i> Iniciar sesión
                     </div>
                 </div>
                 <div class="panel-body">
                     <form action="{{ path('login_check') }}" method="post" class="form-login">
                         <div class="form-group">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username" class="form-control input-sm bounceIn animation-delay2"/>
+                            <label for="username">Correo o nombre de usuario:</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Usuario o Correo.." class="form-control input-sm bounceIn animation-delay2"/>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="_password" placeholder="Password" class="form-control input-sm bounceIn animation-delay4"/>
+                            <label for="password">Contraseña:</label>
+                            <input type="password" id="password" name="_password" placeholder="Contraseña.." class="form-control input-sm bounceIn animation-delay4"/>
                         </div>
                         <hr/>
                         {% if error %}
@@ -49,7 +49,7 @@
 
                         <input type="hidden" name="_target_path" value="/Inicio" />
 
-                        <button type="submit" class="btn btn-success btn-sm bounceIn animation-delay5 pull-right"><i class="fa fa-sign-in"></i>Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-success btn-sm bounceIn animation-delay5 pull-right"><i class="fa fa-sign-in"></i> Iniciar Sesión</button>
                     </form>
                 </div>
             </div><!-- /panel -->

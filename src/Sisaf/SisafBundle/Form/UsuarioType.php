@@ -14,8 +14,11 @@ class UsuarioType extends AbstractType
             ->add('username')
             ->add('password')
             ->add('email')
-            ->add('isActive')
-        ;
+/*            ->add('roles', 'choice', array(
+                'choices'   => array('ROLE_COLONO' => 'COLONO', 'ROLE_TESORERO' => 'TESORERO', 'ROLE_MESADIRECTIVA' => 'MESA DIRECTIVA', 'ROLE_ADMIN' => 'ADMINISTRADOR' ),
+                'required'  => true,
+                ))*/
+            ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

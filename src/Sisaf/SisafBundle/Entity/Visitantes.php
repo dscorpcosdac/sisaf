@@ -192,4 +192,60 @@ class Visitantes
     {
         return $this->H_Salida;
     }
+    /**
+     * @var \Sisaf\SisafBundle\Entity\Usuario
+     */
+    private $category;
+
+
+    /**
+     * Set category
+     *
+     * @param \Sisaf\SisafBundle\Entity\Usuario $category
+     * @return Visitantes
+     */
+    public function setCategory(\Sisaf\SisafBundle\Entity\Usuario $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Sisaf\SisafBundle\Entity\Usuario 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    /**
+     * @var \Sisaf\SisafBundle\Entity\Usuario
+     */
+    private $casa_depto;
+
+
+    /**
+     * Set casa_depto
+     *
+     * @param \Sisaf\SisafBundle\Entity\Usuario $casaDepto
+     * @return Visitantes
+     */
+    public function setCasaDepto(\Sisaf\SisafBundle\Entity\Usuario $casaDepto = null)
+    {
+        $this->casa_depto = $casaDepto;
+
+        return $this;
+    }
+
+    /**
+     * Get casa_depto
+     *
+     * @return \Sisaf\SisafBundle\Entity\Usuario 
+     */
+    public function getCasaDepto()
+    {
+        return $this->casa_depto;
+    }
 }
