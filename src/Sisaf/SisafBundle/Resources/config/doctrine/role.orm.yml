@@ -10,5 +10,5 @@ Sisaf\SisafBundle\Entity\role:
     fields:
         name:
             type: string
-            length: 255
+            length: '40'
     lifecycleCallbacks: {  }

@@ -77,6 +77,9 @@ class UsuarioController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+            //$this->setSecurePassword($entity);
+            //$rol= $em->getRepository('usuarioBundle:role')->find(2);
+            //$entity->addRole($rol);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();

@@ -9,7 +9,7 @@
         <p><b>Nombre:</b> {{ entity.username }}</p>
         <p><b>Contraseña:</b> {{ entity.password }}</p>
         <p><b>Correo:</b> {{ entity.email }}</p>
-        <p><b>Permisos:</b> {{ entity.roles|join }}</p>
+        {#<p><b>Permisos:</b> {{ entity.roles|join }}</p>#}
 
         <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}

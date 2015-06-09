@@ -18,7 +18,15 @@ Sisaf\SisafBundle\Entity\Usuario:
         email:
             type: string
             length: '60'
+    manyToMany:
         roles:
-            type: string
-            length: '25'
+            targetEntity: Sisaf\SisafBundle\Entity\role
+            joinTable:
+                name: user_role
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    role_id:
+                        referencedColumnName: id
     lifecycleCallbacks: {  }
