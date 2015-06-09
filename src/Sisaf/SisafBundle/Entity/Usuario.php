@@ -41,7 +41,7 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=25)
      */
-    private $roles;
+    public $roles;
 
     /**
      * Get id
@@ -164,8 +164,20 @@ class Usuario implements UserInterface, \Serializable
      */
     public function getRoles()
     {
+        //me dejan accesar pero no crear ni editar
         //return array($this->roles);
-        return array('ROLE_ADMIN');
+        //return array('ROLE_ADMIN');
+        //return array($this->roles);
+
+        //Me deja crear y también editar, pero no accesar
+        //$roles=$this->roles;
+
+
+        /*$roles=array();
+        foreach ($this->roles as $key) {
+            $losroles[]=$key->getRole();
+        }*/
+        //return $roles;
     }
 
 }

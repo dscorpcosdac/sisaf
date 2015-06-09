@@ -18,7 +18,7 @@ Sisaf\SisafBundle\Entity\Usuario:
         email:
             type: string
             length: '60'
-#        roles:
-#            type: string
-#            length: '25'
+        roles:
+            type: string
+            length: '25'
     lifecycleCallbacks: {  }

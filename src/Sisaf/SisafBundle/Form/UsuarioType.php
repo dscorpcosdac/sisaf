@@ -14,10 +14,10 @@ class UsuarioType extends AbstractType
             ->add('username')
             ->add('password')
             ->add('email')
-/*            ->add('roles', 'choice', array(
+            ->add('roles', 'choice', array(
                 'choices'   => array('ROLE_COLONO' => 'COLONO', 'ROLE_TESORERO' => 'TESORERO', 'ROLE_MESADIRECTIVA' => 'MESA DIRECTIVA', 'ROLE_ADMIN' => 'ADMINISTRADOR' ),
                 'required'  => true,
-                ))*/
+                ))
             ;
     }
 
