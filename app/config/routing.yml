@@ -11,7 +11,7 @@ Sisaf:
 #    prefix:   /_internal
 
 login:
-    pattern:   /login
+    pattern:   /
     defaults:  { _controller: SisafBundle:Security:login }
 
 login_check:

@@ -284,7 +284,7 @@
                                     <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
                                     <li><a href=" {{ path ('areascomunes') }}"><span class="submenu-label">Areas Comunes</span></a></li>
                                     <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
-                                    <li><a href="{# {{ path('documentos') }} #}"><span class="submenu-label">__Documentos</span></a></li>
+                                    <li><a href="{{ path('Sisaf_upload') }}"><span class="submenu-label">Documentos</span></a></li>
                                 </ul>
                             </li>
                             <li class="openable">
@@ -377,11 +377,11 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{# {{ path('documentos') }} #}">
+                                <a href="{{ path('Sisaf_upload') }}">
                                     <span class="menu-icon">
                                         <i class="fa fa-file-text fa-lg"></i>
                                     </span>
-                                    <span class="submenu-label">__Documentos</span>
+                                    <span class="submenu-label">DDocumentos</span>
                                 </a>
                             </li>
                             <li>
@@ -526,11 +526,11 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{# {{ path('documentos')}} #}">
+                                <a href="{{ path('Sisaf_upload')}}">
                                     <span class="menu-icon">
                                         <i class="fa fa-file-text fa-lg"></i> 
                                     </span>
-                                    <span class="text">__Documentos</span>
+                                    <span class="text">DDocumentos</span>
                                 </a>
                             </li>
                             <li>
@@ -708,7 +708,7 @@
                 </a>
             {% endif %}
 
-            </div>
+        </div>
 
             <!--==================================================-->
             <div class="padding-md">
@@ -766,8 +766,9 @@
 
     {% block javascript %}
     {% endblock %}
+    {# Se recomienda activar el siguiente javascript cuando l sistema sea puesto en producción:
     <script language="Javascript">
         document.oncontextmenu = function(){return false}
-    </script>
+    </script>#}
     </body>
 </html>

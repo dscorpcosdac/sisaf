@@ -192,4 +192,32 @@ class Gastos
     {
         return $this->Proveedor;
     }
+    /**
+     * @var \Sisaf\SisafBundle\Entity\Proveedores
+     */
+    private $proveedores;
+
+
+    /**
+     * Set proveedores
+     *
+     * @param \Sisaf\SisafBundle\Entity\Proveedores $proveedores
+     * @return Gastos
+     */
+    public function setProveedores(\Sisaf\SisafBundle\Entity\Proveedores $proveedores = null)
+    {
+        $this->proveedores = $proveedores;
+
+        return $this;
+    }
+
+    /**
+     * Get proveedores
+     *
+     * @return \Sisaf\SisafBundle\Entity\Proveedores 
+     */
+    public function getProveedores()
+    {
+        return $this->proveedores;
+    }
 }

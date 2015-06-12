@@ -3,24 +3,39 @@
 
 <h1>Estado Financiero</h1>
 
+<b>Cuotas: </b>
 {% for entity in cuotas %}
-Cuotas: {{entity.Monto}}
+	<span id="Cuotas-{{entity.Id}}">{{entity.Monto}}</span>
+	<br>
 {% endfor %}
+
 <br>
+<b>Ingresos: </b>
 {% for entity in ingresos %}
-Ingresos: {{ entity.Monto}}
+	<span id="Ingresos-{{entity.Id}}">{{ entity.Monto}}</span>
+	<br>
 {% endfor %}
+
 <br>
+<b>Egresos: </b>
 {% for entity in egresos %}
-Egresos: {{entity.Monto}}
+	<span id="totalegresos" class="egresos">{{entity.Monto}}</span>
+	<br>
 {% endfor %}
+
 <br>
+<b>Gastos: </b>
 {% for entity in gastos %}
-Gastos: {{entity.Monto}}
+	<span id="Gastos-{{entity.Id}}">{{entity.Monto}}</span>
+	<br>
 {% endfor %}
+
 <br>
+<b>Presupuesto: </b>
 {% for entity in presupuesto %}
-Presupuesto: {{entity.Monto}}
+	<span id="Presupuesto-{{entity.Id}}">{{entity.Monto}}</span>
+	<br>
 {% endfor %}
+
 
 {% endblock %}

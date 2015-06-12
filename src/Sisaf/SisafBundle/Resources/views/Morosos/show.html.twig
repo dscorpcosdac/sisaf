@@ -4,16 +4,11 @@
 <div class="panel panel-default">
     <div class="panel-heading"><h1>Moroso</h1></div>
     <div class="panel-body record_properties">
-        {% for entity in entities %}
             <p><b>Id:</b> {{ entity.id }}</p>
-
             <p><b>Persona:</b> {{ entity.Persona }}</p>
-        {% endfor %}
-        {% for entity in entities %}
-            <p><b>Correo:</b> {{ entity.email }}</p>
-            <p><b>Telefono:</b> {{ entity.telefono }}</p>
-            <p><b>Residencia:</b> {{ entity.casadepto }}</p>
-        {% endfor %}
+            <p><b>Correo:</b> {{ entity.Correo }}</p>
+            <p><b>Telefono:</b> {{ entity.Telefono }}</p>
+            <p><b>Residencia:</b> {{ entity.Residencia }}</p>
 
         <form action="{{ path('morosos_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}

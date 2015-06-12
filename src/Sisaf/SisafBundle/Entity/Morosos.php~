@@ -20,6 +20,22 @@ class Morosos
     private $Persona;
 
     /**
+     * @var string
+     */
+    private $Correo;
+
+    /**
+     * @var string
+     */
+    private $Telefono;
+
+    /**
+     * @var string
+     */
+    private $Residencia;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -51,32 +67,73 @@ class Morosos
     {
         return $this->Persona;
     }
-    /**
-     * @var \Sisaf\SisafBundle\Entity\Usuario
-     */
-    private $usuario;
-
 
     /**
-     * Set usuario
+     * Set Correo
      *
-     * @param \Sisaf\SisafBundle\Entity\Usuario $usuario
+     * @param string $correo
      * @return Morosos
      */
-    public function setUsuario(\Sisaf\SisafBundle\Entity\Usuario $usuario = null)
+    public function setCorreo($correo)
     {
-        $this->usuario = $usuario;
+        $this->Correo = $correo;
 
         return $this;
     }
 
     /**
-     * Get usuario
+     * Get Correo
      *
-     * @return \Sisaf\SisafBundle\Entity\Usuario 
+     * @return string 
      */
-    public function getUsuario()
+    public function getCorreo()
     {
-        return $this->usuario;
+        return $this->Correo;
+    }
+
+    /**
+     * Set Telefono
+     *
+     * @param string $telefono
+     * @return Morosos
+     */
+    public function setTelefono($telefono)
+    {
+        $this->Telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get Telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->Telefono;
+    }
+
+    /**
+     * Set Residencia
+     *
+     * @param string $residencia
+     * @return Morosos
+     */
+    public function setResidencia($residencia)
+    {
+        $this->Residencia = $residencia;
+
+        return $this;
+    }
+
+    /**
+     * Get Residencia
+     *
+     * @return string 
+     */
+    public function getResidencia()
+    {
+        return $this->Residencia;
     }
 }

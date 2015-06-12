@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Morosos creation</h1>
+<h1>Nuevo Moroso</h1>
 
 <form action="{{ path('morosos_create') }}" method="post" {{ form_enctype(form) }}>
     
@@ -9,6 +9,21 @@
         <label>Persona</label>
         {{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Correo</label>
+        {{ form_widget(form.Correo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Correo) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Telefono</label>
+        {{ form_widget(form.Telefono, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Telefono) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Residencia</label>
+        {{ form_widget(form.Residencia, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Residencia) }}</span>
     </div>
 
     {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
