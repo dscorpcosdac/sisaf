@@ -22,6 +22,11 @@ class Gastos
     /**
      * @var string
      */
+    private $Periodo;
+
+    /**
+     * @var string
+     */
     private $Concepto;
 
     /**
@@ -33,6 +38,11 @@ class Gastos
      * @var string
      */
     private $Monto;
+
+    /**
+     * @var string
+     */
+    private $Proveedor;
 
 
     /**
@@ -66,6 +76,29 @@ class Gastos
     public function getTipo()
     {
         return $this->Tipo;
+    }
+
+    /**
+     * Set Periodo
+     *
+     * @param string $periodo
+     * @return Gastos
+     */
+    public function setPeriodo($periodo)
+    {
+        $this->Periodo = $periodo;
+
+        return $this;
+    }
+
+    /**
+     * Get Periodo
+     *
+     * @return string 
+     */
+    public function getPeriodo()
+    {
+        return $this->Periodo;
     }
 
     /**
@@ -135,5 +168,56 @@ class Gastos
     public function getMonto()
     {
         return $this->Monto;
+    }
+
+    /**
+     * Set Proveedor
+     *
+     * @param string $proveedor
+     * @return Gastos
+     */
+    public function setProveedor($proveedor)
+    {
+        $this->Proveedor = $proveedor;
+
+        return $this;
+    }
+
+    /**
+     * Get Proveedor
+     *
+     * @return string 
+     */
+    public function getProveedor()
+    {
+        return $this->Proveedor;
+    }
+    /**
+     * @var \Sisaf\SisafBundle\Entity\Proveedores
+     */
+    private $proveedores;
+
+
+    /**
+     * Set proveedores
+     *
+     * @param \Sisaf\SisafBundle\Entity\Proveedores $proveedores
+     * @return Gastos
+     */
+    public function setProveedores(\Sisaf\SisafBundle\Entity\Proveedores $proveedores = null)
+    {
+        $this->proveedores = $proveedores;
+
+        return $this;
+    }
+
+    /**
+     * Get proveedores
+     *
+     * @return \Sisaf\SisafBundle\Entity\Proveedores 
+     */
+    public function getProveedores()
+    {
+        return $this->proveedores;
     }
 }

@@ -11,7 +11,11 @@ class EstadoFinancieroType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        
+            ->add('Cuotas')
+            ->add('Ingresos')
+            ->add('Egresos')
+            ->add('GastosFijos')
+            ->add('Presupuestos')
         ;
     }
 

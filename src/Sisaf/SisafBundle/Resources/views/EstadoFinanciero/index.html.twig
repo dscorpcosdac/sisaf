@@ -1,23 +1,26 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-
-<ul>
-	{% for id in datos %}
-		<li>{{ dato.Monto }}</li>
-	{% endfor %}
-</ul>
-
-
 <h1>Estado Financiero</h1>
 
-<p><b>Ingresos de Cuotas:</b>	$4000</p>
+{% for entity in cuotas %}
+Cuotas: {{entity.Monto}}
+{% endfor %}
+<br>
+{% for entity in ingresos %}
+Ingresos: {{ entity.Monto}}
+{% endfor %}
+<br>
+{% for entity in egresos %}
+Egresos: {{entity.Monto}}
+{% endfor %}
+<br>
+{% for entity in gastos %}
+Gastos: {{entity.Monto}}
+{% endfor %}
+<br>
+{% for entity in presupuesto %}
+Presupuesto: {{entity.Monto}}
+{% endfor %}
 
-<p><b>Ingresos:</b>	$1200</p>
-
-<p><b>Egresos:</b>	$-1000</p>
-
-<p><b>Gastos fijos:</b>	$-1000</p>
-
-<p><b>Presupuesto disponible:</b>	$ 3200</p>
 {% endblock %}

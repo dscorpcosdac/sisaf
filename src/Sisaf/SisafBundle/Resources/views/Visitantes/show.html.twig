@@ -2,7 +2,16 @@
 {% block body %}
 
 <div class="panel panel-default">
-    <div class="panel-heading"><h1>visitantes</h1></div>
+    <div class="panel-heading"><h1>Visitantes</h1></div>
+
+<div class="padding-md">
+    <div class="alert alert-info" role="alert">
+        <div class="text-center">
+          <span class="fa fa-exclamation-triangle fa-2x"></span>
+          <span>RECUERDE REGISTRAR SU HORA DE SALIDA</span>
+        </div>
+    </div>
+</div>
     <div class="panel-body record_properties">
         <p><b>Id:</b> {{ entity.id }}</p>
         <p><b>Nombre:</b> {{ entity.Nombre }}</p>

@@ -18,9 +18,9 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_COLONO:       ROLE_USER
-        ROLE_TESORERO:       ROLE_USER
-        ROLE_MESADIRECTIVA:       ROLE_USER
+#        ROLE_COLONO:       ROLE_USER
+#        ROLE_TESORERO:       ROLE_USER
+#        ROLE_MESADIRECTIVA:       ROLE_USER
 #        ROLE_DEVELOPER: [ROLE_USER, ROLE_ADMIN, ROLE_COLONO, ROLE_TESORERO, ROLE_MESADIRECTIVA]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
@@ -35,11 +35,14 @@ security:
                         password: dev
                         roles: 'ROLE_ADMIN'
                     Dev: 
-                        password: DscropDeveloper
-                        roles: 'ROLE_ADMIN'
-                    colono: 
                         password: dev
-                        roles: 'ROLE_COLONO'
+                        roles: 'ROLE_ADMIN'
+                    tesorero: 
+                        password: dev
+                        roles: 'ROLE_TESORERO'
+                    mesdirec: 
+                        password: dev
+                        roles: 'ROLE_MESADIRECTIVA'
         Usuario:
             entity:
                 class: SisafBundle:Usuario
@@ -87,9 +90,11 @@ security:
 
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/, roles: ROLE_USER }
-    - { path: ^/, roles: ROLE_COLONO }
-    - { path: ^/, roles: ROLE_ADMIN }
+#    - { path: ^/Inicio, roles: ROLE_USER } #todos tienen acceso por ser ROLE_USER
+    - { path: ^/admin, roles: ROLE_ADMIN }
+#    - { path: ^/colono, roles: ROLE_COLONO }
+#    - { path: ^/tesorero, roles: ROLE_TESORERO }
+#    - { path: ^/mesadirectiva, roles: ROLE_MESADIRECTIVA }
 
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #

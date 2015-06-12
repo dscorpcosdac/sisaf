@@ -1,0 +1,47 @@
+<h1>Gastos list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tipo</th>
+            <th>Periodo</th>
+            <th>Concepto</th>
+            <th>Descripcion</th>
+            <th>Monto</th>
+            <th>Proveedor</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('gastos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.Tipo }}</td>
+            <td>{{ entity.Periodo }}</td>
+            <td>{{ entity.Concepto }}</td>
+            <td>{{ entity.Descripcion }}</td>
+            <td>{{ entity.Monto }}</td>
+            <td>{{ entity.Proveedor }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('gastos_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('gastos_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('gastos_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

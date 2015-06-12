@@ -6,12 +6,12 @@
 <form action="{{ path('visitantes_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="form-group">
         <label>Nombre</label>
-        {{ form_widget(edit_form.Nombre, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(edit_form.Nombre, {'attr': {'class': 'form-control', 'placeholder': 'Nombre y Apellido'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.Nombre) }}</span>
     </div>
     <div class="form-group">
         <label>Automovil</label>
-        {{ form_widget(edit_form.Automovil, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(edit_form.Automovil, {'attr': {'class': 'form-control', 'placeholder': 'Placas, Marca, Modelo y Color'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.Automovil) }}</span>
     </div>
     <div class="form-group">

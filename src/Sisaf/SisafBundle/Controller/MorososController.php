@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sisaf\SisafBundle\Entity\Morosos;
 use Sisaf\SisafBundle\Form\MorososType;
 
+use Symfony\Component\HttpFoundation\Response;
+use Sisaf\SisafBundle\Entity\Usuario;
 /**
  * Morosos controller.
  *
@@ -22,10 +24,14 @@ class MorososController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SisafBundle:Morosos')->findAll();
+        //$entities = $em->getRepository('SisafBundle:Morosos')->findAll();
+        
+        $entities = $this->get('doctrine')->getRepository('SisafBundle:Morosos')->findAll();
+        $usuario = $this->get('doctrine')->getRepository('SisafBundle:Usuario')->findAll();
 
         return $this->render('SisafBundle:Morosos:index.html.twig', array(
             'entities' => $entities,
+            'usuario' => $usuario,
             'new' => $this->generateUrl('morosos_new'),
         ));
     }
@@ -38,7 +44,10 @@ class MorososController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SisafBundle:Morosos')->find($id);
+        //$entity = $em->getRepository('SisafBundle:Morosos')->find($id);
+
+        $entities = $this->get('doctrine')->getRepository('SisafBundle:Morosos')->find($id);
+        $usuario = $this->get('doctrine')->getRepository('SisafBundle:Usuario')->findAll();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Morosos entity.');
@@ -47,7 +56,8 @@ class MorososController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SisafBundle:Morosos:show.html.twig', array(
-            'entity'      => $entity,
+            'entities' => $entities,
+            'usuario' => $usuario,
             'delete_form' => $deleteForm->createView(),        ));
     }
 

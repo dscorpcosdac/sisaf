@@ -11,12 +11,11 @@ Sisaf\SisafBundle\Entity\Morosos:
         Persona:
             type: string
             length: 255
-        Correo:
-            type: string
-            length: 255
-        Telefono:
-            type: integer
-        Recidencia:
-            type: string
-            length: 255
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: Morosos
+            joinColumn:
+                name: Morosos_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

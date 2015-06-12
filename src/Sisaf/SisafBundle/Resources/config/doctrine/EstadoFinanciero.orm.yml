@@ -7,4 +7,55 @@ Sisaf\SisafBundle\Entity\EstadoFinanciero:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        Cuotas:
+            type: string
+            length: 255
+        Ingresos:
+            type: string
+            length: 255
+        Egresos:
+            type: string
+            length: 255
+        GastosFijos:
+            type: string
+            length: 255
+        Presupuestos:
+            type: string
+            length: 255
+    manyToOne:
+        cuotas:
+            targetEntity: Cuotas
+            inversedBy: EstadoFinanciero
+            joinColumn:
+                name: estadofinanciero_id
+                referencedColumnName: id
+    manyToOne:
+        ingresos:
+            targetEntity: Ingresos
+            inversedBy: EstadoFinanciero
+            joinColumn:
+                name: estadofinanciero_id
+                referencedColumnName: id
+    manyToOne:
+        egresos:
+            targetEntity: Egresos
+            inversedBy: EstadoFinanciero
+            joinColumn:
+                name: estadofinanciero_id
+                referencedColumnName: id
+    manyToOne:
+        gastos:
+            targetEntity: Gastos
+            inversedBy: EstadoFinanciero
+            joinColumn:
+                name: estadofinanciero_id
+                referencedColumnName: id
+    manyToOne:
+        presupuesto:
+            targetEntity: Presupuesto
+            inversedBy: EstadoFinanciero
+            joinColumn:
+                name: estadofinanciero_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

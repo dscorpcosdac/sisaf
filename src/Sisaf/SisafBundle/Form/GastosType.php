@@ -12,12 +12,20 @@ class GastosType extends AbstractType
     {
         $builder
             ->add('Tipo', 'choice', array(
-                'choices'   => array('Fijo' => 'Fijo', 'Variable' => 'Variable'),
+                'choices'   => array('Fija' => 'Fija', 'Variable' => 'Variable'),
+                'required'  => true,
+                ))
+            ->add('Periodo', 'choice', array(
+                'choices'   => array('Semanal' => 'Semanal', 'Mensaual' => 'Mensaual', 'Bimestral' => 'Bimestral', 'Trimestral' => 'Trimestral', 'Anual' => 'Anual'),
                 'required'  => true,
                 ))
             ->add('Concepto')
             ->add('Descripcion')
             ->add('Monto')
+            ->add('Proveedor', 'entity', array(
+                'class' => 'SisafBundle:Proveedores',
+                'property' => 'Nombre',
+                ))
         ;
     }
 

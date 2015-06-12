@@ -14,7 +14,10 @@ class ProveedoresType extends AbstractType
             ->add('Nombre')
             ->add('RFC')
             ->add('Pais')
-            ->add('Estatus')
+            ->add('Estatus', 'choice', array(
+                'choices'   => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'),
+                'required'  => true,
+                ))
         ;
     }
 

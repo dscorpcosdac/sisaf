@@ -23,4 +23,11 @@ Sisaf\SisafBundle\Entity\Visitantes:
             type: time
         H_Salida:
             type: time
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: Visitantes
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

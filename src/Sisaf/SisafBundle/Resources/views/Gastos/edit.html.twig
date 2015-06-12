@@ -10,6 +10,11 @@
         <span class="help-block m-b-none">{{ form_errors(edit_form.Tipo) }}</span>
     </div>
     <div class="form-group">
+        <label>Periodo</label>
+        {{ form_widget(edit_form.Periodo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Periodo) }}</span>
+    </div>
+    <div class="form-group">
         <label>Concepto</label>
         {{ form_widget(edit_form.Concepto, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.Concepto) }}</span>
@@ -23,6 +28,11 @@
         <label>Monto</label>
         {{ form_widget(edit_form.Monto, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.Monto) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Proveedor</label>
+        {{ form_widget(edit_form.Proveedor, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Proveedor) }}</span>
     </div>
 
     {{ form_widget(edit_form._token, {'attr': {'class': 'form-control'}}) }}

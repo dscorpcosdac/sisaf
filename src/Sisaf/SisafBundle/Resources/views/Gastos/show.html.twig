@@ -6,9 +6,11 @@
     <div class="panel-body record_properties">
         <p><b>Id:</b> {{ entity.id }}</p>
         <p><b>Tipo:</b> {{ entity.Tipo }}</p>
+        <p><b>Periodo:</b> {{ entity.Periodo }}</p>
         <p><b>Concepto:</b> {{ entity.Concepto }}</p>
         <p><b>Descripcion:</b> {{ entity.Descripcion }}</p>
         <p><b>Monto:</b> {{ entity.Monto }}</p>
+        <p><b>Proveedor:</b> {{ entity.Proveedor }}</p>
 
         <form action="{{ path('gastos_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}

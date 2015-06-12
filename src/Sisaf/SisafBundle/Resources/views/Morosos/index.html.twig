@@ -10,8 +10,7 @@
             <th>Persona</th>
             <th>Correo</th>
             <th>Telefono</th>
-            <th>Recidencia</th>
-            <th>Actions</th>
+            <th>Residencia</th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +18,14 @@
         <tr>
             <td><a href="{{ path('morosos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.Persona }}</td>
-            <td>{{ entity.Correo }}</td>
-            <td>{{ entity.Telefono }}</td>
-            <td>{{ entity.Recidencia }}</td>
+            {% endfor %}
+            {% for entity in usuario %}
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.telefono }}</td>
+                <td>{{ usuario.casadepto }}</td>
+            {% endfor %}
+
+            {% for entity in entities %}
             <td>
                 <ul>
                     <li>
@@ -32,8 +36,8 @@
                     </li>
                 </ul>
             </td>
+            {% endfor %}
         </tr>
-    {% endfor %}
     </tbody>
 </table>
 

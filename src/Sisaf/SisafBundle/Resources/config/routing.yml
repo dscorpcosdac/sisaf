@@ -2,6 +2,14 @@ Sisaf_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: SisafBundle:Default:index }
 
+Sisaf_upload:
+    pattern:  /Archivos
+    defaults: { _controller: SisafBundle:Upload:upload }
+
+sisafBundle_inicio:
+        resource: "@SisafBundle/Resources/config/routing/inicio.yml"
+        prefix:   /Inicio
+
 SisafBundle_usuario:
         resource: "@SisafBundle/Resources/config/routing/usuario.yml"
         prefix:   /Usuarios
@@ -9,10 +17,6 @@ SisafBundle_usuario:
 SisafBundle_role:
         resource: "@SisafBundle/Resources/config/routing/role.yml"
         prefix:   /role
-
-sisafBundle_inicio:
-        resource: "@SisafBundle/Resources/config/routing/inicio.yml"
-        prefix:   /Inicio
 
 SisafBundle_clientes:
         resource: "@SisafBundle/Resources/config/routing/clientes.yml"
@@ -46,13 +50,13 @@ SisafBundle_gastos:
         resource: "@SisafBundle/Resources/config/routing/gastos.yml"
         prefix:   /Gastos
 
-#SisafBundle_estadofinanciero:
-#        resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
-#        prefix:   /EdoFinanciero
-
 SisafBundle_cuotas:
         resource: "@SisafBundle/Resources/config/routing/cuotas.yml"
         prefix:   /Cuotas
+
+SisafBundle_estadofinanciero:
+        resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
+        prefix:   /estadofinanciero
 
 SisafBundle_quejassugerencias:
         resource: "@SisafBundle/Resources/config/routing/quejassugerencias.yml"

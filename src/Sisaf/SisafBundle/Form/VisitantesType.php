@@ -13,7 +13,11 @@ class VisitantesType extends AbstractType
         $builder
             ->add('Nombre')
             ->add('Automovil')
-            ->add('Destino')
+            #->add('Destino')
+            ->add('Destino', 'entity', array(
+                'class' => 'SisafBundle:Usuario',
+                'property' => 'casadepto',
+                ))
             ->add('F_Entrada')
             ->add('H_Entrada')
             ->add('H_Salida')

@@ -4,18 +4,32 @@
 <h1>Agregar Proveedor</h1>
 
 <form action="{{ path('proveedores_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    <div class="form-group">
+        <label>Nombre</label>
+        {{ form_widget(form.Nombre, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Nombre) }}</span>
+    </div>
+    <div class="form-group">
+        <label>RFC</label>
+        {{ form_widget(form.RFC, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.RFC) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Pais</label>
+        {{ form_widget(form.Pais, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Pais) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Estatus</label>
+        {{ form_widget(form.Estatus, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Estatus) }}</span>
+    </div>
+
+    {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
+
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('proveedores') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('proveedores') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
-
 {% endblock %}

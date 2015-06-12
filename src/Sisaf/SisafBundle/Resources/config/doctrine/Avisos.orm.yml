@@ -13,7 +13,7 @@ Sisaf\SisafBundle\Entity\Avisos:
             length: 255
         Descripcion:
             type: string
-            length: '1000'
+            length: '5000'
         Fecha:
             type: date
     lifecycleCallbacks: {  }

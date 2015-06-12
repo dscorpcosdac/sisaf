@@ -11,10 +11,10 @@ class MorososType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Persona')
-            ->add('Correo')
-            ->add('Telefono')
-            ->add('Recidencia')
+            ->add('Persona', 'entity', array(
+                'class' => 'SisafBundle:Usuario',
+                'property' => 'username',
+                ))
         ;
     }
 

@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sisaf\SisafBundle\Entity\EstadoFinanciero;
 use Sisaf\SisafBundle\Form\EstadoFinancieroType;
 
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Ingresos;
 /**
  * EstadoFinanciero controller.
  *
@@ -21,23 +23,32 @@ class EstadoFinancieroController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery
-        (
-            'SELECT c.id as id,c.Monto as Monto
-               FROM SisafBundle:EstadoFinanciero p
-               JOIN SisafBundle:Ingresos c WITH p.id =c.id
-               '
-        );
-         
-        $datos = $query->getResult();
-        print_r($datos);exit;
-        return $this->render('SisafBundle:EstadoFinanciero:index.html.twig',compact("datos"));
+
+        //$entities = $em->getRepository('SisafBundle:Ingresos')->findAll();
+        
+        //Cuotas
+        $cuotas = $this->get('doctrine')->getRepository('SisafBundle:Cuotas')->findAll();
+        //Ingresos
+        $ingresos = $this->get('doctrine')->getRepository('SisafBundle:Ingresos')->findAll();
+        //Egresos
+        $egresos = $this->get('doctrine')->getRepository('SisafBundle:Egresos')->findAll();
+        //Gastos Fijos
+        $gastos = $this->get('doctrine')->getRepository('SisafBundle:Gastos')->findAll();
+        //Presupuesto
+        $presupuesto = $this->get('doctrine')->getRepository('SisafBundle:Presupuesto')->findAll();
+ 
+
+
+        return $this->render('SisafBundle:EstadoFinanciero:index.html.twig', array(
+            //'entities' => $entities,
+            'cuotas' => $cuotas,
+            'ingresos' => $ingresos,
+            'egresos' => $egresos,
+            'gastos' => $gastos,
+            'presupuesto' => $presupuesto,
+            'new' => $this->generateUrl('estadofinanciero_new'),
+        ));
     }
-
-
-
-
-
 
     /**
      * Finds and displays a EstadoFinanciero entity.

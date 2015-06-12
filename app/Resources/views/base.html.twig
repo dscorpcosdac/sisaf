@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Sisaf Admin{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/sisaf/favicon.ico') }}" />
 
         <!--SPECIFIC STYLES-->
         {% block stylesheets %}
@@ -259,93 +260,326 @@
                 </div><!-- /search-block -->#}
 
                 <div class="main-menu">
-                    <ul>
-                        <li>
-                            <a href="{{ path('inicio')}}">
-                                <span class="menu-icon">
-                                    <i class="fa fa-desktop fa-lg"></i> 
-                                </span>
-                                <span class="text">Inicio</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                        </li>
-                        <li class="openable">
-                            <a href="#">
-                                <span class="menu-icon">
-                                    <i class="fa fa-building-o fa-lg"></i> 
-                                </span>
-                                <span class="text">Condominio</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                            <ul class="submenu">
-                                {#<li><a href="#"><span class="submenu-label">__Información</span></a></li>#}
-                                <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
-                                <li><a href=" {{ path ('areascomunes') }}"><span class="submenu-label">Areas Comunes</span></a></li>
-                                <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
-                                <li><a href="{# {{ path('documentos') }} #}"><span class="submenu-label">__Documentos</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="openable">
-                            <a href="#">
-                                <span class="menu-icon">
-                                    <i class="fa fa-sitemap fa-lg"></i> 
-                                </span>
-                                <span class="text">Administración</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                            <ul class="submenu">
-                                {#<li><a href="#"><span class="submenu-label">__Usuarios</span></a></li>#}
-                                <li><a href="{{ path('quejassugerencias') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
-                                <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="openable">
-                            <a href="#">
-                                <span class="menu-icon">
-                                    <i class="fa fa-dollar fa-lg"></i> 
-                                </span>
-                                <span class="text">Finanzas</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                            <ul class="submenu">
-                                <li><a href="{{ path('cuotas') }}"><span class="submenu-label">Cuotas</span></a></li>
-                                <li><a href="{{ path('ingresos') }}"><span class="submenu-label">Ingresos</span></a></li>
-                                <li><a href="{{ path('egresos') }}"><span class="submenu-label">Egresos</span></a></li>
-                                <li><a href="{{ path ('gastos') }}"><span class="submenu-label">Gastos Fijos</span></a></li>
-                                <li><a href="{{ path('presupuesto') }}"><span class="submenu-label">Presupuesto</span></a></li>
-                            </ul>
-                        </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <ul>
+                            <li>
+                                <a href="{{ path('inicio')}}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-desktop fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Inicio</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-building-o fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Condominio</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    {#<li><a href="#"><span class="submenu-label">__Información</span></a></li>#}
+                                    <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
+                                    <li><a href=" {{ path ('areascomunes') }}"><span class="submenu-label">Areas Comunes</span></a></li>
+                                    <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
+                                    <li><a href="{# {{ path('documentos') }} #}"><span class="submenu-label">__Documentos</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-sitemap fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Administración</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    {#<li><a href="#"><span class="submenu-label">__Usuarios</span></a></li>#}
+                                    <li><a href="{{ path('quejassugerencias') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
+                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-dollar fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Finanzas</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('cuotas') }}"><span class="submenu-label">Cuotas</span></a></li>
+                                    <li><a href="{{ path('ingresos') }}"><span class="submenu-label">Ingresos</span></a></li>
+                                    <li><a href="{{ path('egresos') }}"><span class="submenu-label">Egresos</span></a></li>
+                                    <li><a href="{{ path('gastos') }}"><span class="submenu-label">Gastos</span></a></li>
+                                    <li><a href="{{ path('presupuesto') }}"><span class="submenu-label">Presupuesto</span></a></li>
+                                    <li><a href="{{ path('proveedores') }}"><span class="submenu-label">Proveedores</span></a></li>
+                                </ul>
+                            </li>
 
-                        <li class="openable">
-                            <a href="#">
-                                <span class="menu-icon">
-                                    <i class="fa fa-flag fa-lg"></i> 
-                                </span>
-                                <span class="text">Reportes</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                            <ul class="submenu">
-                                <li><a href="{#   {{ path('estadofinanciero') }}   #}"><span class="submenu-label">Estado Financiero</span></a></li>
-                                <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
-                            </ul>
-                        </li>
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-flag fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Reportes</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
+                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
+                                </ul>
+                            </li>
 
-                        <li class="openable">
-                            <a href="#">
-                                <span class="menu-icon">
-                                    <i class="fa fa-gear fa-lg"></i> 
-                                </span>
-                                <span class="text">Configuración</span>
-                                <span class="menu-hover"></span>
-                            </a>
-                            <ul class="submenu">
-                                <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
-                                <li><a href="{{ path('usuario') }}"><span class="submenu-label">Usuarios</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-gear fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Configuración</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
+                                    <li><a href="{{ path('usuario') }}"><span class="submenu-label">Usuarios</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_COLONO') %}
+                        <ul>
+                            <li>
+                                <a href="{{ path('inicio')}}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-desktop fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Inicio</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href=" {{ path ('areascomunes') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-building-o fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Areas Comunes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('Avisos') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-bell fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Mensajes/Avisos</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{# {{ path('documentos') }} #}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-file-text fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">__Documentos</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('quejassugerencias') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-weixin fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Quejas y Sujerencias</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-dollar fa-lg"></i>
+                                    </span>
+                                    <span class="text">Finanzas</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('cuotas') }}"><span class="submenu-label">Cuotas</span></a></li>
+                                    <li><a href="{{ path('ingresos') }}"><span class="submenu-label">Ingresos</span></a></li>
+                                    <li><a href="{{ path('egresos') }}"><span class="submenu-label">Egresos</span></a></li>
+                                    <li><a href="{{ path('gastos') }}"><span class="submenu-label">Gastos</span></a></li>
+                                    <li><a href="{{ path('presupuesto') }}"><span class="submenu-label">Presupuesto</span></a></li>
+                                </ul>
+                            </li>
+
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-flag fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Reportes</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
+                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
+                                </ul>
+                            </li>
+
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-gear fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Configuración</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_TESORERO') %}
+                        <ul>
+                            <li>
+                                <a href="{{ path('inicio')}}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-desktop fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Inicio</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{{ path('morosos') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-frown-o fa-lg"></i> 
+                                    </span>
+                                    <span class="submenu-label">Morosos</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{{ path('cuotas') }}">
+                                    <span class="icon-menu">
+                                        <i class="fa fa-user fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Cuotas</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{{ path('ingresos') }}">
+                                    <span class="icon-menu">
+                                        <i class="fa fa-reply fa-flip-horizontal fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Ingresos</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{{ path('egresos') }}">
+                                    <span class="icon-menu">
+                                        <i class="fa fa-reply fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Egresos</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{{ path ('gastos') }}">
+                                    <span class="icon-menu">
+                                        <i class="fa fa-dollar fa-lg"></i>
+                                    </span>
+                                    <span class="submenu-label">Gastos</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{# {{ path('presupuesto') }} #}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-bar-chart-o fa-lg"></i> 
+                                    </span>
+                                    <span class="submenu-label">Presupuesto</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="{{ path('estadofinanciero') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-list-ul"></i>
+                                    </span>
+                                    <span class="submenu-label">Estado Financiero</span>
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_MESADIRECTIVA') %}
+                        <ul>
+                            <li>
+                                <a href="{{ path('inicio')}}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-desktop fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Inicio</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('inicio')}}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-bell fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Mensajes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{# {{ path('documentos')}} #}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-file-text fa-lg"></i> 
+                                    </span>
+                                    <span class="text">__Documentos</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('quejassugerencias') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-weixin fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Quejas y Sujerencias</span>
+                                </a>
+                            </li>
+                            {#<li>
+                                <a href="{{ path('presupuesto') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-bar-chart-o fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Presupuesto</span>
+                                </a>
+                            </li>#}
+                            <li>
+                                <a href="{{ path('estadofinanciero') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-list-ul fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Estado Financiero</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('morosos') }}">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-frown-o fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Morosos</span>
+                                </a>
+                            </li>
+                            <li class="openable">
+                                <a href="#">
+                                    <span class="menu-icon">
+                                        <i class="fa fa-gear fa-lg"></i> 
+                                    </span>
+                                    <span class="text">Configuración</span>
+                                    <span class="menu-hover"></span>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
+                                    <li><a href="{{ path('usuario') }}"><span class="submenu-label">Usuarios</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
                     <div class="alert alert-info">
                         Bienvenido al SISAF
                     </div>
@@ -492,7 +726,7 @@
                         <strong class="text-danger">SISAF</strong> Admin
                     </span>
                     <p class="no-margin">
-                        © 2013 <strong>SISAF Admin</strong>. All Rights Reserved. 
+                        © 2015 <strong>SISAF Admin</strong> por <strong>Dscorp</strong>. Todos los derechos reservados. 
                     </p>
                 </div><!-- /.col -->
             </div><!-- /.row-->
@@ -532,5 +766,8 @@
 
     {% block javascript %}
     {% endblock %}
+    <script language="Javascript">
+        document.oncontextmenu = function(){return false}
+    </script>
     </body>
 </html>

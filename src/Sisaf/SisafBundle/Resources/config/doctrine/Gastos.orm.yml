@@ -1,6 +1,7 @@
 Sisaf\SisafBundle\Entity\Gastos:
     type: entity
     table: null
+    repositoryClass: Sisaf\SisafBundle\Entity\GastosRepository
     id:
         id:
             type: integer
@@ -11,6 +12,9 @@ Sisaf\SisafBundle\Entity\Gastos:
         Tipo:
             type: string
             length: 255
+        Periodo:
+            type: string
+            length: 255
         Concepto:
             type: string
             length: 255
@@ -18,4 +22,14 @@ Sisaf\SisafBundle\Entity\Gastos:
             type: text
         Monto:
             type: decimal
+        Proveedor:
+            type: string
+            length: 255
+    manyToOne:
+        proveedores:
+            targetEntity: Proveedores
+            inversedBy: Gastos
+            joinColumn:
+                name: gastos_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
