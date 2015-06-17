@@ -14,10 +14,6 @@ SisafBundle_usuario:
         resource: "@SisafBundle/Resources/config/routing/usuario.yml"
         prefix:   /Usuarios
 
-SisafBundle_role:
-        resource: "@SisafBundle/Resources/config/routing/role.yml"
-        prefix:   /role
-
 SisafBundle_clientes:
         resource: "@SisafBundle/Resources/config/routing/clientes.yml"
         prefix:   /Clientes
