@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') %}
 <h1>Nuevo Estado Financiero</h1>
 
 <form action="{{ path('estadofinanciero_create') }}" method="post" {{ form_enctype(form) }}>
@@ -18,4 +19,5 @@
     </li>
 </ul>
 
+{% endif %}
 {% endblock %}

@@ -21,4 +21,11 @@ Sisaf\SisafBundle\Entity\Cuotas:
             type: date
         Monto:
             type: decimal
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: Cuotas
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

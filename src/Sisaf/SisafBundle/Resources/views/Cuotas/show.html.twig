@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
 <div class="panel panel-default">
     <div class="panel-heading"><h1>Cuota</h1></div>
     <div class="panel-body record_properties">
@@ -13,12 +14,16 @@
 
     <form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
         {{ form_widget(delete_form) }}
-        <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
-            <a class="btn btn-warning" href="{{ path('cuotas') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
             <a class="btn btn-success" href="{{ path('cuotas_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+            {% endif %}
+            <a class="btn btn-warning" href="{{ path('cuotas') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            
     </form>
 
     </div>
 </div>
 
+{% endif %}
 {% endblock %}

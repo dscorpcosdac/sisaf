@@ -2,6 +2,8 @@
 {% block body %}
 
 
+{% if is_granted('ROLE_COLONO') or is_granted('ROLE_MESADIRECTIVA') or is_granted('ROLE_ADMIN') %}
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
 <script type="text/javascript">
 var map;
@@ -16,9 +18,10 @@ function initialize() {
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      title: 'Hello World!'
+      title: 'Dscorp'
   });
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
@@ -27,6 +30,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <hr>
 <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4-col-lg-4">
+        <address>
+          <h4 class="margin-bottom">Telefonos</h4>
+          5579 22 73<br>
+          5698 9651<br>
+          01 800 087 1097<br>
+        </address>
       	<address>
       	<h4 class="margin-bottom">Dirección</h4>
       		<strong>Dscorp S.A. de C.V. </strong><br>
@@ -34,14 +43,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
       		<br>Distrito Federal
       	</address>
       	<address>
-      		<h4 class="margin-bottom">Telefonos</h4>
-      		5579 22 73<br>
-      		5698 9651<br>
-      		01 800 087 1097<br>
-      	</address>
-      	<address>
       		<h4 class="margin-bottom">Correo Electronico</h4>
-      		<a href="mailto:alexis.leon@dscorp.com.mx">alexis.leon@dscorp.com.mx</a>
+      		<a href="mailto:alexis.leon@dscorp.com.mx"><u>alexis.leon@dscorp.com.mx<u></a>
       	</address>
     </div>
 
@@ -51,4 +54,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
     </div>
 </div>
+
+{% endif %}
 {% endblock %}

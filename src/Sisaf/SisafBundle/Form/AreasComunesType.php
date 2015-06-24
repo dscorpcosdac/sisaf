@@ -11,7 +11,10 @@ class AreasComunesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Nombre')
+            ->add('Nombre', 'entity', array(
+                'class' => 'SisafBundle:AdminAreasComunes',
+                'property' => 'Area',
+                ))
             ->add('Persona')
             ->add('Fecha')
             ->add('FechaRegistro')

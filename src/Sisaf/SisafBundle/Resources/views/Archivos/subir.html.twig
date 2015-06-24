@@ -2,6 +2,7 @@
 
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') %}
 	{% for flashMessage in app.session.flashbag.get('mensaje') %}
 	<span class="alert-danger">
 		<h4>" {{ flashMessage }} "</h4>
@@ -21,3 +22,7 @@
 	</form>
 
 {% endblock %}
+
+
+
+{% endif %}

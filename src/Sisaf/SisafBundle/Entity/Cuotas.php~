@@ -164,4 +164,32 @@ class Cuotas
     {
         return $this->Monto;
     }
+    /**
+     * @var \Sisaf\SisafBundle\Entity\Usuario
+     */
+    private $usuario;
+
+
+    /**
+     * Set usuario
+     *
+     * @param \Sisaf\SisafBundle\Entity\Usuario $usuario
+     * @return Cuotas
+     */
+    public function setUsuario(\Sisaf\SisafBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Sisaf\SisafBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
 }

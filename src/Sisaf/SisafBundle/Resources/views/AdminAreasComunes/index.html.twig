@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Administracion de areas comunes</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Area</th>
+                    <th>Tipo</th>
+                    <th>Ubicacion</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('adminareascomunes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.Area }}</td>
+                        <td>{{ entity.Tipo }}</td>
+                        <td>{{ entity.Ubicacion }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('adminareascomunes_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('adminareascomunes_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+{% endif %}
+
+{% endblock %}

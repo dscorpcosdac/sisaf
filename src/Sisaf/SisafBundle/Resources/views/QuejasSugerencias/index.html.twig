@@ -1,38 +1,48 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Quejas/Sugerencias</h1>
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_COLONO') or is_granted('ROLE_MESADIRECTIVA') %}
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Quejas/Sugerencias</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Fecha</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('quejassugerencias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.Tipo }}</td>
+                        <td>{{ entity.Titulo }}</td>
+                        <td>{{ entity.Descripcion[:70] ~ '...'  }}</td>
+                        <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('quejassugerencias_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('quejassugerencias_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
 
-<table class="records_list table table-hover panel panel-default">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Titulo</th>
-            <th>Descripcion</th>
-            <th>Fecha</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('quejassugerencias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.Titulo }}</td>
-            <td>{{ entity.Descripcion[:70] ~ '...'  }}</td>
-            <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('quejassugerencias_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('quejassugerencias_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
+{% endif %}
 {% endblock %}

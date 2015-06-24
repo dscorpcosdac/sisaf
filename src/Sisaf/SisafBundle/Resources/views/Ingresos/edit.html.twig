@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
 <h1>Editar Ingreso</h1>
 
 <form action="{{ path('ingresos_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
@@ -47,4 +48,5 @@
     </li>
 </ul>
 
+{% endif %}
 {% endblock %}

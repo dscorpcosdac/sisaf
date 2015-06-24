@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') %}
 <h1>Nuevo Visitante</h1>
 
 <form action="{{ path('visitantes_create') }}" method="post" {{ form_enctype(form) }}>
@@ -44,4 +45,5 @@
     </p>
 </form>
 
+{% endif %}
 {% endblock %}

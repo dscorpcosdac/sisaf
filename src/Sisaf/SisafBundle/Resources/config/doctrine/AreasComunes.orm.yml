@@ -18,4 +18,11 @@ Sisaf\SisafBundle\Entity\AreasComunes:
             type: date
         FechaRegistro:
             type: date
+    manyToOne:
+        adminareascomunes:
+            targetEntity: AdminAreasComunes
+            inversedBy: AreasComunes
+            joinColumn:
+                name: adminareascomunes_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

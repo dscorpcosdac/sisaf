@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>Reservación de area común</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Area:</b>{{ entity.Area }}</p>
+        <p><b>Tipo:</b> {{ entity.Tipo}}</p>
+        <p><b>Ubicacion:</b> {{ entity.Ubicacion }}</p>
+
+    <form action="{{ path('adminareascomunes_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-warning" href="{{ path('adminareascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            <a class="btn btn-success" href="{{ path('adminareascomunes_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+    </form>
+
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,50 +1,57 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<h1>Registro de Ingresos</h1>
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Registro de Ingresos</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Folio</th>
+                    <th>Persona</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Aporte</th>
+                    <th>Periodo</th>
+                    <th>No Prorrateo</th>
+                    <th>Importe</th>
+                    <th>Saldo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('regingresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.Folio }}</td>
+                        <td>{{ entity.Persona }}</td>
+                        <td>{{ entity.Nombres }}</td>
+                        <td>{{ entity.Apellidos }}</td>
+                        <td>{{ entity.Aporte }}</td>
+                        <td>{{ entity.Periodo }}</td>
+                        <td>{{ entity.NoProrrateo }}</td>
+                        <td>{{ entity.Importe }}</td>
+                        <td>{{ entity.Saldo }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('regingresos_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('regingresos_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
 
-<table class="records_list table table-hover panel panel-default">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Folio</th>
-            <th>Persona</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Aporte</th>
-            <th>Periodo</th>
-            <th>No Prorrateo</th>
-            <th>Importe</th>
-            <th>Saldo</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('regingresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.Folio }}</td>
-            <td>{{ entity.Persona }}</td>
-            <td>{{ entity.Nombres }}</td>
-            <td>{{ entity.Apellidos }}</td>
-            <td>{{ entity.Aporte }}</td>
-            <td>{{ entity.Periodo }}</td>
-            <td>{{ entity.NoProrrateo }}</td>
-            <td>{{ entity.Importe }}</td>
-            <td>{{ entity.Saldo }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('regingresos_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('regingresos_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
 
 {% endblock %}

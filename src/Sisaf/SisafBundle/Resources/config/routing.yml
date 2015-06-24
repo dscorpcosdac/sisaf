@@ -66,6 +66,10 @@ SisafBundle_soporte:
         resource: "@SisafBundle/Resources/config/routing/soporte.yml"
         prefix:   /Soporte
 
+SisafBundle_adminareascomunes:
+        resource: "@SisafBundle/Resources/config/routing/adminareascomunes.yml"
+        prefix:   /AdminAreasComunes
+
 SisafBundle_areascomunes:
         resource: "@SisafBundle/Resources/config/routing/areascomunes.yml"
         prefix:   /AreasComunes

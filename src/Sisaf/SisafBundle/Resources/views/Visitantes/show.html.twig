@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') %}
 <div class="panel panel-default">
     <div class="panel-heading"><h1>Visitante</h1></div>
 
@@ -30,4 +31,5 @@
     </div>
 </div>
 
+{% endif %}
 {% endblock %}

@@ -1,45 +1,27 @@
-<h1>usuario</h1>
+{% extends '::base.html.twig' %}
+{% block body %}
 
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Nombre</th>
-            <td>{{ entity.nombre }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ entity.email }}</td>
-        </tr>
-        <tr>
-            <th>Isactive</th>
-            <td>{{ entity.isActive }}</td>
-        </tr>
-        <tr>
-            <th>Password</th>
-            <td>{{ entity.password }}</td>
-        </tr>
-    </tbody>
-</table>
+{% if is_granted('ROLE_ADMIN') %}
+<div class="panel panel-default">
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('usuario') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
+    <div class="panel-heading"><h1>Residente #{{ entity.id }}</h1></div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Nombre:</b> {{ entity.username }}</p>
+        <p><b>Contraseña:</b> {{ entity.password }}</p>
+        <p><b>Correo:</b> {{ entity.email }}</p>
+        <p><b>Casa/Departamento:</b> {{ entity.casadepto }}</p>
+        <p><b>Telefono:</b> {{ entity.telefono }}</p>
+        {#<p><b>Permisos:</b> {{ entity.roles|join }}</p>#}
+
         <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            <a class="btn btn-success" href="{{ path('usuario_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
         </form>
-    </li>
-</ul>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

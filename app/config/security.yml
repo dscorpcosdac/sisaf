@@ -18,10 +18,10 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-#        ROLE_COLONO:       ROLE_USER
-#        ROLE_TESORERO:       ROLE_USER
-#        ROLE_MESADIRECTIVA:       ROLE_USER
-#        ROLE_DEVELOPER: [ROLE_USER, ROLE_ADMIN, ROLE_COLONO, ROLE_TESORERO, ROLE_MESADIRECTIVA]
+        ROLE_COLONO:       ROLE_USER
+        ROLE_TESORERO:       ROLE_USER
+        ROLE_MESADIRECTIVA:       ROLE_USER
+        ROLE_DEVELOPER: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -36,11 +36,11 @@ security:
                         roles: 'ROLE_ADMIN'
                     Dev: 
                         password: dev
-                        roles: 'ROLE_ADMIN'
+                        roles: 'ROLE_DEVELOPER'
                     tesorero: 
                         password: dev
                         roles: 'ROLE_TESORERO'
-                    mesdirec: 
+                    mesadirectiva: 
                         password: dev
                         roles: 'ROLE_MESADIRECTIVA'
         Usuario:
@@ -70,7 +70,7 @@ security:
 #                remember_me: true
             logout:
                 path:   /logout
-                target: /
+                target: /login
             remember_me:
                 key: holysoymuyseguro
                 lifetime: 1800
@@ -86,16 +86,11 @@ security:
             pattern:    ^/
             http_basic: ~
             provider: usuario
-
-
     access_control:
+    #-------PERMISOS DE ANONIMOS-----
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#    - { path: ^/Inicio, roles: ROLE_USER } #todos tienen acceso por ser ROLE_USER
-    - { path: ^/admin, roles: ROLE_ADMIN }
-#    - { path: ^/colono, roles: ROLE_COLONO }
-#    - { path: ^/tesorero, roles: ROLE_TESORERO }
-#    - { path: ^/mesadirectiva, roles: ROLE_MESADIRECTIVA }
-
+    - { path: ^/*, roles: ROLE_USER }
+    - { path: ^/*, roles: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #
         # You must uncomment the two following rules to restrict access to paths

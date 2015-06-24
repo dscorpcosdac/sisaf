@@ -1,41 +1,45 @@
 {% extends '::base.html.twig' %}
 {% block body %}
+<div class="panel panel-default table-responsive">
+	<div class="panel-heading">
+    <b>Estado Financiero</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+	<div class="padding-md clearfix">
+		<b>Cuotas: </b>
+		{% for entity in cuotas %}
+			<span class="Cuotas">{{entity.Monto}}</span>
+			<br>
+		{% endfor %}
 
-<h1>Estado Financiero</h1>
+		<br>
+		<b>Ingresos: </b>
+		{% for entity in ingresos %}
+			<span id="Ingresos">{{ entity.Monto}}</span>
+			<br>
+		{% endfor %}
 
-<b>Cuotas: </b>
-{% for entity in cuotas %}
-	<span id="Cuotas-{{entity.Id}}">{{entity.Monto}}</span>
-	<br>
-{% endfor %}
+		<br>
+		<b>Egresos: </b>
+		{% for entity in egresos %}
+			<span id="totalegresos" class="egresos">{{entity.Monto}}</span>
+			<br>
+		{% endfor %}
 
-<br>
-<b>Ingresos: </b>
-{% for entity in ingresos %}
-	<span id="Ingresos-{{entity.Id}}">{{ entity.Monto}}</span>
-	<br>
-{% endfor %}
+		<br>
+		<b>Gastos: </b>
+		{% for entity in gastos %}
+			<span id="Gastos">{{entity.Monto}}</span>
+			<br>
+		{% endfor %}
 
-<br>
-<b>Egresos: </b>
-{% for entity in egresos %}
-	<span id="totalegresos" class="egresos">{{entity.Monto}}</span>
-	<br>
-{% endfor %}
-
-<br>
-<b>Gastos: </b>
-{% for entity in gastos %}
-	<span id="Gastos-{{entity.Id}}">{{entity.Monto}}</span>
-	<br>
-{% endfor %}
-
-<br>
-<b>Presupuesto: </b>
-{% for entity in presupuesto %}
-	<span id="Presupuesto-{{entity.Id}}">{{entity.Monto}}</span>
-	<br>
-{% endfor %}
-
+		<br>
+		<b>Presupuesto: </b>
+		{% for entity in presupuesto %}
+			<span id="Presupuesto">{{entity.Monto}}</span>
+			<br>
+		{% endfor %}
+	</div>
+</div>
 
 {% endblock %}

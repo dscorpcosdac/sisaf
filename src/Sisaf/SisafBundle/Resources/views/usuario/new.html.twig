@@ -1,16 +1,60 @@
-<h1>usuario creation</h1>
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<h1>Registrar Residente</h1>
 
 <form action="{{ path('usuario_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    <div class="form-group">
+        <label>Nombre</label>
+        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Nombre y Apellido'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.username) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Contraseña</label>
+        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Algo que no olvide..'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.password) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Correo</label>
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'correo@personal.com'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.email) }}</span>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        <div class="text-center">
+          <span class="fa fa-info-circle fa-lg"></span>
+          <span class="sr-only">Error:</span>
+          <span>
+          Se recomienda utilizar un formato para todas las casas/departamentos, por ejemplo: <br>
+          Casa 135, Calle abcde y abcde | Edificio 1, Piso 3, Casa 5, | Departamento 135, Edificio 1
+          </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Casa/Departamento</label>
+        {{ form_widget(form.casadepto, {'attr': {'class': 'form-control', 'placeholder': 'Edificio A, Piso 2, Departamento 224'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.casadepto) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Telefono</label>
+        {{ form_widget(form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Telefono celular'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.telefono) }}</span>
+    </div>
+    {#<div class="form-group">
+        <label>Permisos</label>
+        {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.roles) }}</span>
+    </div>#}
+
+
+    {{ form_widget(form._token) }}
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('usuario') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% endif %}
+{% endblock %}

@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Sisaf Admin{% endblock %}</title>
-        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
         <link rel="icon" type="image/x-icon" href="{{ asset('bundles/sisaf/favicon.ico') }}" />
 
         <!--SPECIFIC STYLES-->
@@ -20,6 +19,8 @@
         <!-- Endless -->
         <link rel="stylesheet" href="{{ asset('bundles/sisaf/css/endless.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/sisaf/css/endless-skin.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('bundles/sisaf/css/jquery.dataTables_themeroller.css') }}">
 
     </head>
   <body class="overflow-hidden">
@@ -53,7 +54,8 @@
     </div><!-- /theme-setting -->
     
     <div id="wrapper" class="preload">
-        <div id="top-nav" class="skin-6 fixed">
+        <!-- CHANGE COLOR SKIN -->
+        <div id="top-nav" class="skin-3 fixed">
             <a href="{{ path ('inicio') }}">
                 <div class="brand">
                     <span>SISAF</span>
@@ -208,10 +210,10 @@
                                     <strong>{{ app.user.username }}</strong>
                                     <p class="grey">
                                         {% if is_granted('ROLE_ADMIN') %} ADMINISTRADOR {% endif %}
-                                        {% if is_granted('ROLE_COLONO') %} COLONO {% endif %}
+                                        {% if is_granted('ROLE_COLONO') %} RESIDENTE {% endif %}
                                         {% if is_granted('ROLE_TESORERO') %} TESORERO {% endif %}
                                         {% if is_granted('ROLE_MESADIRECTIVA') %} MESA DIRECTIVA {% endif %}
-                                        {% if is_granted('ROLE_SUPER_ADMIN') %} ROLE_SUPER_ADMIN {% endif %}
+                                        {% if is_granted('ROLE_SUPER_ADMIN') %} SUPER-ADMIN {% endif %}
                                     </p> 
                                 </div>
                             </a>
@@ -448,7 +450,7 @@
                                     <span class="text">Inicio</span>
                                 </a>
                             </li>
-                            <li class="openable">
+                            <li>
                                 <a href="{{ path('morosos') }}">
                                     <span class="menu-icon">
                                         <i class="fa fa-frown-o fa-lg"></i> 
@@ -456,7 +458,7 @@
                                     <span class="submenu-label">Morosos</span>
                                 </a>
                             </li>
-                            <li class="openable">
+                            <li>
                                 <a href="{{ path('cuotas') }}">
                                     <span class="icon-menu">
                                         <i class="fa fa-user fa-lg"></i>
@@ -464,7 +466,7 @@
                                     <span class="submenu-label">Cuotas</span>
                                 </a>
                             </li>
-                            <li class="openable">
+                            <li>
                                 <a href="{{ path('ingresos') }}">
                                     <span class="icon-menu">
                                         <i class="fa fa-reply fa-flip-horizontal fa-lg"></i>
@@ -472,7 +474,7 @@
                                     <span class="submenu-label">Ingresos</span>
                                 </a>
                             </li>
-                            <li class="openable">
+                            <li>
                                 <a href="{{ path('egresos') }}">
                                     <span class="icon-menu">
                                         <i class="fa fa-reply fa-lg"></i>
@@ -480,7 +482,7 @@
                                     <span class="submenu-label">Egresos</span>
                                 </a>
                             </li>
-                            <li class="openable">
+                            <li>
                                 <a href="{{ path ('gastos') }}">
                                     <span class="icon-menu">
                                         <i class="fa fa-dollar fa-lg"></i>
@@ -488,15 +490,15 @@
                                     <span class="submenu-label">Gastos</span>
                                 </a>
                             </li>
-                            <li class="openable">
-                                <a href="{# {{ path('presupuesto') }} #}">
+                            <li>
+                                <a href="{{ path('presupuesto') }}">
                                     <span class="menu-icon">
                                         <i class="fa fa-bar-chart-o fa-lg"></i> 
                                     </span>
                                     <span class="submenu-label">Presupuesto</span>
                                 </a>
                             </li>
-                            <li class="openable">
+                            <li>
                                 <a href="{{ path('estadofinanciero') }}">
                                     <span class="menu-icon">
                                         <i class="fa fa-list-ul"></i>
@@ -518,7 +520,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('inicio')}}">
+                                <a href="{{ path('Avisos')}}">
                                     <span class="menu-icon">
                                         <i class="fa fa-bell fa-lg"></i> 
                                     </span>
@@ -575,7 +577,6 @@
                                 </a>
                                 <ul class="submenu">
                                     <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
-                                    <li><a href="{{ path('usuario') }}"><span class="submenu-label">Usuarios</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -747,8 +748,25 @@
         </div>
     </div>
     <!-- ==========SCRIPTS========== -->    
-    <!-- Jquery -->
-    <script src="{{ asset('bundles/sisaf/js/jquery-1.10.2.min.js') }}"></script>
+    <!-- Jquery --
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+
+    <!--<script src="{{ asset('bundles/sisaf/js/jquery-1.10.2.min.js') }}"></script>-->
+    <!-- jQuery -->
+    <!-- SCRIPTS FOR THE PAGINATION AND SEARCH FILTER -->
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                $('#example').dataTable({
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers"
+                });
+                $('div.dataTables_filter input').addClass('form-control');
+                $('div.dataTables_length select').addClass('form-control');
+            } );
+        </script>
     <!-- Bootstrap -->
     <script src="{{ asset('bundles/sisaf/bootstrap/js/bootstrap.js') }}"></script>
     <!-- Modernizr -->
@@ -766,9 +784,6 @@
 
     {% block javascript %}
     {% endblock %}
-    {# Se recomienda activar el siguiente javascript cuando l sistema sea puesto en producción:
-    <script language="Javascript">
-        document.oncontextmenu = function(){return false}
-    </script>#}
+
     </body>
 </html>

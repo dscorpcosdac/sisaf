@@ -46,7 +46,7 @@ class EstadoFinancieroController extends Controller
             'egresos' => $egresos,
             'gastos' => $gastos,
             'presupuesto' => $presupuesto,
-            'new' => $this->generateUrl('estadofinanciero_new'),
+            //'new' => $this->generateUrl('estadofinanciero_new'),
         ));
     }
 

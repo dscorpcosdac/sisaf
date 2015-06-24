@@ -1,22 +1,50 @@
-<h1>usuario edit</h1>
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<h1>Editar Residente</h1>
 
 <form action="{{ path('usuario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
+    <div class="form-group">
+        <label>Nombre y Apellidos</label>
+        {{ form_widget(edit_form.username, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.username) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Contraseña</label>
+        {{ form_widget(edit_form.password, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.password) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Correo</label>
+        {{ form_widget(edit_form.email, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.email) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Casa/Departamento</label>
+        {{ form_widget(edit_form.casadepto, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.casadepto) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Telefono</label>
+        {{ form_widget(edit_form.telefono, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.telefono) }}</span>
+    </div>
+{#    <div class="form-group">
+        <label>Permisos</label>
+        {{ form_widget(edit_form.roles, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.roles) }}</span>
+    </div>#}
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('usuario') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
+    {{ form_widget(edit_form._token) }}
+
+    <button class="btn btn-success" type="submit"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+        <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
         <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
         </form>
-    </li>
-</ul>
+</form>
+
+{% endif %}
+{% endblock %}

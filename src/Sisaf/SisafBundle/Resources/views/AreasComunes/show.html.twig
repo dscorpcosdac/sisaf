@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_COLONO') %}
 <div class="panel panel-default">
     <div class="panel-heading"><h1>Reservación de area común</h1></div>
     <div class="panel-body record_properties">
@@ -12,13 +12,17 @@
         <p><b>Fecha de Registro:</b> {{ entity.FechaRegistro|date('d/m/Y') }}</p>
 
     <form action="{{ path('areascomunes_delete', { 'id': entity.id }) }}" method="post">
+    {% if is_granted('ROLE_ADMIN') %}
         {{ form_widget(delete_form) }}
         <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
-            <a class="btn btn-warning" href="{{ path('areascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
-            <a class="btn btn-success" href="{{ path('areascomunes_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+        <a class="btn btn-success" href="{{ path('areascomunes_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+        {% endif %}
+        <a class="btn btn-warning" href="{{ path('areascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </form>
 
     </div>
 </div>
+
+{% endif %}
 
 {% endblock %}

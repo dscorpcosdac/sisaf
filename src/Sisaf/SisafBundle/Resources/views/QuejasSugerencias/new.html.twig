@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') %}
 <h1>Nueva Queja/Sugerencia</h1>
 
 <form action="{{ path('quejassugerencias_create') }}" method="post" {{ form_enctype(form) }}>
@@ -32,5 +33,6 @@
         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
         <a class="btn btn-warning" href="{{ path('quejassugerencias') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
+{% endif %}
 
 {% endblock %}

@@ -1,0 +1,20 @@
+Sisaf\SisafBundle\Entity\AdminAreasComunes:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Area:
+            type: string
+            length: 255
+        Tipo:
+            type: string
+            length: 255
+        Ubicacion:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

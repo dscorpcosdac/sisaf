@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
 <h1>Nuevo Egreso</h1>
 
 <form action="{{ path('egresos_create') }}" method="post" {{ form_enctype(form) }}>
@@ -33,4 +34,5 @@
         <a class="btn btn-warning" href="{{ path('egresos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
 
+{% endif %}
 {% endblock %}

@@ -11,7 +11,11 @@ class CuotasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Persona')
+        ->add('Persona', 'entity', array(
+                'class' => 'SisafBundle:Usuario',
+                'property' => 'username',
+                'required' => true
+                ))
             ->add('Fecha')
             ->add('Tipo', 'choice', array(
                 'choices'   => array('Fija' => 'Fija', 'Variable' => 'Variable'),
