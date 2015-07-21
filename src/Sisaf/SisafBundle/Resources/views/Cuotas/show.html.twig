@@ -11,6 +11,7 @@
         <p><b>Descripcion:</b> {{ entity.Descripcion }}</p>
         <p><b>Fecha:</b> {{ entity.Fecha|date('d/M/Y') }}</p>
         <p><b>Monto:</b> {{ entity.Monto }}</p>
+        <p><b>Frecuencia de pago:</b> {{ entity.Frecuencia }}</p>
 
     <form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
         {{ form_widget(delete_form) }}

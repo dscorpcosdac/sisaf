@@ -1,4 +1,5 @@
 {% extends '::base.html.twig' %}
+
 {% block body %}
 
 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') or is_granted('ROLE_COLONO') %}
@@ -8,7 +9,7 @@
         <span class="label label-info pull-right"></span>
     </div>
     <div class="padding-md clearfix">
-        <table class="table table-striped" id="example">
+        <table class="table table-striped" id="ingresos">
             <thead>
                 <tr>
                     <th>Id</th>

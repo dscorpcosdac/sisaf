@@ -22,24 +22,16 @@
     </div>
     
     {{ form_widget(edit_form._token) }}
-    <p>
-        <button type="submit">Editar</button>
-    </p>
+    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+    <a class="btn btn-warning" href="{{ path('adminareascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('adminareascomunes') }}">
-            Regresar
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('adminareascomunes_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Eliminar</button>
-        </form>
-    </li>
-</ul>
+{#<form action="{{ path('adminareascomunes_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+    
+    </form>#}
+
 {% endif %}
 
 {% endblock %}

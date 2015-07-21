@@ -26,18 +26,17 @@ class EstadoFinancieroController extends Controller
 
         //$entities = $em->getRepository('SisafBundle:Ingresos')->findAll();
         
+        $conn = $this->get('database_connection');
         //Cuotas
-        $cuotas = $this->get('doctrine')->getRepository('SisafBundle:Cuotas')->findAll();
+        $cuotas = $conn->fetchAll('SELECT SUM(monto) from cuotas');
         //Ingresos
-        $ingresos = $this->get('doctrine')->getRepository('SisafBundle:Ingresos')->findAll();
+        $ingresos = $conn->fetchAll('SELECT SUM(monto) from ingresos');
         //Egresos
-        $egresos = $this->get('doctrine')->getRepository('SisafBundle:Egresos')->findAll();
+        $egresos = $conn->fetchAll('SELECT SUM(monto) from egresos');
         //Gastos Fijos
-        $gastos = $this->get('doctrine')->getRepository('SisafBundle:Gastos')->findAll();
-        //Presupuesto
-        $presupuesto = $this->get('doctrine')->getRepository('SisafBundle:Presupuesto')->findAll();
- 
+        $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
 
+        $em->flush();
 
         return $this->render('SisafBundle:EstadoFinanciero:index.html.twig', array(
             //'entities' => $entities,
@@ -45,7 +44,6 @@ class EstadoFinancieroController extends Controller
             'ingresos' => $ingresos,
             'egresos' => $egresos,
             'gastos' => $gastos,
-            'presupuesto' => $presupuesto,
             //'new' => $this->generateUrl('estadofinanciero_new'),
         ));
     }

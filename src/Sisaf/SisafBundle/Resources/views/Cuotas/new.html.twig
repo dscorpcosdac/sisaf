@@ -32,6 +32,11 @@
         {{ form_widget(form.Monto, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.Monto) }}</span>
     </div>
+    <div class="form-group">
+        <label>Frecuencia de pago</label>
+        {{ form_widget(form.Frecuencia, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Frecuencia) }}</span>
+    </div>
 
     {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
     <p>

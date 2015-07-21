@@ -17,6 +17,7 @@
                     <th>Descripcion</th>
                     <th>Fecha</th>
                     <th>Monto</th>
+                    <th>Frecuencia de pago</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                         <td>{{ entity.Descripcion }}</td>
                         <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/M/Y') }}{% endif %}</td>
                         <td>{{ entity.Monto }}</td>
+                        <td>{{ entity.Frecuencia }}</td>
                         <td>
                             <ul>
                                 <li>

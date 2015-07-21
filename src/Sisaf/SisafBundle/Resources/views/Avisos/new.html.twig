@@ -25,6 +25,13 @@
 		<span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
 	</div>
 </div>
+<div style="display:none">
+	<div class="form-group">
+		<label>Autor</label>
+		{{ form_widget(form.Autor, {'attr': {'class': 'form-control autor'}}) }}
+		<span class="help-block m-b-none">{{ form_errors(form.Autor) }}</span>
+	</div>
+</div>
 {{ form_widget(form._token) }}
 
     <p>
@@ -34,4 +41,13 @@
 
 {% endif %}
 
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    var username = $("#username").text();
+    $(".autor").val(username);
+});
+</script>
 {% endblock %}

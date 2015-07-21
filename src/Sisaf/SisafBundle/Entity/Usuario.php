@@ -123,7 +123,7 @@ class Usuario implements UserInterface, \Serializable
             $this->username,
             $this->password,
             // see section on salt below
-            // $this->salt,
+            //$this->salt
         ));
     }
 
@@ -135,7 +135,7 @@ class Usuario implements UserInterface, \Serializable
             $this->username,
             $this->password,
             // see section on salt below
-            // $this->salt
+            //$this->salt
         ) = unserialize($serialized);
     }
 

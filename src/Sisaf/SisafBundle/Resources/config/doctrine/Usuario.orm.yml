@@ -14,7 +14,7 @@ Sisaf\SisafBundle\Entity\Usuario:
             length: '25'
         password:
             type: string
-            length: '64'
+            length: 255
         email:
             type: string
             length: '60'

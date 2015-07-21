@@ -39,13 +39,9 @@
     </div>
     
     {{ form_widget(edit_form._token) }}
+    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+    <a class="btn btn-warning" href="{{ path('visitantes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
 </form>
-        <button class="btn btn-success" type="submit"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
-        <a class="btn btn-warning" href="{{ path('visitantes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
-        <form action="{{ path('visitantes_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
-        </form>
 
 {% endif %}
 {% endblock %}

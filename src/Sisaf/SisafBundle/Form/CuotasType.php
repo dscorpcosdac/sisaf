@@ -23,6 +23,7 @@ class CuotasType extends AbstractType
                 ))
             ->add('Descripcion')
             ->add('Monto')
+            ->add('Frecuencia')
         ;
     }
 

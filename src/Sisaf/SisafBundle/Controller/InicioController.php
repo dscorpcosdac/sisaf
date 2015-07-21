@@ -21,16 +21,30 @@ class InicioController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('SisafBundle:Inicio')->findAll();
+
+        $conn = $this->get('database_connection');
+
+        $morosos = $conn->fetchAll('SELECT COUNT(id) FROM morosos');
+        $usuario = $conn->fetchAll('SELECT COUNT(id) FROM usuario');
+        $ingresos = $conn->fetchAll('SELECT SUM(monto) from ingresos');
+        $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
+
+        $em->flush();
 
         return $this->render('SisafBundle:Inicio:index.html.twig', array(
             'entities' => $entities,
-            'dashboard' => $this->generateUrl('Avisos'),
+
+            'morosos' => $morosos,
+            'usuario' => $usuario,
+            'ingresos' => $ingresos,
+            'gastos' => $gastos,
+
+            'dashboard' => $this->generateUrl('inicio'),
             'mensajes' => $this->generateUrl('Avisos'),
             'areascomunes' => $this->generateUrl('areascomunes'),
-            'notificaciones' => $this->generateUrl('Avisos'),
-            'actividades' => $this->generateUrl('Avisos'),
+            //'notificaciones' => $this->generateUrl('Avisos'),
+            //'actividades' => $this->generateUrl('Avisos'),
             'configuracion' => $this->generateUrl('soporte'),
         ));
     }

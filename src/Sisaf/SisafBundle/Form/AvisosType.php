@@ -14,6 +14,7 @@ class AvisosType extends AbstractType
             ->add('Titulo')
             ->add('Descripcion','textarea')
             ->add('Fecha')
+            ->add('Autor')
         ;
     }
 

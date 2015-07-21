@@ -12,7 +12,11 @@ class IngresosType extends AbstractType
     {
         $builder
             ->add('Tipo', 'choice', array(
-                'choices'   => array('Fijo' => 'Fijo', 'Variable' => 'Variable'),
+                'choices'   => array(
+                    'Fijo' => 'Fijo', 
+                    'Variable' => 'Variable',
+                    'Cuota' => 'Cuota'
+                    ),
                 'required'  => true,
                 ))
             ->add('Fecha')

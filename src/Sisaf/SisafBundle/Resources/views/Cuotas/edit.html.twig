@@ -32,26 +32,21 @@
         {{ form_widget(edit_form.Monto, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.Monto) }}</span>
     </div>
+    <div class="form-group">
+        <label>Frecuencia de pago</label>
+        {{ form_widget(edit_form.Frecuencia, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Frecuencia) }}</span>
+    </div>
 
-    {{ form_widget(edit_form._token, {'attr': {'class': 'form-control'}}) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+    {{ form_widget(edit_form._token) }}
+    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+    <a class="btn btn-warning" href="{{ path('cuotas') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('cuotas') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    {#<form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>#}
 
 {% endif %}
 {% endblock %}

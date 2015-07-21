@@ -15,7 +15,7 @@ class AreasComunesType extends AbstractType
                 'class' => 'SisafBundle:AdminAreasComunes',
                 'property' => 'Area',
                 ))
-            ->add('Persona')
+            ->add('Persona', 'text', array('read_only' =>'true'))
             ->add('Fecha')
             ->add('FechaRegistro')
         ;

@@ -20,25 +20,14 @@
         <span class="help-block m-b-none">{{ form_errors(edit_form.Monto) }}</span>
     </div>
 
-    {{ form_widget(edit_form._token, {'attr': {'class': 'form-control'}}) }}
-
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+    {{ form_widget(edit_form._token) }}
+    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+    <a class="btn btn-warning" href="{{ path('gastosfijos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('gastosfijos') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('gastosfijos_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    {#<form action="{{ path('gastosfijos_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>#}
 
 {% endblock %}

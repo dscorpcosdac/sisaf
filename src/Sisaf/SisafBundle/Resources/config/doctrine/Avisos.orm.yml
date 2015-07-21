@@ -16,4 +16,7 @@ Sisaf\SisafBundle\Entity\Avisos:
             length: '5000'
         Fecha:
             type: date
+        Autor:
+            type: string
+            length: 255
     lifecycleCallbacks: {  }

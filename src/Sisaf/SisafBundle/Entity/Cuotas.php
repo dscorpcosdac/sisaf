@@ -39,6 +39,11 @@ class Cuotas
      */
     private $Monto;
 
+    /**
+     * @var string
+     */
+    private $Frecuencia;
+
 
     /**
      * Get id
@@ -164,6 +169,30 @@ class Cuotas
     {
         return $this->Monto;
     }
+
+    /**
+     * Set Frecuencia
+     *
+     * @param string $frecuencia
+     * @return Cuotas
+     */
+    public function setFrecuencia($frecuencia)
+    {
+        $this->Frecuencia = $frecuencia;
+
+        return $this;
+    }
+
+    /**
+     * Get Frecuencia
+     *
+     * @return string 
+     */
+    public function getFrecuencia()
+    {
+        return $this->Frecuencia;
+    }
+
     /**
      * @var \Sisaf\SisafBundle\Entity\Usuario
      */

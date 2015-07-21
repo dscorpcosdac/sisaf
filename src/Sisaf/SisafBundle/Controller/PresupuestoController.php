@@ -22,11 +22,23 @@ class PresupuestoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SisafBundle:Presupuesto')->findAll();
+        $conn = $this->get('database_connection');
+        //Cuotas
+        $cuotas = $conn->fetchAll('SELECT SUM(monto) from cuotas');
+        //Ingresos
+        $ingresos = $conn->fetchAll('SELECT SUM(monto) from ingresos');
+        //Egresos
+        $egresos = $conn->fetchAll('SELECT SUM(monto) from egresos');
+        //Gastos Fijos
+        $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
+
+        $em->flush();
 
         return $this->render('SisafBundle:Presupuesto:index.html.twig', array(
-            'entities' => $entities,
-            'new' => $this->generateUrl('presupuesto_new'),
+            'cuotas' => $cuotas,
+            'ingresos' => $ingresos,
+            'egresos' => $egresos,
+            'gastos' => $gastos,
         ));
     }
 

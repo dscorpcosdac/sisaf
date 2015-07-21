@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
 	<label>Reservar a nombre de</label>
-	{{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
+	{{ form_widget(form.Persona, {'attr': {'class': 'form-control nombreReserva'}}) }}
 	<span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
 </div>
 <div class="form-group">
@@ -35,4 +35,13 @@
         <a class="btn btn-warning" href="{{ path('areascomunes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
 {% endif %}
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+	var username = $("#username").text();
+	$(".nombreReserva").val(username);
+});
+</script>
 {% endblock %}

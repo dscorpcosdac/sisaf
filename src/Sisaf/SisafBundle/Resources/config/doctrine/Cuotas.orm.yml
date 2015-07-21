@@ -21,6 +21,9 @@ Sisaf\SisafBundle\Entity\Cuotas:
             type: date
         Monto:
             type: decimal
+        Frecuencia:
+            type: string
+            length: 225
     manyToOne:
         usuario:
             targetEntity: Usuario

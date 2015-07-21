@@ -76,7 +76,6 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-lg"></i>
-                        <span class="notification-label bounceIn animation-delay4">7</span>
                     </a>
                     <ul class="dropdown-menu message dropdown-1">
                         <li><a href="{{ path('Avisos') }}">Ver todos los mensajes</a></li>
@@ -205,7 +204,7 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a class="clearfix" href="#">
-                                <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
+                                <img src="{{ asset('bundles/sisaf/img/user.png') }}" alt="User Avatar">
                                 <div class="detail">
                                     <strong>{{ app.user.username }}</strong>
                                     <p class="grey">
@@ -219,8 +218,6 @@
                             </a>
                         </li>
                         <li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
-                        <li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Photo Gallery</a></li>
-                        <li><a tabindex="-1" href="#" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Setting</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
                     </ul>
@@ -241,13 +238,12 @@
                     </a>
                 </div><!-- /size-toggle --> 
                 <div class="user-block clearfix">
-                    <img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">
-                    <!--<img src="{{ asset('bundles/sisaf/img/user.jpg') }}" alt="User Avatar">-->
+                    <img src="{{ asset('bundles/sisaf/img/user.png') }}" alt="User Avatar">
+                    <!--<img src="{{ asset('bundles/sisaf/img/user.png') }}" alt="User Avatar">-->
                     <div class="detail">
-                        <strong>{{ app.user.username }}</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
+                        <strong><div id="username">{{ app.user.username }}</div></strong>
                         <ul class="list-inline">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="{{ path('Avisos') }}" class="no-margin">Inbox</a></li>
+                            <li><a href="#">Perfil</a></li>
                         </ul>
                     </div>
                 </div><!-- /user-block -->
@@ -285,6 +281,7 @@
                                     {#<li><a href="#"><span class="submenu-label">__Información</span></a></li>#}
                                     <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
                                     <li><a href=" {{ path ('areascomunes') }}"><span class="submenu-label">Areas Comunes</span></a></li>
+                                    <li><a href=" {{ path ('adminareascomunes') }}"><span class="submenu-label">Administrador de Areas Comunes</span></a></li>
                                     <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
                                     <li><a href="{{ path('Sisaf_upload') }}"><span class="submenu-label">Documentos</span></a></li>
                                 </ul>
@@ -300,7 +297,7 @@
                                 <ul class="submenu">
                                     {#<li><a href="#"><span class="submenu-label">__Usuarios</span></a></li>#}
                                     <li><a href="{{ path('quejassugerencias') }}"><span class="submenu-label">Quejas y Sujerencias</span></a></li>
-                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
+                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Pagos pendientes</span></a></li>
                                 </ul>
                             </li>
                             
@@ -332,7 +329,7 @@
                                 </a>
                                 <ul class="submenu">
                                     <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
-                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
+                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Pagos pendientes</span></a></li>
                                 </ul>
                             </li>
 
@@ -346,7 +343,7 @@
                                 </a>
                                 <ul class="submenu">
                                     <li><a href="{{ path('soporte') }}"><span class="submenu-label">Soporte Técnico</span></a></li>
-                                    <li><a href="{{ path('usuario') }}"><span class="submenu-label">Usuarios</span></a></li>
+                                    <li><a href="{{ path('usuario') }}"><span class="submenu-label">Residentes</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -421,7 +418,7 @@
                                 </a>
                                 <ul class="submenu">
                                     <li><a href="{{ path('estadofinanciero') }}"><span class="submenu-label">Estado Financiero</span></a></li>
-                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Morosos</span></a></li>
+                                    <li><a href="{{ path('morosos') }}"><span class="submenu-label">Pagos pendientes</span></a></li>
                                 </ul>
                             </li>
 
@@ -455,7 +452,7 @@
                                     <span class="menu-icon">
                                         <i class="fa fa-frown-o fa-lg"></i> 
                                     </span>
-                                    <span class="submenu-label">Morosos</span>
+                                    <span class="submenu-label">Pagos pendientes</span>
                                 </a>
                             </li>
                             <li>
@@ -564,7 +561,7 @@
                                     <span class="menu-icon">
                                         <i class="fa fa-frown-o fa-lg"></i> 
                                     </span>
-                                    <span class="text">Morosos</span>
+                                    <span class="text">Pagos pendientes</span>
                                 </a>
                             </li>
                             <li class="openable">
@@ -601,7 +598,7 @@
                     <h3 class="no-margin">Panel de Inicio</h3>
                     <span>Bienvenido {{ app.user.username }}</span>
                 </div><!-- /page-title -->
-                
+                {#
                 <ul class="page-stats">
                     <li>
                         <div class="value">
@@ -618,6 +615,7 @@
                         <span id="balances" class="sparkline"></span>
                     </li>
                 </ul><!-- /page-stats -->
+                #}
             </div><!-- /main-header -->
             {% endif %}
 
@@ -667,7 +665,7 @@
                             5
                         </span> 
                     </span>
-                    <span class="text">Messages</span>
+                    <span class="text">Avisos</span>
                 </a>
             {% endif %}
 
@@ -739,34 +737,18 @@
     <!-- Logout confirmation -->
     <div class="custom-popup width-100" id="logoutConfirm">
         <div class="padding-md">
-            <h4 class="m-top-none"> Quiere cerrar la sesión?</h4>
+            <h4 class="m-top-none">Quiere cerrar la sesión?</h4>
         </div>
 
         <div class="text-center">
-            <a class="btn btn-success m-right-sm" href="{{ path('logout')}}">Salir</a>
+            <a class="btn btn-success m-right-sm" href="{{ path('logout')}}">Cerrar sesión</a>
             <a class="btn btn-danger logoutConfirm_close">Cancelar</a>
         </div>
     </div>
     <!-- ==========SCRIPTS========== -->    
-    <!-- Jquery --
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>-->
-
-    <!--<script src="{{ asset('bundles/sisaf/js/jquery-1.10.2.min.js') }}"></script>-->
-    <!-- jQuery -->
-    <!-- SCRIPTS FOR THE PAGINATION AND SEARCH FILTER -->
-        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
-
-            $(document).ready(function() {
-                $('#example').dataTable({
-                    "bJQueryUI": true,
-                    "sPaginationType": "full_numbers"
-                });
-                $('div.dataTables_filter input').addClass('form-control');
-                $('div.dataTables_length select').addClass('form-control');
-            } );
-        </script>
+    <!-- Jquery -->
+    <script src="{{ asset('bundles/sisaf/js/jquery-1.10.2.min.js') }}"></script>
+        
     <!-- Bootstrap -->
     <script src="{{ asset('bundles/sisaf/bootstrap/js/bootstrap.js') }}"></script>
     <!-- Modernizr -->
@@ -782,8 +764,31 @@
     <!-- Endless -->
     <script src="{{ asset('bundles/sisaf/js/endless/endless.js') }}"></script>
 
+    
+
+    <script src="{{ asset('bundles/sisaf/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('bundles/sisaf/js/dataTables.tableTools.js') }}"></script>
+    <script src="{{ asset('bundles/sisaf/js/jquery.dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                'info': false,
+                'sDom': 'lTfr<"clearfix">tip',
+                'oTableTools': {
+                    "sSwfPath": "{{ asset('bundles/sisaf/swf/copy_csv_xls_pdf.swf') }}",
+                    'aButtons': [
+                        {
+                            'sExtends':    'collection',
+                            'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
+                            'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+                        }
+                    ]
+                }
+            });
+        });
+    </script>
+
     {% block javascript %}
     {% endblock %}
-
     </body>
 </html>

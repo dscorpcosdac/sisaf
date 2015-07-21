@@ -23,27 +23,33 @@
             <span class="help-block m-b-none">{{ form_errors(edit_form.Fecha) }}</span>
         </div>
     </div>
+    <div style="display:none;">
+        <div class="form-group">
+            <label>Autor</label>
+            {{ form_widget(edit_form.Autor, {'attr': {'class': 'form-control autor'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(edit_form.Autor) }}</span>
+        </div>
+    </div>
     {{ form_widget(edit_form._token) }}
 
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+    <a class="btn btn-warning" href="{{ path('Avisos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('Avisos') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('Avisos_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    {#<form action="{{ path('Avisos_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>#}
 
 {% endif %}
 
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    var username = $("#username").text();
+    $(".autor").val(username);
+});
+</script>
 {% endblock %}
