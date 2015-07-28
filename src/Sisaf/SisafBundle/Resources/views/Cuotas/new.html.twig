@@ -7,8 +7,8 @@
 <form action="{{ path('cuotas_create') }}" method="post" {{ form_enctype(form) }}>
 
 
-<a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Persona</a>
-
+    <label>Persona</label>
+    <a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Seleccionar personas</a>
 
     <div style="display:none;">
         <div class="form-group">
@@ -48,6 +48,19 @@
 {% endblock %}
 
 {% block modal %}
+<style>
+    .default-label-checkbox input[type=checkbox]{
+        width:5%;
+        opacity: 1;
+        position: relative;
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline;
+    }
+    .default-label-checkbox label{
+        width: 45%;
+    }
+</style>
 <div class="modal fade" id="formModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -56,11 +69,14 @@
                 <h4>Persona(s)</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                <label>Persona</label>
-                {{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
-                <span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
+                <div class="form-group default-label-checkbox">
+                    <p>Seleccione las personas:</p>
+                    {{ form_widget(form.Persona, {'attr': {'class': 'default-label-checkbox'}}) }}
+                </label>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Listo</a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

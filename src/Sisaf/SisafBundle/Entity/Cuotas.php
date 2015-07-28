@@ -3,6 +3,7 @@
 namespace Sisaf\SisafBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Cuotas
@@ -17,7 +18,7 @@ class Cuotas
     /**
      * @var string
      */
-    private $Persona;
+    public $Persona;
 
     /**
      * @var string
@@ -54,6 +55,12 @@ class Cuotas
     {
         return $this->id;
     }
+
+    public function __construct()
+    {
+        $this->Persona = new ArrayCollection();
+    }
+
 
     /**
      * Set Persona
@@ -220,10 +227,5 @@ class Cuotas
     public function getUsuario()
     {
         return $this->usuario;
-    }
-
-    public function __construct()
-    {
-        $this->Persona = new ArrayCollection();
-    }
+    }    
 }
