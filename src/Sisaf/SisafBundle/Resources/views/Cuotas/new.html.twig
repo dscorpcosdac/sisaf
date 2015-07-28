@@ -5,6 +5,10 @@
 <h1>Registrar nueva Cuota</h1>
 
 <form action="{{ path('cuotas_create') }}" method="post" {{ form_enctype(form) }}>
+
+<a href="#simpleModal" role="button" data-toggle="modal" class="btn btn-primary btn-small">Simple Modal</a>
+
+
     <div class="form-group">
         <label>Persona</label>
         {{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
@@ -45,4 +49,24 @@
     </p>
 
 {% endif %}
+{% endblock %}
+
+{% block modal %}
+<div class="modal fade in" id="simpleModal" aria-hidden="false" style="display: block;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4>Modal header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <a href="ui_element.html#" class="btn btn-danger btn-sm">Save changes</a>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
 {% endblock %}

@@ -11,6 +11,9 @@ Sisaf\SisafBundle\Entity\Ingresos:
         Tipo:
             type: string
             length: 255
+        Persona:
+            type: string
+            length: 255
         Fecha:
             type: date
         Descripcion:

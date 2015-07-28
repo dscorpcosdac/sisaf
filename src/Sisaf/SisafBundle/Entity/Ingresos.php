@@ -22,6 +22,11 @@ class Ingresos
     private $Tipo;
 
     /**
+     * @var string
+     */
+    private $Persona;
+
+    /**
      * @var \DateTime
      */
     private $Fecha;
@@ -68,6 +73,29 @@ class Ingresos
     public function getTipo()
     {
         return $this->Tipo;
+    }
+
+    /**
+     * Set Persona
+     *
+     * @param string $persona
+     * @return Ingresos
+     */
+    public function setPersona($persona)
+    {
+        $this->Persona = $persona;
+
+        return $this;
+    }
+
+    /**
+     * Get Persona
+     *
+     * @return string 
+     */
+    public function getPersona()
+    {
+        return $this->Persona;
     }
 
     /**

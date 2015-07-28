@@ -15,10 +15,10 @@ class IngresosType extends AbstractType
                 'choices'   => array(
                     'Fijo' => 'Fijo', 
                     'Variable' => 'Variable',
-                    'Cuota' => 'Cuota'
                     ),
                 'required'  => true,
                 ))
+            ->add('Persona')
             ->add('Fecha')
             ->add('Descripcion')
             ->add('Monto')
