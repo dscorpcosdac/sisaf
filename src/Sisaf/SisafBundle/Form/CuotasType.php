@@ -14,7 +14,8 @@ class CuotasType extends AbstractType
         ->add('Persona', 'entity', array(
                 'class' => 'SisafBundle:Usuario',
                 'property' => 'username',
-                'required' => true
+                'required' => true,
+                'multiple' => true,
                 ))
             ->add('Fecha')
             ->add('Tipo', 'choice', array(

@@ -221,4 +221,9 @@ class Cuotas
     {
         return $this->usuario;
     }
+
+    public function __construct()
+    {
+        $this->Persona = new ArrayCollection();
+    }
 }
