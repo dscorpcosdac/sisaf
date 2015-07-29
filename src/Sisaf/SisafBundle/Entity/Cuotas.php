@@ -58,7 +58,8 @@ class Cuotas
 
     public function __construct()
     {
-        $this->Persona = new ArrayCollection();
+        $this->rooms = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->Persona = new ArrayCollection();
     }
 
 

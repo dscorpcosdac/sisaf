@@ -71,6 +71,7 @@
             <div class="modal-body">
                 <div class="form-group default-label-checkbox">
                     <p>Seleccione las personas:</p>
+                    <p><input type="checkbox" id="checkAll">Seleccionar todo</p>
                     {{ form_widget(form.Persona, {'attr': {'class': 'default-label-checkbox'}}) }}
                 </label>
                 </div>
@@ -82,3 +83,20 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 {% endblock %}
+
+{% block javascript %}
+<script>
+$('#checkAll').click(function(event) {
+    if(this.checked) {
+        $('input[name="sisaf_sisafbundle_cuotastype[Persona][]"]').each(function() {
+            this.checked = true;
+        });
+    }
+    else{
+        $('input[name="sisaf_sisafbundle_cuotastype[Persona][]"]').each(function(){
+            this.checked = false;
+        });
+    }
+});
+</script>
+{% endblock%}

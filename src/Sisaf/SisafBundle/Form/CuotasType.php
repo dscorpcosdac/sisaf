@@ -20,8 +20,8 @@ class CuotasType extends AbstractType
                 ))
             ->add('Fecha')
             ->add('Tipo', 'choice', array(
-                'choices'   => array('Fija' => 'Fija', 'Variable' => 'Variable'),
-                'required'  => true,
+                'choices' => array('Fija' => 'Fija', 'Variable' => 'Variable'),
+                'required' => true,
                 ))
             ->add('Descripcion')
             ->add('Monto')
