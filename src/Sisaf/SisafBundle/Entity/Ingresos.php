@@ -41,6 +41,11 @@ class Ingresos
      */
     private $Monto;
 
+    /**
+     * @var integer
+     */
+    private $MontoPagado;
+
 
     /**
      * Get id
@@ -165,5 +170,28 @@ class Ingresos
     public function getMonto()
     {
         return $this->Monto;
+    }
+
+    /**
+     * Set MontoPagado
+     *
+     * @param integer $montopagado
+     * @return Ingresos
+     */
+    public function setMontoPagado($montopagado)
+    {
+        $this->MontoPagado = $montopagado;
+
+        return $this;
+    }
+
+    /**
+     * Get MontoPagado
+     *
+     * @return integer 
+     */
+    public function getMontoPagado()
+    {
+        return $this->MontoPagado;
     }
 }

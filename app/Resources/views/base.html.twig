@@ -30,7 +30,7 @@
     <a href="" id="theme-setting-icon"><i class="fa fa-cog fa-lg"></i></a>
     <div id="theme-setting">
         <div class="title">
-            <strong class="no-margin">Skin Color</strong>
+            <strong class="no-margin">Color del panel</strong>
         </div>
         <div class="theme-box">
             <a class="theme-color" style="background:#323447" id="default"></a>
@@ -42,13 +42,13 @@
             <a class="theme-color" style="background:#495B6C" id="skin-6"></a>
         </div>
         <div class="title">
-            <strong class="no-margin">Sidebar Menu</strong>
+            <strong class="no-margin">Menu</strong>
         </div>
         <div class="theme-box">
             <label class="label-checkbox">
                 <input type="checkbox" checked id="fixedSidebar">
                 <span class="custom-checkbox"></span>
-                Fixed Sidebar
+                Menu Lateral Fijo
             </label>
         </div>
     </div><!-- /theme-setting -->
@@ -589,7 +589,7 @@
             <div id="breadcrumb">
                 <ul class="breadcrumb">
                      <li><i class="fa fa-home"></i><a href="{{ path('inicio') }}"> Home</a></li>
-                     <li class="active">Direccion</li>  
+                     {#<li class="active"></li>#}
                 </ul>
             </div><!-- breadcrumb -->
             {% if dashboard is defined %}
@@ -621,39 +621,15 @@
 
             <div class="grey-container shortcut-wrapper">
 
+            {% block mainheader %}
+            {% endblock %}
+
             {% if new is defined %}
                 <a href="{% if new is defined %} {{new}} {% endif %}" class="shortcut-link">
                     <span class="shortcut-icon">
-                        <i class="fa fa-plus"></i>
+                        <i class="fa fa-plus"></i> 
                     </span>
                     <span class="text">Nuevo</span>
-                </a>
-            {% endif %}
-
-            {% if edit is defined %}
-                <a href="{% if edit is defined %} {{edit}} {% endif %}" class="shortcut-link">
-                    <span class="shortcut-icon">
-                        <i class="fa fa-pencil"></i>
-                    </span>
-                    <span class="text">Editar</span>
-                </a>
-            {% endif %}
-
-            {% if delete is defined %}
-                <a href="{% if delete is defined %} {{delete}} {% endif %}" class="shortcut-link">
-                    <span class="shortcut-icon">
-                        <i class="fa fa-trash-o"></i>
-                    </span>
-                    <span class="text">Eliminar</span>
-                </a>
-            {% endif %}
-
-            {% if back is defined %}
-                <a href="{% if back is defined %} {{back}} {% endif %}" class="shortcut-link">
-                    <span class="shortcut-icon">
-                        <i class="fa fa-arrow-left"></i>
-                    </span>
-                    <span class="text">Regresar</span>
                 </a>
             {% endif %}
 
@@ -675,27 +651,6 @@
                         <i class="fa fa-users"></i>
                     </span>
                     <span class="text">Areas Comunes</span>
-                </a>
-            {% endif %}
-
-            {% if notificaciones is defined %}
-                <a href="{% if notificaciones is defined %} {{notificaciones}} {% endif %}" class="shortcut-link">
-                    <span class="shortcut-icon">
-                        <i class="fa fa-globe"></i>
-                        <span class="shortcut-alert">
-                            7
-                        </span> 
-                    </span>
-                    <span class="text">Notification</span>
-                </a>
-            {% endif %}
-
-            {% if actividades is defined %}
-                <a href="{% if actividades is defined %} {{actividades}} {% endif %}" class="shortcut-link">
-                    <span class="shortcut-icon">
-                        <i class="fa fa-list"></i>
-                    </span>
-                    <span class="text">Activity</span>
                 </a>
             {% endif %}
 

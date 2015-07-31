@@ -15,6 +15,8 @@ class IngresosType extends AbstractType
                 'choices'   => array(
                     'Fijo' => 'Fijo', 
                     'Variable' => 'Variable',
+                    'Cuota Fija' =>'Cuota Fija',
+                    'Cuota Variable' => 'Cuota Variable'
                     ),
                 'required'  => true,
                 ))
@@ -22,6 +24,7 @@ class IngresosType extends AbstractType
             ->add('Fecha')
             ->add('Descripcion')
             ->add('Monto')
+            ->add('MontoPagado')
         ;
     }
 

@@ -57,11 +57,16 @@ class IngresosController extends Controller
      */
     public function newAction()
     {
+        $conn = $this->get('database_connection');
+
+        $persona = $conn->fetchAll('SELECT * FROM usuario');
+
         $entity = new Ingresos();
         $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new IngresosType(), $entity);
 
         return $this->render('SisafBundle:Ingresos:new.html.twig', array(
+            'persona' => $persona,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -97,6 +102,10 @@ class IngresosController extends Controller
      */
     public function editAction($id)
     {
+        $conn = $this->get('database_connection');
+
+        $persona = $conn->fetchAll('SELECT * FROM usuario');
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('SisafBundle:Ingresos')->find($id);
@@ -109,6 +118,7 @@ class IngresosController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SisafBundle:Ingresos:edit.html.twig', array(
+            'persona'      => $persona,
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

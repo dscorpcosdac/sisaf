@@ -15,9 +15,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('SisafBundle:Default:index.html.twig', array('name' => $name));
+        return $this->redirect('login', 301);
     }
 
 

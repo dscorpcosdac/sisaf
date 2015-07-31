@@ -20,20 +20,20 @@ class InicioController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('SisafBundle:Inicio')->findAll();
+        //$em = $this->getDoctrine()->getManager();
+        //$entities = $em->getRepository('SisafBundle:Inicio')->findAll();
 
         $conn = $this->get('database_connection');
 
         $morosos = $conn->fetchAll('SELECT COUNT(id) FROM morosos');
         $usuario = $conn->fetchAll('SELECT COUNT(id) FROM usuario');
-        $ingresos = $conn->fetchAll('SELECT SUM(monto) from ingresos');
+        $ingresos = $conn->fetchAll('SELECT SUM(montopagado) from ingresos');
         $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
 
-        $em->flush();
+        //$em->flush();
 
         return $this->render('SisafBundle:Inicio:index.html.twig', array(
-            'entities' => $entities,
+            //'entities' => $entities,
 
             'morosos' => $morosos,
             'usuario' => $usuario,

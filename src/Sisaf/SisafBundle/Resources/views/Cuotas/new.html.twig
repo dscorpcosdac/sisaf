@@ -49,6 +49,12 @@
 
 {% block modal %}
 <style>
+
+    #modal-table tbody tr td:first-child{
+        width: 40px;
+        text-align: center;
+    }
+    /*
     .default-label-checkbox input[type=checkbox]{
         width:5%;
         opacity: 1;
@@ -60,22 +66,52 @@
     .default-label-checkbox label{
         width: 45%;
     }
+    */
 </style>
 <div class="modal fade" id="formModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Persona(s)</h4>
+                <h4>Seleccione las personas:</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group default-label-checkbox">
-                    <p>Seleccione las personas:</p>
-                    <p><input type="checkbox" id="checkAll">Seleccionar todo</p>
-                    {{ form_widget(form.Persona, {'attr': {'class': 'default-label-checkbox'}}) }}
-                </label>
+
+                    <div class="row padding-sm">
+                        <table id="modal-table" class="table table-hover table-striped">
+                            <thead>
+                                <th>
+                                    <label class="label-checkbox">
+                                        <input type="checkbox" id="checkAll">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </th>
+                                <th>Nombre</th>
+                                <th>Casa/Departamento</th>
+                            </thead>
+                            <tbody>
+                                {% for nombreresidente in residentes %}
+                                    <tr>
+                                        <td>
+                                            <label class="label-checkbox" id="forCheckAll">
+                                                <input type="checkbox" name="{{ nombreresidente.username }}" value="{{ nombreresidente.username }}">
+                                                <span class="custom-checkbox"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{ nombreresidente.username|capitalize }}</td>
+                                        <td>{{ nombreresidente.casadepto|capitalize }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:none;">
+                        {{ form_widget(form.Persona, {'attr': {'class': 'default-label-checkbox form-control'}}) }}
+                    </div>
                 </div>
             </div>
+            
             <div class="modal-footer">
                 <a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Listo</a>
             </div>
@@ -88,15 +124,38 @@
 <script>
 $('#checkAll').click(function(event) {
     if(this.checked) {
-        $('input[name="sisaf_sisafbundle_cuotastype[Persona][]"]').each(function() {
+        $('#forCheckAll input[type="checkbox"]').each(function() {
             this.checked = true;
+            check.val(getSelectedChecked());
         });
     }
     else{
-        $('input[name="sisaf_sisafbundle_cuotastype[Persona][]"]').each(function(){
+        $('#forCheckAll input[type="checkbox"]').each(function(){
             this.checked = false;
+            check.val(getSelectedChecked());
         });
     }
+});
+
+var check = $('#sisaf_sisafbundle_cuotastype_Persona');
+  
+  $('#forCheckAll input[type="checkbox"]').change(function(e){
+     check.val(getSelectedChecked());
+  });
+
+  function getSelectedChecked(){
+   var checked = "";
+   $('#forCheckAll input[type="checkbox"]').each(function(i,cb){
+       if($(this).is(":checked")){
+           checked += $(this).val() + ", ";
+       }
+   });
+   return checked;
+  } 
+
+
+$(document).ready(function(){
+    $('#modal-table').DataTable();
 });
 </script>
 {% endblock%}

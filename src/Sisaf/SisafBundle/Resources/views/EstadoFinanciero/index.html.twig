@@ -1,67 +1,113 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-<div class="panel panel-default table-responsive row">
 
-	<div class="panel-heading">
-    <b>Estado Financiero</b>
-        <span class="label label-info pull-right"></span>
-    </div>
-    
-	<div class="padding-md clearfix col-xs-12 col-md-3">
-		<table class="table table-hover">
-			<thead>
-				<td>Elemento</td>
-				<td>Estado</td>
-			</thead>
-			<tbody>
-				<tr>
-					<td><b>Cuotas: </b></td>
-					<td class="text-success">+ $
-					<span id="Cuotas">{% for entity in cuotas %}{{entity.sum}}{% endfor %}</span>
-					</td>
-				</tr>
-				<tr>
-					<td><b>Ingresos: </b></td>
-					<td class="text-success">+ $
-						<span id="Ingresos">{% for entity in ingresos %}{{ entity.sum}}{% endfor %}</span>
-					</td>
-				</tr>
-				<tr>
-					<td><b>Egresos: </b></td>
-					<td class="text-danger">- $
-						<span id="Egresos">{% for entity in egresos %}{{entity.sum}}{% endfor %}</span>
-					</td>
-				</tr>
-				<tr>
-					<td><b>Gastos: </b></td>
-					<td class="text-danger">- $
-						<span id="Gastos">{% for entity in gastos %}{{entity.sum}}{% endfor %}</span>
-					</td>
-				</tr>
-				<tr>
-					<td>Presupuesto:</td>
-					<td>
-					<span>
-						<b>
-							<span id="Presupuesto"></span>
-						</b>
-					</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+<div class="col-md-9 col-sm-9">
+	<div class="tab-content">
+		<div class="tab-pane fade active in" id="first">
+			{#<div class="panel panel-default table-responsive row">
+				<div class="panel-heading">
+				<b>Estado Financiero</b>
+					<span class="label label-info pull-right"></span>
+				</div>
+				<div class="padding-md clearfix col-xs-12 col-md-3">
+					<table class="table table-hover">
+						<thead>
+							<td>Elemento</td>
+							<td>Estado</td>
+						</thead>
+						<tbody>
+							<tr>
+								<td><b>Cuotas: </b></td>
+								<td class="text-success">+ $
+								<span id="Cuotas">{% for entity in cuotas %}{{ entity.sum }}{% endfor %}</span>
+								</td>
+							</tr>
+							<tr>
+								<td><b>Ingresos: </b></td>
+								<td class="text-success">+ $
+									<span id="Ingresos">{% for entity in ingresos %}{{ entity.sum }}{% endfor %}</span>
+								</td>
+							</tr>
+							<tr>
+								<td><b>Egresos: </b></td>
+								<td class="text-danger">- $
+									<span id="Egresos">{% for entity in egresos %}{{ entity.sum }}{% endfor %}</span>
+								</td>
+							</tr>
+							<tr>
+								<td><b>Gastos: </b></td>
+								<td class="text-danger">- $
+									<span id="Gastos">{% for entity in gastos %}{{ entity.sum }}{% endfor %}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>Presupuesto:</td>
+								<td>
+								<span>
+									<b>
+										<span id="Presupuesto"></span>
+									</b>
+								</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="padding-md clearfix">
+					<div class="panel col-xs-12 col-md-9" style="background:#2ecc71;">
+						<div class="panel-body">
+							<div id="barChart" style="height: 300px;"></div>
+						</div>
+					</div><!-- /panel -->
+				</div>
+
+			</div>#}
+		
+		</div>
+		<div class="tab-pane fade" id="second">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci labore repellendus saepe ad, animi magnam vero fuga eius deleniti et iste repellat optio repudiandae, alias obcaecati similique ea eligendi voluptate.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus provident sapiente voluptate enim, dolore? Accusantium labore dicta saepe magnam facere. Tempore nulla totam laborum nesciunt. Nihil assumenda, delectus debitis? Aspernatur.
+		</div>
+		<div class="tab-pane fade" id="third">
+			{ % for infousuarios in usuarios %}
+				{ { infousuarios.username }}
+				{ { infousuarios.ss }}
+			{ % endfor %}
+		</div>
 	</div>
-
-	<div class="padding-md clearfix">
-		<div class="panel col-xs-12 col-md-9" style="background:#2ecc71;">
-			<div class="panel-body">
-				<div id="barChart" style="height: 300px;"></div>
-			</div>
-		</div><!-- /panel -->
-	</div>
-
 </div>
 
+{% endblock %}
+
+
+{% block mainheader %}
+<ul class="tab-bar">
+	<li class="active">
+		<a href="#first" data-toggle="tab">
+			<span class="block text-center">
+				<i class="fa fa-home fa-2x"></i> 
+			</span>
+			General
+		</a>
+	</li>
+	<li class="">
+		<a href="#second" data-toggle="tab">
+			<span class="block text-center">
+				<i class="fa fa-edit fa-2x"></i> 
+			</span>
+			Edit Profile
+		</a>
+	</li>
+	<li class="">
+		<a href="#third" data-toggle="tab">
+			<span class="block text-center">
+				<i class="fa fa-users fa-2x"></i> 
+			</span>	
+			Usuarios
+		</a>
+	</li>
+</ul>
 {% endblock %}
 
 {% block stylesheets %}

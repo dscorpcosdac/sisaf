@@ -57,11 +57,15 @@ class CuotasController extends Controller
      */
     public function newAction()
     {
+        $conn = $this->get('database_connection');
+        $residentes = $conn->fetchAll('SELECT * FROM Usuario');
+
         $entity = new Cuotas();
         $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new CuotasType(), $entity);
 
         return $this->render('SisafBundle:Cuotas:new.html.twig', array(
+            'residentes' => $residentes,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -73,6 +77,9 @@ class CuotasController extends Controller
      */
     public function createAction(Request $request)
     {
+        $conn = $this->get('database_connection');
+        $residentes = $conn->fetchAll('SELECT * FROM Usuario');
+
         $entity  = new Cuotas();
         $form = $this->createForm(new CuotasType(), $entity);
         $form->bind($request);
@@ -86,6 +93,7 @@ class CuotasController extends Controller
         }
 
         return $this->render('SisafBundle:Cuotas:new.html.twig', array(
+            'residentes' => $residentes,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -97,6 +105,8 @@ class CuotasController extends Controller
      */
     public function editAction($id)
     {
+        $conn = $this->get('database_connection');
+        $residentes = $conn->fetchAll('SELECT * FROM Usuario');
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('SisafBundle:Cuotas')->find($id);
@@ -109,6 +119,7 @@ class CuotasController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SisafBundle:Cuotas:edit.html.twig', array(
+            'residentes' => $residentes,
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

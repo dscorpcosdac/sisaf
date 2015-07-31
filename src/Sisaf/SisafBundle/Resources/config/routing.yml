@@ -1,5 +1,5 @@
 Sisaf_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: SisafBundle:Default:index }
 
 Sisaf_upload:
@@ -56,7 +56,7 @@ SisafBundle_quejassugerencias:
 
 SisafBundle_morosos:
         resource: "@SisafBundle/Resources/config/routing/morosos.yml"
-        prefix:   /Morosos
+        prefix:   /Pagos_Pendientes
 
 SisafBundle_soporte:
         resource: "@SisafBundle/Resources/config/routing/soporte.yml"

@@ -21,4 +21,6 @@ Sisaf\SisafBundle\Entity\Ingresos:
             length: 255
         Monto:
             type: decimal
+        MontoPagado:
+            type: decimal
     lifecycleCallbacks: {  }
