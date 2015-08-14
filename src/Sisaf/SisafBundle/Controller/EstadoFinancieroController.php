@@ -25,7 +25,7 @@ class EstadoFinancieroController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //$entities = $em->getRepository('SisafBundle:Ingresos')->findAll();
-        
+
         $conn = $this->get('database_connection');
         //Cuotas
         $cuotas = $conn->fetchAll('SELECT SUM(monto) from cuotas');
@@ -35,6 +35,10 @@ class EstadoFinancieroController extends Controller
         $egresos = $conn->fetchAll('SELECT SUM(monto) from egresos');
         //Gastos Fijos
         $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
+        //Usuarios
+        $usuarios = $conn->fetchAll('SELECT * from usuario');
+        //Ingresos
+        $ingresos = $conn->fetchAll('SELECT * from ingresos');
 
         $em->flush();
 
@@ -44,6 +48,8 @@ class EstadoFinancieroController extends Controller
             'ingresos' => $ingresos,
             'egresos' => $egresos,
             'gastos' => $gastos,
+            'usuarios' => $usuarios,
+            'ingresos' => $ingresos,
             //'new' => $this->generateUrl('estadofinanciero_new'),
         ));
     }

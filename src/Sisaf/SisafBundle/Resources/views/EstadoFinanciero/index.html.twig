@@ -1,79 +1,109 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<div class="col-md-9 col-sm-9">
-	<div class="tab-content">
-		<div class="tab-pane fade active in" id="first">
-			{#<div class="panel panel-default table-responsive row">
-				<div class="panel-heading">
-				<b>Estado Financiero</b>
-					<span class="label label-info pull-right"></span>
-				</div>
-				<div class="padding-md clearfix col-xs-12 col-md-3">
-					<table class="table table-hover">
-						<thead>
-							<td>Elemento</td>
-							<td>Estado</td>
-						</thead>
-						<tbody>
-							<tr>
-								<td><b>Cuotas: </b></td>
-								<td class="text-success">+ $
-								<span id="Cuotas">{% for entity in cuotas %}{{ entity.sum }}{% endfor %}</span>
-								</td>
-							</tr>
-							<tr>
-								<td><b>Ingresos: </b></td>
-								<td class="text-success">+ $
-									<span id="Ingresos">{% for entity in ingresos %}{{ entity.sum }}{% endfor %}</span>
-								</td>
-							</tr>
-							<tr>
-								<td><b>Egresos: </b></td>
-								<td class="text-danger">- $
-									<span id="Egresos">{% for entity in egresos %}{{ entity.sum }}{% endfor %}</span>
-								</td>
-							</tr>
-							<tr>
-								<td><b>Gastos: </b></td>
-								<td class="text-danger">- $
-									<span id="Gastos">{% for entity in gastos %}{{ entity.sum }}{% endfor %}</span>
-								</td>
-							</tr>
-							<tr>
-								<td>Presupuesto:</td>
-								<td>
-								<span>
-									<b>
-										<span id="Presupuesto"></span>
-									</b>
-								</span>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+<div class="tab-content">
+	<div class="tab-pane fade active in" id="first">
+		<div class="panel panel-default table-responsive row">
+			<div class="panel-heading">
+			<b>Estado Financiero</b>
+				<span class="label label-info pull-right"></span>
+			</div>
+			<div class="padding-md clearfix col-xs-12 col-md-3">
+				<table class="table table-hover">
+					<thead>
+						<td>Elemento</td>
+						<td>Estado</td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><b>Cuotas: </b></td>
+							<td class="text-success">+ $
+							<span id="Cuotas">{% for entity in cuotas %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Ingresos: </b></td>
+							<td class="text-success">+ $
+								<span id="Ingresos">{% for entity in ingresos %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Egresos: </b></td>
+							<td class="text-danger">- $
+								<span id="Egresos">{% for entity in egresos %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Gastos: </b></td>
+							<td class="text-danger">- $
+								<span id="Gastos">{% for entity in gastos %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td>Presupuesto:</td>
+							<td>
+							<span>
+								<b>
+									<span id="Presupuesto"></span>
+								</b>
+							</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-				<div class="padding-md clearfix">
-					<div class="panel col-xs-12 col-md-9" style="background:#2ecc71;">
-						<div class="panel-body">
-							<div id="barChart" style="height: 300px;"></div>
+			<div class="padding-md clearfix">
+				<div class="panel col-xs-12 col-md-9" style="background:#2ecc71;">
+					<div class="panel-body">
+						<div id="barChart" style="height: 300px;"></div>
+					</div>
+				</div><!-- /panel -->
+			</div>
+
+		</div>
+	</div>
+	<div class="tab-pane fade" id="second">
+	second
+	</div>
+	<div class="fade" id="third">
+		<div id="users" class="row">
+			<div class="col-xs-12 col-sm-4">
+				<input type="text" class="search form-control" />
+				<ul class="list list-unstyled">
+					{% for usuarios in usuarios %}
+						<li>
+							<a href="#"><h5 class="name text-capitalize filter_name">{{ usuarios.username }}</h5></a>
+						</li>
+					{% endfor %}
+				</ul>
+				<ul class="pagination"></ul>
+			</div>
+			<div class="col-xs-12 col-sm-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">Estado financiero de <span class="text-capitalize" id="filer_name"></span></div>
+					
+					<!--note-->
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-4">Monto</div>
+							<div class="col-xs-4">Fecha</div>
+							<div class="col-xs-4">Descripcion</div>
+							<hr>
 						</div>
-					</div><!-- /panel -->
-				</div>
+						{% for ingresos in ingresos %}
+							<div class="filter_data row">
+								<span class="filter_data_name">{{ ingresos.Persona }}</span>
+								<p class="filter_data_Monto col-xs-4">${{ ingresos.Monto }}</p>
+								<p class="filter_data_Fecha col-xs-4">{{ ingresos.Fecha }}</p>
+								<p class="filter_data_Descripcion col-xs-4">{{ ingresos.Descripcion }}</p>
+								<div class="col-xs-12"><hr></div>
+							</div>
+						{% endfor %}
+					</div>
 
-			</div>#}
-			first
-		</div>
-		<div class="tab-pane fade" id="second">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci labore repellendus saepe ad, animi magnam vero fuga eius deleniti et iste repellat optio repudiandae, alias obcaecati similique ea eligendi voluptate.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus provident sapiente voluptate enim, dolore? Accusantium labore dicta saepe magnam facere. Tempore nulla totam laborum nesciunt. Nihil assumenda, delectus debitis? Aspernatur.
-		</div>
-		<div class="tab-pane fade" id="third">
-			{ % for infousuarios in usuarios %}
-				{ { infousuarios.username }}
-				{ { infousuarios.ss }}
-			{ % endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -119,6 +149,11 @@
 <script src="{{ asset('bundles/sisaf/js/rapheal.min.js') }}"></script>
 <script src="{{ asset('bundles/sisaf/js/chart.min.js') }}"></script>
 
+<script src="{{ asset('bundles/sisaf/js/list.js') }}"></script>
+<script src="http://listjs.com/no-cdn/list.pagination.js"></script>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.1/isotope.pkgd.min.js">
+
 <script>
 $(document).ready(function(){
 
@@ -148,8 +183,41 @@ $(document).ready(function(){
 		barColors: ['#3498db'],
 		gridTextColor : '#ffffff'
 	});
-
 });
+
+/*
+var options = {
+  valueNames: [ 'name' ]
+};
+
+var userList = new List('users', options);
+
+
+var userList = new List('users', options);
+*/
+
+var userList = new List('users', {
+  valueNames: ['name'],
+  page: 20,
+  plugins: [ ListPagination({}) ] 
+});
+
+
+//Filter username & history
+$(".filter_data").hide();
+$('#filer_name').text("...");
+
+$( ".filter_name" ).click(function() {
+	var selected = $(this).text();
+	$('#filer_name').text(selected);
+	var selected_find = $(".filter_data:contains("+selected+")");
+	
+	//Oculta el anterior
+	$(".filter_data").hide();
+	$(selected_find).fadeIn(700);
+	$(".filter_data_name").hide();
+});
+
 </script>
 
 {% endblock %}
