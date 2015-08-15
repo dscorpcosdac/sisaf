@@ -36,9 +36,9 @@ class EstadoFinancieroController extends Controller
         //Gastos Fijos
         $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
         //Usuarios
-        $usuarios = $conn->fetchAll('SELECT * from usuario');
+        $usuariosAll = $conn->fetchAll('SELECT * from usuario');
         //Ingresos
-        $ingresos = $conn->fetchAll('SELECT * from ingresos');
+        $ingresosAll = $conn->fetchAll('SELECT * from ingresos');
 
         $em->flush();
 
@@ -48,8 +48,8 @@ class EstadoFinancieroController extends Controller
             'ingresos' => $ingresos,
             'egresos' => $egresos,
             'gastos' => $gastos,
-            'usuarios' => $usuarios,
-            'ingresos' => $ingresos,
+            'usuariosAll' => $usuariosAll,
+            'ingresosAll' => $ingresosAll,
             //'new' => $this->generateUrl('estadofinanciero_new'),
         ));
     }
