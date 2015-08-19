@@ -58,6 +58,7 @@ class MorososController extends Controller
     public function newAction()
     {
         $entity = new Morosos();
+        $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new MorososType(), $entity);
 
         return $this->render('SisafBundle:Morosos:new.html.twig', array(

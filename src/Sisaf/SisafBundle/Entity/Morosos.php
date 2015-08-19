@@ -20,20 +20,9 @@ class Morosos
     private $Persona;
 
     /**
-     * @var string
+     * @var \DateTime
      */
-    private $Correo;
-
-    /**
-     * @var string
-     */
-    private $Telefono;
-
-    /**
-     * @var string
-     */
-    private $Residencia;
-
+    private $Fecha;
 
     /**
      * Get id
@@ -68,74 +57,31 @@ class Morosos
         return $this->Persona;
     }
 
+    
     /**
-     * Set Correo
+     * Set Fecha
      *
-     * @param string $correo
+     * @param \DateTime $fecha
      * @return Morosos
      */
-    public function setCorreo($correo)
+    public function setFecha($fecha)
     {
-        $this->Correo = $correo;
+        $this->Fecha = $fecha;
 
         return $this;
     }
 
     /**
-     * Get Correo
+     * Get Fecha
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getCorreo()
+    public function getFecha()
     {
-        return $this->Correo;
+        return $this->Fecha;
     }
 
-    /**
-     * Set Telefono
-     *
-     * @param string $telefono
-     * @return Morosos
-     */
-    public function setTelefono($telefono)
-    {
-        $this->Telefono = $telefono;
 
-        return $this;
-    }
-
-    /**
-     * Get Telefono
-     *
-     * @return string 
-     */
-    public function getTelefono()
-    {
-        return $this->Telefono;
-    }
-
-    /**
-     * Set Residencia
-     *
-     * @param string $residencia
-     * @return Morosos
-     */
-    public function setResidencia($residencia)
-    {
-        $this->Residencia = $residencia;
-
-        return $this;
-    }
-
-    /**
-     * Get Residencia
-     *
-     * @return string 
-     */
-    public function getResidencia()
-    {
-        return $this->Residencia;
-    }
     /**
      * @var \Sisaf\SisafBundle\Entity\Usuario
      */

@@ -15,9 +15,7 @@ class MorososType extends AbstractType
                 'class' => 'SisafBundle:Usuario',
                 'property' => 'username',
                 ))
-            ->add('Correo')
-            ->add('Telefono')
-            ->add('Residencia')
+            ->add('Fecha')
         ;
     }
 

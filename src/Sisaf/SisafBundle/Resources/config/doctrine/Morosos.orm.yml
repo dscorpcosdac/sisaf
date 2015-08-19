@@ -11,15 +11,8 @@ Sisaf\SisafBundle\Entity\Morosos:
         Persona:
             type: string
             length: 255
-        Correo:
-            type: string
-            length: 255
-        Telefono:
-            type: string
-            length: 255
-        Residencia:
-            type: string
-            length: 255
+        Fecha:
+            type: date
     manyToOne:
         usuario:
             targetEntity: Usuario

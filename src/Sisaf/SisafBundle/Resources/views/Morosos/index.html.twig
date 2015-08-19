@@ -12,9 +12,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Persona</th>
-                    <th>Correo</th>
-                    <th>Telefono</th>
-                    <th>Residencia</th>
+                    <th>Fecha</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,9 +21,7 @@
                     <tr>
                         <td><a href="{{ path('morosos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                         <td>{{ entity.Persona }}</td>
-                        <td>{{ entity.Correo }}</td>
-                        <td>{{ entity.Telefono }}</td>
-                        <td>{{ entity.Residencia }}</td>
+                        <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
                         <td>
                             <ul>
                                 <li>

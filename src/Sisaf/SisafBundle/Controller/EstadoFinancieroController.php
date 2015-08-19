@@ -28,28 +28,31 @@ class EstadoFinancieroController extends Controller
 
         $conn = $this->get('database_connection');
         //Cuotas
-        $cuotas = $conn->fetchAll('SELECT SUM(monto) from cuotas');
+        $cuotasSum = $conn->fetchAll('SELECT SUM(monto) from cuotas');
         //Ingresos
-        $ingresos = $conn->fetchAll('SELECT SUM(monto) from ingresos');
+        $ingresosSum = $conn->fetchAll('SELECT SUM(monto) from ingresos');
         //Egresos
-        $egresos = $conn->fetchAll('SELECT SUM(monto) from egresos');
+        $egresosSum = $conn->fetchAll('SELECT SUM(monto) from egresos');
         //Gastos Fijos
-        $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
+        $gastosSum = $conn->fetchAll('SELECT SUM(monto) from gastos');
         //Usuarios
         $usuarios = $conn->fetchAll('SELECT * from usuario');
         //Ingresos
         $ingresos = $conn->fetchAll('SELECT * from ingresos');
+        //Ingresos
+        $pagospendientes = $conn->fetchAll('SELECT * from morosos');
 
         $em->flush();
 
         return $this->render('SisafBundle:EstadoFinanciero:index.html.twig', array(
             //'entities' => $entities,
-            'cuotas' => $cuotas,
-            'ingresos' => $ingresos,
-            'egresos' => $egresos,
-            'gastos' => $gastos,
+            'cuotasSum' => $cuotasSum,
+            'ingresosSum' => $ingresosSum,
+            'egresosSum' => $egresosSum,
+            'gastosSum' => $gastosSum,
             'usuarios' => $usuarios,
             'ingresos' => $ingresos,
+            'pagospendientes' => $pagospendientes,
             //'new' => $this->generateUrl('estadofinanciero_new'),
         ));
     }

@@ -224,6 +224,6 @@ class Usuario implements UserInterface, \Serializable
 
     public function __toString()
     {
-    return strval($this->casadepto);
+    return strval($this->username);
     }
 }
