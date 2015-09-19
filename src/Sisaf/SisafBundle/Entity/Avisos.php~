@@ -29,6 +29,11 @@ class Avisos
      */
     private $Fecha;
 
+    /**
+     * @var string
+     */
+    private $Autor;
+
 
     /**
      * Get id
@@ -107,5 +112,28 @@ class Avisos
     public function getFecha()
     {
         return $this->Fecha;
+    }
+
+    /**
+     * Set Autor
+     *
+     * @param string $autor
+     * @return Avisos
+     */
+    public function setAutor($autor)
+    {
+        $this->Autor = $autor;
+
+        return $this;
+    }
+
+    /**
+     * Get Autor
+     *
+     * @return string 
+     */
+    public function getAutor()
+    {
+        return $this->Autor;
     }
 }

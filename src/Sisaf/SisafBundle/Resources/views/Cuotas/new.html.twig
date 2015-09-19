@@ -10,40 +10,64 @@
     <label>Persona</label>
     <a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Seleccionar personas</a>
 
-    <div style="display:none;">
-        <div class="form-group">
-            <label>Fecha</label>
-            {{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
-            <span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Tipo</label>
-        {{ form_widget(form.Tipo, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Tipo) }}</span>
-    </div>
+  
     <div class="form-group">
         <label>Descripcion</label>
         {{ form_widget(form.Descripcion, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.Descripcion) }}</span>
     </div>
-    <div class="form-group">
-        <label>Monto</label>
-        {{ form_widget(form.Monto, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Monto) }}</span>
-    </div>
-    <div class="form-group">
-        <label>Frecuencia de pago</label>
-        {{ form_widget(form.Frecuencia, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Frecuencia) }}</span>
-    </div>
+    
+                         <div class="form-group">
+                            <label>Monto</label>
+                            {{ form_widget(form.monto, {'attr': {'class': 'form-control'}}) }}
+                            <span class="help-block m-b-none">{{ form_errors(form.monto) }}</span> 
+                         </div>                   
+                         <div class="form-group">
+                            <label>Tipo</label>
+                            {{ form_widget(form.tipo, {'attr': {'class': 'form-control slcShow'}}) }}
+                            <span class="help-block m-b-none">{{ form_errors(form.tipo) }}</span> 
+                         </div>                    
+                         <div class="form-group">
+                            <label>Fecha de inicio</label>
+                            {{ form_widget(form.fechaDeInicio, {'attr': {'class': 'form-control'}}) }}
+                            <span class="help-block m-b-none">{{ form_errors(form.fechaDeInicio) }}</span> 
+                         </div>                     
+                         <div class="form-group ctnOculto">
+                            <label>Fecha de termino</label>
+                            {{ form_widget(form.fechaFinal, {'attr': {'class': 'form-control'}}) }}
+                            <span class="help-block m-b-none">{{ form_errors(form.fechaFinal) }}</span> 
+                         </div>                      
+                         <div class="form-group ctnOculto">
+                            <label>Recurrencia</label>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="text" name="txtCantidad" class="form-control col-md-2">
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="slcPeriodo" class="form-control">
+                                        <option value="1">Dias</option>
+                                        <option value="2">Mes</option>
+                                        <option value="3">Año</option>
+                                    </select>
+                                </div>
+                            </div>
+                         </div>                    
+                         <div class="form-group ctnOculto">
+                            <label>Dia recorrido</label>
+                            <select name="slcPeriodo" class="form-control">
+                                <option value="1">Lunes</option>
+                                <option value="2">Viernes</option>
+                            </select>
+                         </div>
+             {{ form_errors(form) }}      
 
     {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
+    <input type="hidden" id="sisaf_sisafbundle_cuotastype_Persona" name="vecinos" required="required" class="default-label-checkbox form-control">
     <p>
         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
         <a class="btn btn-warning" href="{{ path('cuotas') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
-
+{{ form_rest(form) }}
 {% endif %}
 {% endblock %}
 
@@ -95,7 +119,7 @@
                                     <tr>
                                         <td>
                                             <label class="label-checkbox" id="forCheckAll">
-                                                <input type="checkbox" name="{{ nombreresidente.username }}" value="{{ nombreresidente.username }}">
+                                                <input type="checkbox" name="{{ nombreresidente.id }}" value="{{ nombreresidente.id }}">
                                                 <span class="custom-checkbox"></span>
                                             </label>
                                         </td>
@@ -107,7 +131,7 @@
                         </table>
                     </div>
                     <div style="display:none;">
-                        {{ form_widget(form.Persona, {'attr': {'class': 'default-label-checkbox form-control'}}) }}
+                        
                     </div>
                 </div>
             </div>
@@ -121,6 +145,21 @@
 {% endblock %}
 
 {% block javascript %}
+<style type="text/css">
+    .ctnOculto{
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+    $(".slcShow" ).on('change', function() {
+            valor= $( this ).val() ;
+            if(valor==1){
+                $(".ctnOculto").hide(  );
+            }else{
+                $( ".ctnOculto" ).show(  );
+            }
+  });
+</script>
 <script>
 $('#checkAll').click(function(event) {
     if(this.checked) {
@@ -147,7 +186,7 @@ var check = $('#sisaf_sisafbundle_cuotastype_Persona');
    var checked = "";
    $('#forCheckAll input[type="checkbox"]').each(function(i,cb){
        if($(this).is(":checked")){
-           checked += $(this).val() + ", ";
+           checked += $(this).val() + ",";
        }
    });
    return checked;

@@ -1,0 +1,17 @@
+Sisaf\SisafBundle\Entity\cuotaVecino:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        cuota:
+            type: integer
+        vecino:
+            type: integer
+        estado:
+            type: decimal
+    lifecycleCallbacks: {  }

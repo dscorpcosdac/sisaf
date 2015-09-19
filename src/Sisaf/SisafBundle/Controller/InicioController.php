@@ -22,16 +22,23 @@ class InicioController extends Controller
     {
         //$em = $this->getDoctrine()->getManager();
         //$entities = $em->getRepository('SisafBundle:Inicio')->findAll();
-
+/*
         $conn = $this->get('database_connection');
 
-        $morosos = $conn->fetchAll('SELECT COUNT(id) FROM morosos');
-        $usuario = $conn->fetchAll('SELECT COUNT(id) FROM usuario');
-        $ingresos = $conn->fetchAll('SELECT SUM(montopagado) from ingresos');
-        $gastos = $conn->fetchAll('SELECT SUM(monto) from gastos');
-
+        $morosos = $conn->fetchAll('SELECT COUNT(id) FROM Morosos');
+        $usuario = $conn->fetchAll('SELECT COUNT(id) FROM Usuario');
+        $ingresos = $conn->fetchAll('SELECT SUM(montopagado) from Ingresos');
+        $gastos = $conn->fetchAll('SELECT SUM(monto) from Gastos');
+*/
         //$em->flush();
-
+        $em = $this->getDoctrine()->getManager();
+        $morosos = $em->getRepository('SisafBundle:Morosos')->findAll();
+        $usuario = $em->getRepository('SisafBundle:Usuario')->findAll();
+        if(count($morosos)==0){$morosos=0;}else{$morosos=count($morosos);}
+        if(count($usuario)==0){$usuario=0;}else{$usuario=count($usuario);}
+        $ingresos=$em->getRepository('SisafBundle:EstadoFinanciero')->sumIngresos();
+        $gastos=$em->getRepository('SisafBundle:Usuario')->findAll();
+        
         return $this->render('SisafBundle:Inicio:index.html.twig', array(
             //'entities' => $entities,
 

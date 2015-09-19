@@ -24,6 +24,10 @@ ingresos_update:
     defaults: { _controller: "SisafBundle:Ingresos:update" }
     requirements: { _method: post }
 
+ingresos_getCuota:
+    pattern:  /getcuota
+    defaults: { _controller: "SisafBundle:Ingresos:getCuota" }
+    requirements: { _method: post }
 ingresos_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SisafBundle:Ingresos:delete" }

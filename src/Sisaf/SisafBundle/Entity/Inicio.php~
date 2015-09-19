@@ -14,7 +14,6 @@ class Inicio
      */
     private $id;
 
-
     /**
      * Get id
      *

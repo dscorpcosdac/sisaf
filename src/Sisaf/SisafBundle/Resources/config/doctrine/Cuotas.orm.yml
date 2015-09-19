@@ -8,27 +8,24 @@ Sisaf\SisafBundle\Entity\Cuotas:
             generator:
                 strategy: AUTO
     fields:
-        Persona:
-            type: string
-            length: 255
-        Tipo:
-            type: string
-            length: 255
         Descripcion:
             type: string
             length: 255
-        Fecha:
-            type: date
-        Monto:
+        fechaDeInicio:
+            type: datetime
+            nullable: true
+        fechaFinal:
+            type: datetime
+            nullable: true
+        diasRecurrencia:
+            type: integer
+            nullable: true
+        diaproximo:
+            type: integer
+            nullable: true
+        monto:
             type: decimal
-        Frecuencia:
-            type: string
-            length: 225
-    manyToOne:
-        usuario:
-            targetEntity: Usuario
-            inversedBy: Cuotas
-            joinColumn:
-                name: usuario_id
-                referencedColumnName: id
+        tipo:
+            type: integer
+     
     lifecycleCallbacks: {  }

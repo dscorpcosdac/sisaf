@@ -10,20 +10,9 @@ class IngresosType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('Tipo', 'choice', array(
-                'choices'   => array(
-                    'Fijo' => 'Fijo', 
-                    'Variable' => 'Variable',
-                    'Cuota Fija' =>'Cuota Fija',
-                    'Cuota Variable' => 'Cuota Variable'
-                    ),
-                'required'  => true,
-                ))
-            ->add('Persona')
+        $builder            
             ->add('Fecha')
             ->add('Descripcion')
-            ->add('Monto')
             ->add('MontoPagado')
         ;
     }

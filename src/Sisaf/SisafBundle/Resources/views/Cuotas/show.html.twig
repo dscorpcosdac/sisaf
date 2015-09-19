@@ -5,14 +5,12 @@
 <div class="panel panel-default">
     <div class="panel-heading"><h1>Cuota</h1></div>
     <div class="panel-body record_properties">
-        <p><b>Id:</b> {{ entity.id }}</p>
-        <p><b>Persona:</b> {{ entity.Persona }}</p>
+        <p><b>Id:</b> {{ entity.id }}</p>       
         <p><b>Tipo:</b> {{ entity.Tipo }}</p>
         <p><b>Descripcion:</b> {{ entity.Descripcion }}</p>
-        <p><b>Fecha:</b> {{ entity.Fecha|date('d/M/Y') }}</p>
+        <p><b>Fecha:</b> {{ entity.fechaDeInicio|date('d/M/Y') }}</p>
         <p><b>Monto:</b> {{ entity.Monto }}</p>
-        <p><b>Frecuencia de pago:</b> {{ entity.Frecuencia }}</p>
-
+     
     <form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
         {{ form_widget(delete_form) }}
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}

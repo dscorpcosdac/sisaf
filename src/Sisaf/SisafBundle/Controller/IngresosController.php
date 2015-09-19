@@ -3,6 +3,7 @@
 namespace Sisaf\SisafBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sisaf\SisafBundle\Entity\Ingresos;
@@ -56,10 +57,9 @@ class IngresosController extends Controller
      *
      */
     public function newAction()
-    {
-        $conn = $this->get('database_connection');
-
-        $persona = $conn->fetchAll('SELECT * FROM usuario');
+    {        
+        $em = $this->getDoctrine()->getManager();
+        $persona = $em->getRepository('SisafBundle:Usuario')->findAll();
 
         $entity = new Ingresos();
         $entity->setFecha(new \DateTime("now"));
@@ -81,13 +81,26 @@ class IngresosController extends Controller
         $entity  = new Ingresos();
         $form = $this->createForm(new IngresosType(), $entity);
         $form->bind($request);
-
-        if ($form->isValid()) {
+        if ($form->isValid()) {            
             $em = $this->getDoctrine()->getManager();
+            $cuota=$request->request->get('slcConcepto',0);
+            $vecino=$request->request->get('hdnPersona',0);
+            $monto=$request->request->get('txtMonto',0);
+            $cuotas = $em->getRepository('SisafBundle:EstadoFinanciero')->setCuotaUser($vecino,$cuota,$monto,$entity->getMontoPagado());
+            $vecinoO=$em->getRepository('SisafBundle:Usuario')->find($vecino);
+            $entity->setDescripcion('hola');
+            $entity->setVecino($vecinoO);
+            //$entity->setEstado($cuotas);
             $em->persist($entity);
             $em->flush();
 
+            $ingresosCuotas= new ingresosCuotas();
+            $ingresosCuotas->setIngreso($entity->getId());
+            $ingresosCuotas->setCuota($cuota);
+            $em->persist($ingresosCuotas);
+            $em->flush();
             return $this->redirect($this->generateUrl('ingresos_show', array('id' => $entity->getId())));
+       
         }
 
         return $this->render('SisafBundle:Ingresos:new.html.twig', array(
@@ -179,6 +192,25 @@ class IngresosController extends Controller
         }
 
         return $this->redirect($this->generateUrl('ingresos'));
+    }
+
+    /**
+     * Edits an existing Ingresos entity.
+     *
+     */
+    public function getCuotaAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $result = $em->getRepository('SisafBundle:EstadoFinanciero')->getCuotasUser($request->request->get('vecino',0));
+
+        if (count($result)==0) {
+            throw $this->createNotFoundException('Unable to find Ingresos entity.');
+        }    
+
+        $response = new Response(json_encode($result));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     private function createDeleteForm($id)

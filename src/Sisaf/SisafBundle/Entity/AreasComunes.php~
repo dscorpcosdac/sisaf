@@ -135,4 +135,32 @@ class AreasComunes
     {
         return $this->FechaRegistro;
     }
+    /**
+     * @var \Sisaf\SisafBundle\Entity\AdminAreasComunes
+     */
+    private $adminareascomunes;
+
+
+    /**
+     * Set adminareascomunes
+     *
+     * @param \Sisaf\SisafBundle\Entity\AdminAreasComunes $adminareascomunes
+     * @return AreasComunes
+     */
+    public function setAdminareascomunes(\Sisaf\SisafBundle\Entity\AdminAreasComunes $adminareascomunes = null)
+    {
+        $this->adminareascomunes = $adminareascomunes;
+
+        return $this;
+    }
+
+    /**
+     * Get adminareascomunes
+     *
+     * @return \Sisaf\SisafBundle\Entity\AdminAreasComunes 
+     */
+    public function getAdminareascomunes()
+    {
+        return $this->adminareascomunes;
+    }
 }

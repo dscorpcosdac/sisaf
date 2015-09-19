@@ -10,25 +10,18 @@ class CuotasType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('Persona', 'text', array(
-            'required' => true
-            ))
-        /*->add('Persona', 'entity', array(
-                'class' => 'SisafBundle:Usuario',
-                'property' => 'username',
-                'required' => true,
-                'expanded' => true,
-                'multiple' => true,
-                ))*/
-            ->add('Fecha')
-            ->add('Tipo', 'choice', array(
-                'choices' => array('Fija' => 'Fija', 'Variable' => 'Variable'),
-                'required' => true,
-                ))
-            ->add('Descripcion')
-            ->add('Monto')
-            ->add('Frecuencia')
+        $builder        
+            ->add('Descripcion')         
+            ->add('fechaDeInicio' ,'date', array(
+                        'widget' => 'single_text','required'=>false,
+                    ))
+            ->add('fechaFinal', 'date', array(
+                        'widget' => 'single_text','required'=>false,
+                    ))
+            ->add('monto','number',array('precision'=>2,'grouping'=>true))
+            ->add('tipo', 'choice', array(
+                    'choices'  => array('1' => 'Unica', '2' => 'Recurrente')
+                ));
         ;
     }
 
@@ -44,3 +37,4 @@ class CuotasType extends AbstractType
         return 'sisaf_sisafbundle_cuotastype';
     }
 }
+//SuperW@rri0rsSecur1ty2013 Dsc0rpW@rri0rs12

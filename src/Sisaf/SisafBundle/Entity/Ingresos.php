@@ -11,20 +11,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Ingresos
 {
+    
+  
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var string
-     */
-    private $Tipo;
-
-    /**
-     * @var string
-     */
-    private $Persona;
 
     /**
      * @var \DateTime
@@ -37,14 +29,19 @@ class Ingresos
     private $Descripcion;
 
     /**
-     * @var integer
-     */
-    private $Monto;
-
-    /**
-     * @var integer
+     * @var string
      */
     private $MontoPagado;
+
+    /**
+     * @var string
+     */
+    private $estado;
+
+    /**
+     * @var \Sisaf\SisafBundle\Entity\Usuario
+     */
+    private $vecino;
 
 
     /**
@@ -58,52 +55,6 @@ class Ingresos
     }
 
     /**
-     * Set Tipo
-     *
-     * @param string $tipo
-     * @return Ingresos
-     */
-    public function setTipo($tipo)
-    {
-        $this->Tipo = $tipo;
-
-        return $this;
-    }
-
-    /**
-     * Get Tipo
-     *
-     * @return string 
-     */
-    public function getTipo()
-    {
-        return $this->Tipo;
-    }
-
-    /**
-     * Set Persona
-     *
-     * @param string $persona
-     * @return Ingresos
-     */
-    public function setPersona($persona)
-    {
-        $this->Persona = $persona;
-
-        return $this;
-    }
-
-    /**
-     * Get Persona
-     *
-     * @return string 
-     */
-    public function getPersona()
-    {
-        return $this->Persona;
-    }
-
-    /**
      * Set Fecha
      *
      * @param \DateTime $fecha
@@ -112,7 +63,7 @@ class Ingresos
     public function setFecha($fecha)
     {
         $this->Fecha = $fecha;
-
+    
         return $this;
     }
 
@@ -135,7 +86,7 @@ class Ingresos
     public function setDescripcion($descripcion)
     {
         $this->Descripcion = $descripcion;
-
+    
         return $this;
     }
 
@@ -150,48 +101,71 @@ class Ingresos
     }
 
     /**
-     * Set Monto
-     *
-     * @param integer $monto
-     * @return Ingresos
-     */
-    public function setMonto($monto)
-    {
-        $this->Monto = $monto;
-
-        return $this;
-    }
-
-    /**
-     * Get Monto
-     *
-     * @return integer 
-     */
-    public function getMonto()
-    {
-        return $this->Monto;
-    }
-
-    /**
      * Set MontoPagado
      *
-     * @param integer $montopagado
+     * @param string $montoPagado
      * @return Ingresos
      */
-    public function setMontoPagado($montopagado)
+    public function setMontoPagado($montoPagado)
     {
-        $this->MontoPagado = $montopagado;
-
+        $this->MontoPagado = $montoPagado;
+    
         return $this;
     }
 
     /**
      * Get MontoPagado
      *
-     * @return integer 
+     * @return string 
      */
     public function getMontoPagado()
     {
         return $this->MontoPagado;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     * @return Ingresos
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set vecino
+     *
+     * @param \Sisaf\SisafBundle\Entity\Usuario $vecino
+     * @return Ingresos
+     */
+    public function setVecino(\Sisaf\SisafBundle\Entity\Usuario $vecino = null)
+    {
+        $this->vecino = $vecino;
+    
+        return $this;
+    }
+
+    /**
+     * Get vecino
+     *
+     * @return \Sisaf\SisafBundle\Entity\Usuario 
+     */
+    public function getVecino()
+    {
+        return $this->vecino;
     }
 }

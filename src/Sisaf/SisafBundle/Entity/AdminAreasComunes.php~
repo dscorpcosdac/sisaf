@@ -108,4 +108,9 @@ class AdminAreasComunes
     {
         return $this->Ubicacion;
     }
+
+    public function __toString()
+    {
+    return strval($this->Area);
+    }
 }

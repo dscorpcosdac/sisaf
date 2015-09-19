@@ -4,16 +4,10 @@
 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
 <h1>Nuevo Ingreso</h1>
 
-<form action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>    
     <div class="form-group">
-        <label>Tipo</label>
-        {{ form_widget(form.Tipo, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Tipo) }}</span>
-    </div>
-    <div class="form-group">
-        <label>Persona</label>
-        {{ form_widget(form.Persona, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Persona) }}</span>
+        <label>Vecino</label>
+        <input type="text" id="txtPersona" name="txtPersona" class="form-control">
     </div>
     <div style="display:none;">
         <div class="form-group">
@@ -23,27 +17,28 @@
         </div>
     </div>
     <div class="form-group">
-        <label>Descripcion</label>
-        {{ form_widget(form.Descripcion, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Descripcion) }}</span>
+        <label>Concepto</label>
+        <select id="slcConcepto" name="slcConcepto" class="form-control">
+          
+        </select>
     </div>
     <div class="form-group">
         <label>Monto</label>
-        {{ form_widget(form.Monto, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.Monto) }}</span>
+        <input type="text" id="txtMonto" name="txtMonto" class="form-control" readonly="readonly">
     </div>
     <div class="form-group">
         <label>Monto Total Pagado</label>
         {{ form_widget(form.MontoPagado, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.MontoPagado) }}</span>
     </div>
-
+    <div id="ctnHidens" style="display: none"></div>
     {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
     <p>
+        <input type="hidden" name="hdnPersona" id="hdnPersona">
         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
         <a class="btn btn-warning" href="{{ path('ingresos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
     </p>
-
+</form>
 {% endif %}
 {% endblock %}
 
@@ -54,50 +49,63 @@
 {% block javascript%}
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
-  $(function() {
-    var availableTags = [
-        {% for recomendacion in persona %}
-            "{{ recomendacion.username }}",
-        {% endfor %}
+$(function() {
+    var projects = [
+     {% for recomendacion in persona %}
+            {
+              value: "{{ recomendacion.id }}",
+              label: "{{ recomendacion.username }}"              
+            },
+      {% endfor %}
+      
     ];
-    function split( val ) {
-      return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-      return split( term ).pop();
-    }
  
-    $( "#sisaf_sisafbundle_ingresostype_Persona" )
-      // don't navigate away from the field on tab when selecting an item
-      .bind( "keydown", function( event ) {
-        if ( event.keyCode === $.ui.keyCode.TAB &&
-            $( this ).autocomplete( "instance" ).menu.active ) {
-          event.preventDefault();
+    $( "#txtPersona" ).autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function( event, ui ) {
+        $( "#project" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#txtPersona" ).val( ui.item.label );
+        $( "#hdnPersona" ).val( ui.item.value );
+        getCuotas( ui.item.value ); 
+        return false;
+      }
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "<br>" + item.desc + "</a>" )
+        .appendTo( ul );
+    };
+
+    function getCuotas(id){
+        $.ajax({
+        type: "POST",
+        url: "{{path('ingresos_getCuota')}}",
+        data:{vecino:id},
+        dataType: "json",
+        success: function (data) {
+          $("#slcConcepto").empty();
+          $("#ctnHidens").empty();
+          $("#slcConcepto").append($("<option></option>").val(0).html('Seleccione...'));
+            $.each(data, function () {
+                $("#slcConcepto").append($("<option></option>").val(this['id']).html(this['Descripcion']));
+                $("#ctnHidens").append($('<input type="hidden" id="hdnmonto_'+this['id']+'">').val(this['monto']));
+            });
         }
-      })
-      .autocomplete({
-        minLength: 0,
-        source: function( request, response ) {
-          // delegate back to autocomplete, but extract the last term
-          response( $.ui.autocomplete.filter(
-            availableTags, extractLast( request.term ) ) );
-        },
-        focus: function() {
-          // prevent value inserted on focus
-          return false;
-        },
-        select: function( event, ui ) {
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          terms.push( "" );
-          this.value = terms.join( ", " );
-          return false;
-        }
-      });
+    });
+    }
+
+    $("#slcConcepto" ).on('change', function() {
+          valor= $( this ).val() ;
+          //alert(valor);
+          $('#txtMonto').val($('#hdnmonto_'+valor).val()); 
+          
+    });
   });
+  
+
   </script>
 {% endblock %}

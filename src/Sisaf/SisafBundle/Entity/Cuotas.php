@@ -10,20 +10,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Cuotas
 {
+   
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var string
-     */
-    public $Persona;
-
-    /**
-     * @var string
-     */
-    private $Tipo;
 
     /**
      * @var string
@@ -33,17 +24,32 @@ class Cuotas
     /**
      * @var \DateTime
      */
-    private $Fecha;
+    private $fechaDeInicio;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaFinal;
+
+    /**
+     * @var integer
+     */
+    private $diasRecurrencia;
+
+    /**
+     * @var integer
+     */
+    private $diaproximo;
 
     /**
      * @var string
      */
-    private $Monto;
+    private $monto;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $Frecuencia;
+    private $tipo;
 
 
     /**
@@ -54,58 +60,6 @@ class Cuotas
     public function getId()
     {
         return $this->id;
-    }
-
-    public function __construct()
-    {
-        $this->Persona = new ArrayCollection();
-    }
-
-
-    /**
-     * Set Persona
-     *
-     * @param string $persona
-     * @return Cuotas
-     */
-    public function setPersona($persona)
-    {
-        $this->Persona = $persona;
-
-        return $this;
-    }
-
-    /**
-     * Get Persona
-     *
-     * @return string 
-     */
-    public function getPersona()
-    {
-        return $this->Persona;
-    }
-
-    /**
-     * Set Tipo
-     *
-     * @param string $tipo
-     * @return Cuotas
-     */
-    public function setTipo($tipo)
-    {
-        $this->Tipo = $tipo;
-
-        return $this;
-    }
-
-    /**
-     * Get Tipo
-     *
-     * @return string 
-     */
-    public function getTipo()
-    {
-        return $this->Tipo;
     }
 
     /**
@@ -132,100 +86,140 @@ class Cuotas
     }
 
     /**
-     * Set Fecha
+     * Set fechaDeInicio
      *
-     * @param \DateTime $fecha
+     * @param \DateTime $fechaDeInicio
      * @return Cuotas
      */
-    public function setFecha($fecha)
+    public function setFechaDeInicio($fechaDeInicio)
     {
-        $this->Fecha = $fecha;
+        $this->fechaDeInicio = $fechaDeInicio;
 
         return $this;
     }
 
     /**
-     * Get Fecha
+     * Get fechaDeInicio
      *
      * @return \DateTime 
      */
-    public function getFecha()
+    public function getFechaDeInicio()
     {
-        return $this->Fecha;
+        return $this->fechaDeInicio;
     }
 
     /**
-     * Set Monto
+     * Set fechaFinal
+     *
+     * @param \DateTime $fechaFinal
+     * @return Cuotas
+     */
+    public function setFechaFinal($fechaFinal)
+    {
+        $this->fechaFinal = $fechaFinal;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaFinal
+     *
+     * @return \DateTime 
+     */
+    public function getFechaFinal()
+    {
+        return $this->fechaFinal;
+    }
+
+    /**
+     * Set diasRecurrencia
+     *
+     * @param integer $diasRecurrencia
+     * @return Cuotas
+     */
+    public function setDiasRecurrencia($diasRecurrencia)
+    {
+        $this->diasRecurrencia = $diasRecurrencia;
+
+        return $this;
+    }
+
+    /**
+     * Get diasRecurrencia
+     *
+     * @return integer 
+     */
+    public function getDiasRecurrencia()
+    {
+        return $this->diasRecurrencia;
+    }
+
+    /**
+     * Set diaproximo
+     *
+     * @param integer $diaproximo
+     * @return Cuotas
+     */
+    public function setDiaproximo($diaproximo)
+    {
+        $this->diaproximo = $diaproximo;
+
+        return $this;
+    }
+
+    /**
+     * Get diaproximo
+     *
+     * @return integer 
+     */
+    public function getDiaproximo()
+    {
+        return $this->diaproximo;
+    }
+
+    /**
+     * Set monto
      *
      * @param string $monto
      * @return Cuotas
      */
     public function setMonto($monto)
     {
-        $this->Monto = $monto;
+        $this->monto = $monto;
 
         return $this;
     }
 
     /**
-     * Get Monto
+     * Get monto
      *
      * @return string 
      */
     public function getMonto()
     {
-        return $this->Monto;
+        return $this->monto;
     }
 
     /**
-     * Set Frecuencia
+     * Set tipo
      *
-     * @param string $frecuencia
+     * @param integer $tipo
      * @return Cuotas
      */
-    public function setFrecuencia($frecuencia)
+    public function setTipo($tipo)
     {
-        $this->Frecuencia = $frecuencia;
+        $this->tipo = $tipo;
 
         return $this;
     }
 
     /**
-     * Get Frecuencia
+     * Get tipo
      *
-     * @return string 
+     * @return integer 
      */
-    public function getFrecuencia()
+    public function getTipo()
     {
-        return $this->Frecuencia;
+        return $this->tipo;
     }
-
-    /**
-     * @var \Sisaf\SisafBundle\Entity\Usuario
-     */
-    private $usuario;
-
-
-    /**
-     * Set usuario
-     *
-     * @param \Sisaf\SisafBundle\Entity\Usuario $usuario
-     * @return Cuotas
-     */
-    public function setUsuario(\Sisaf\SisafBundle\Entity\Usuario $usuario = null)
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Sisaf\SisafBundle\Entity\Usuario 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }    
 }

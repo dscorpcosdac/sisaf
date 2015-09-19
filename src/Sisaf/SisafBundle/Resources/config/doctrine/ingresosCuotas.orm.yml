@@ -1,0 +1,15 @@
+Sisaf\SisafBundle\Entity\ingresosCuotas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ingreso:
+            type: integer
+        cuota:
+            type: integer
+    lifecycleCallbacks: {  }

@@ -8,19 +8,18 @@ Sisaf\SisafBundle\Entity\Ingresos:
             generator:
                 strategy: AUTO
     fields:
-        Tipo:
-            type: string
-            length: 255
-        Persona:
-            type: string
-            length: 255
         Fecha:
-            type: date
+            type: datetime
         Descripcion:
             type: string
             length: 255
-        Monto:
-            type: decimal
         MontoPagado:
             type: decimal
+        estado:
+            type: decimal
+            nullable: true
+    manyToOne:           
+        vecino:
+            targetEntity: Sisaf\SisafBundle\Entity\Usuario
+            inversedBy: Ingresos        
     lifecycleCallbacks: {  }

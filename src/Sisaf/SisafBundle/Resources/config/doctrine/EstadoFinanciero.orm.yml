@@ -1,6 +1,7 @@
 Sisaf\SisafBundle\Entity\EstadoFinanciero:
     type: entity
     table: null
+    repositoryClass: Sisaf\SisafBundle\Entity\EstadoFinancieroRepository
     id:
         id:
             type: integer

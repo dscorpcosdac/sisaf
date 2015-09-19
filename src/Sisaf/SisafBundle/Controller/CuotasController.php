@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sisaf\SisafBundle\Entity\Cuotas;
+use Sisaf\SisafBundle\Entity\cuotaVecino;
 use Sisaf\SisafBundle\Form\CuotasType;
 
 /**
@@ -61,7 +62,7 @@ class CuotasController extends Controller
         $residentes = $conn->fetchAll('SELECT * FROM Usuario');
 
         $entity = new Cuotas();
-        $entity->setFecha(new \DateTime("now"));
+       // $entity->setFecha(new \DateTime("now"));
         $form   = $this->createForm(new CuotasType(), $entity);
 
         return $this->render('SisafBundle:Cuotas:new.html.twig', array(
@@ -77,21 +78,36 @@ class CuotasController extends Controller
      */
     public function createAction(Request $request)
     {
-        $conn = $this->get('database_connection');
-        $residentes = $conn->fetchAll('SELECT * FROM Usuario');
+        
 
         $entity  = new Cuotas();
         $form = $this->createForm(new CuotasType(), $entity);
         $form->bind($request);
-
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+            $forms=$request->request->get('vecinos',0);           
+            $vecinos=explode(',', $forms);
+            if(count($vecinos)>0){
 
-            return $this->redirect($this->generateUrl('cuotas_show', array('id' => $entity->getId())));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                foreach ($vecinos as $key) {
+                    if($key>0){
+                        $cuotavecino=new cuotaVecino();
+                        $cuotavecino->setCuota($entity->getId());
+                        $cuotavecino->setVecino($key);
+                        $em->persist($cuotavecino);
+                        $em->flush();
+                       // echo $key.'holA<br>';
+                       }
+                }
+
+                return $this->redirect($this->generateUrl('cuotas_show', array('id' => $entity->getId())));
+            }
+            
         }
-
+        $conn = $this->get('database_connection');
+        $residentes = $conn->fetchAll('SELECT * FROM Usuario');
         return $this->render('SisafBundle:Cuotas:new.html.twig', array(
             'residentes' => $residentes,
             'entity' => $entity,
