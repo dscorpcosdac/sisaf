@@ -1,0 +1,22 @@
+Sisaf\SisafBundle\Entity\Casas:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        colonia:
+            type: string
+            length: 255
+            column: Colonia
+        calle:
+            type: string
+            length: 255
+            column: Calle
+        numero:
+            type: string
+            length: 255
+            column: Numero
+    lifecycleCallbacks: {  }

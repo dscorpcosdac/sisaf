@@ -1,0 +1,109 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Presupuesto</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped">
+            <thead>
+                <td>Elemento</td>
+                <td>Estado</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Cuotas: </b></td>
+                    <td class="text-success">+ $
+                    <span id="Cuotas">{% for entity in cuotas %}{{entity.sum}}{% endfor %}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Ingresos: </b></td>
+                    <td class="text-success">+ $
+                        <span id="Ingresos">{% for entity in ingresos %}{{ entity.sum}}{% endfor %}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Egresos: </b></td>
+                    <td class="text-danger">- $
+                        <span id="Egresos">{% for entity in egresos %}{{entity.sum}}{% endfor %}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Gastos: </b></td>
+                    <td class="text-danger">- $
+                        <span id="Gastos">{% for entity in gastos %}{{entity.sum}}{% endfor %}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Presupuesto:</td>
+                    <td>
+                    <span>
+                        <b>
+                            <span id="Presupuesto"></span>
+                        </b>
+                    </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+
+    <div class="padding-md clearfix">
+        <div class="panel col-xs-12" style="background:#2ecc71;">
+            <div class="panel-body">
+                <div id="barChart" style="height: 300px;"></div>
+            </div>
+        </div><!-- /panel -->
+    </div>
+
+</div><!-- /panel -->
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/sisaf/css/morris.css') }}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ asset('bundles/sisaf/js/morris.min.js') }}"></script>
+<script src="{{ asset('bundles/sisaf/js/rapheal.min.js') }}"></script>
+<script src="{{ asset('bundles/sisaf/js/chart.min.js') }}"></script>
+
+<script>
+$(document).ready(function(){
+
+    var Cuotas = parseInt($("#Cuotas").text());
+
+    var Ingresos = parseInt($("#Ingresos").text());
+    
+    var Egresos = parseInt($("#Egresos").text());
+    
+    var Gastos = parseInt($("#Gastos").text());
+
+    var Presupuesto = Cuotas+Ingresos-Egresos-Gastos;
+    $("#Presupuesto").html(Presupuesto);
+
+    var barChart = Morris.Bar({
+        element: 'barChart',
+        data: [
+            { y: 'Cuotas', a: Cuotas },
+            { y: 'Ingresos', a: Ingresos },
+            { y: 'Egresos', a: -Egresos },
+            { y: 'Gastos', a: -Gastos },
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        grid: false,
+        labels: ['Total'],
+        barColors: ['#3498db'],
+        gridTextColor : '#ffffff'
+    });
+
+});
+</script>
+
+{% endblock %}

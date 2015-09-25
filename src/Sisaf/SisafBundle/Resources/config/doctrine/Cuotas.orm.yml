@@ -1,0 +1,30 @@
+Sisaf\SisafBundle\Entity\Cuotas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Descripcion:
+            type: string
+            length: 255
+        fechaDeInicio:
+            type: datetime
+            nullable: true
+        fechaFinal:
+            type: datetime
+            nullable: true
+        diasRecurrencia:
+            type: integer
+            nullable: true
+        diaproximo:
+            type: integer
+            nullable: true
+        monto:
+            type: decimal
+        tipo:
+            type: integer
+    lifecycleCallbacks: {  }

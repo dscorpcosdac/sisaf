@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') or is_granted('ROLE_COLONO') %}
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>Egreso</h1></div>
+    <div class="panel-body record_properties">
+        <table class="table table-striped" id="egresos">
+            <thead>
+                <th>Ingreso #{{ entity.id }}</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Id</b></td>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <td><b>Tipo</b></td>
+                    <td>{{ entity.Tipo }}</td>
+                </tr>
+                <tr>
+                    <td>Fecha</td>
+                    <td>{{ entity.Fecha|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>{{ entity.Descripcion }}</td>
+                </tr>
+                <tr>
+                    <td>Monto</td>
+                    <td>{{ entity.Monto }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <form action="{{ path('egresos_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-success" href="{{ path('egresos_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+            {% endif %}
+
+            <a class="btn btn-warning" href="{{ path('egresos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/sisaf/css/dataTables.tableTools.css') }}">
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+    $(document).ready(function() {
+        var table = $('#egresos').DataTable({
+            'info': false,
+            "bPaginate": false,
+            "bFilter": false,
+            //"order": false,
+            'sDom': 'lTfr<"clearfix">tip',
+            'oTableTools': {
+                "sSwfPath": "{{ asset('bundles/sisaf/swf/copy_csv_xls_pdf.swf') }}",
+                'aButtons': [
+                    {
+                        'sExtends':    'collection',
+                        'sButtonText': '<i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>',
+                        'aButtons':    [ 'csv', 'xls', 'pdf', 'copy', 'print' ]
+                    }
+                ]
+            }
+        });
+    });
+</script>
+{% endblock %}

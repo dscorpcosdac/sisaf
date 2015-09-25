@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+
+{% if is_granted('ROLE_COLONO') or is_granted('ROLE_MESADIRECTIVA') or is_granted('ROLE_ADMIN') %}
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
+<script type="text/javascript">
+var map;
+function initialize() {
+  var myLatlng = new google.maps.LatLng(19.389455,-99.1361825);
+  var mapOptions = {
+    zoom: 16,
+    center: new google.maps.LatLng(19.3888632721816, -99.13636220000001),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Dscorp'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+<h1>Soporte Técnico</h1>
+<hr>
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4-col-lg-4">
+        <address>
+          <h4 class="margin-bottom">Telefonos</h4>
+          5579 22 73<br>
+          5698 9651<br>
+          01 800 087 1097<br>
+        </address>
+      	<address>
+      	<h4 class="margin-bottom">Dirección</h4>
+      		<strong>Dscorp S.A. de C.V. </strong><br>
+      		Pedro Santacilia 258-1 <br>Col. Iztaccihualt, Del Benito Juárez México, 
+      		<br>Distrito Federal
+      	</address>
+      	<address>
+      		<h4 class="margin-bottom">Correo Electronico</h4>
+      		<a href="mailto:alexis.leon@dscorp.com.mx"><u>alexis.leon@dscorp.com.mx<u></a>
+      	</address>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 col-md-8-col-lg-8">
+        <div class="span6 margin-bottom">
+      <div id="map-canvas" style="width: 100%; height: 360px;"></div>
+    </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

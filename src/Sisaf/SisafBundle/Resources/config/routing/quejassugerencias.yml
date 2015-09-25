@@ -1,0 +1,30 @@
+quejassugerencias:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:index" }
+
+quejassugerencias_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:show" }
+
+quejassugerencias_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:new" }
+
+quejassugerencias_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:create" }
+    requirements: { _method: post }
+
+quejassugerencias_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:edit" }
+
+quejassugerencias_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:update" }
+    requirements: { _method: post }
+
+quejassugerencias_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:QuejasSugerencias:delete" }
+    requirements: { _method: post }

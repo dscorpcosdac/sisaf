@@ -1,0 +1,30 @@
+departamentos:
+    path:     /
+    defaults: { _controller: "SisafBundle:Departamentos:index" }
+
+departamentos_show:
+    path:     /{id}/show
+    defaults: { _controller: "SisafBundle:Departamentos:show" }
+
+departamentos_new:
+    path:     /new
+    defaults: { _controller: "SisafBundle:Departamentos:new" }
+
+departamentos_create:
+    path:     /create
+    defaults: { _controller: "SisafBundle:Departamentos:create" }
+    requirements: { _method: post }
+
+departamentos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SisafBundle:Departamentos:edit" }
+
+departamentos_update:
+    path:     /{id}/update
+    defaults: { _controller: "SisafBundle:Departamentos:update" }
+    requirements: { _method: post|put }
+
+departamentos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SisafBundle:Departamentos:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+soporte:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Soporte:index" }
+
+soporte_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Soporte:show" }
+
+soporte_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Soporte:new" }
+
+soporte_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Soporte:create" }
+    requirements: { _method: post }
+
+soporte_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Soporte:edit" }
+
+soporte_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Soporte:update" }
+    requirements: { _method: post }
+
+soporte_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Soporte:delete" }
+    requirements: { _method: post }

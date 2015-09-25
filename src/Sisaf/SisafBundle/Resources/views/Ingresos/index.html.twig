@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') or is_granted('ROLE_COLONO') %}
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Ingresos</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="ingresos">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Persona</th>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+                    <th>Monto</th>
+                    <th>Monto Total Pagado</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('ingresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.Tipo }}</td>
+                        <td>{{ entity.Persona }}</td>
+                        <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
+                        <td>{{ entity.Descripcion }}</td>
+                        <td>{{ entity.Monto }}</td>
+                        <td>{{ entity.MontoPagado }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('ingresos_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('ingresos_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+
+
+{% endif %}
+{% endblock %}

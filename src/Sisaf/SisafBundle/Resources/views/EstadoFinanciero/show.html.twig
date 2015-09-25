@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<h1>Estado Financiero</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Cuotas</th>
+            <td>{{ entity.Cuotas }}</td>
+        </tr>
+        <tr>
+            <th>Ingresos</th>
+            <td>{{ entity.Ingresos }}</td>
+        </tr>
+        <tr>
+            <th>Egresos</th>
+            <td>{{ entity.Egresos }}</td>
+        </tr>
+        <tr>
+            <th>Gastosfijos</th>
+            <td>{{ entity.GastosFijos }}</td>
+        </tr>
+        <tr>
+            <th>Presupuestos</th>
+            <td>{{ entity.Presupuestos }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('estadofinanciero') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('estadofinanciero_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('estadofinanciero_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,223 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="tab-content">
+	<div class="tab-pane fade active in" id="first">
+		<div class="panel panel-default table-responsive row">
+			<div class="panel-heading">
+			<b>Estado Financiero</b>
+				<span class="label label-info pull-right"></span>
+			</div>
+			<div class="padding-md clearfix col-xs-12 col-md-3">
+				<table class="table table-hover">
+					<thead>
+						<td>Elemento</td>
+						<td>Estado</td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><b>Cuotas: </b></td>
+							<td class="text-success">+ $
+							<span id="Cuotas">{% for entity in cuotas %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Ingresos: </b></td>
+							<td class="text-success">+ $
+								<span id="Ingresos">{% for entity in ingresos %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Egresos: </b></td>
+							<td class="text-danger">- $
+								<span id="Egresos">{% for entity in egresos %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Gastos: </b></td>
+							<td class="text-danger">- $
+								<span id="Gastos">{% for entity in gastos %}{{ entity.sum }}{% endfor %}</span>
+							</td>
+						</tr>
+						<tr>
+							<td>Presupuesto:</td>
+							<td>
+							<span>
+								<b>
+									<span id="Presupuesto"></span>
+								</b>
+							</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="padding-md clearfix">
+				<div class="panel col-xs-12 col-md-9" style="background:#2ecc71;">
+					<div class="panel-body">
+						<div id="barChart" style="height: 300px;"></div>
+					</div>
+				</div><!-- /panel -->
+			</div>
+
+		</div>
+	</div>
+	<div class="tab-pane fade" id="second">
+	second
+	</div>
+	<div class="fade" id="third">
+		<div id="users" class="row">
+			<div class="col-xs-12 col-sm-4">
+				<input type="text" class="search form-control" />
+				<ul class="list list-unstyled">
+					{% for usuarios in usuariosAll %}
+						<li>
+							<a href="#"><h5 class="name text-capitalize filter_name">{{ usuarios.username }}</h5></a>
+						</li>
+					{% endfor %}
+				</ul>
+				<ul class="pagination"></ul>
+			</div>
+			<div class="col-xs-12 col-sm-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">Estado financiero de <span class="text-capitalize" id="filer_name"></span></div>
+					
+					<!--note-->
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-4">Monto</div>
+							<div class="col-xs-4">Fecha</div>
+							<div class="col-xs-4">Descripcion</div>
+							<hr>
+						</div>
+						{% for ingresos in ingresosAll %}
+							<div class="filter_data row">
+								<span class="filter_data_name">{{ ingresos.persona }}</span>
+								<p class="filter_data_Monto col-xs-4">${{ ingresos.monto }}</p>
+								<p class="filter_data_Fecha col-xs-4">{{ ingresos.fecha }}</p>
+								<p class="filter_data_Descripcion col-xs-4">{{ ingresos.descripcion }}</p>
+								<div class="col-xs-12"><hr></div>
+							</div>
+						{% endfor %}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block mainheader %}
+<ul class="tab-bar">
+	<li class="active">
+		<a href="#first" data-toggle="tab">
+			<span class="block text-center">
+				<i class="fa fa-globe fa-2x"></i> 
+			</span>
+			General
+		</a>
+	</li>
+	<li class="">
+		<a href="#second" data-toggle="tab">
+			<span class="block text-center">
+				<i class="fa fa-home fa-2x"></i> 
+			</span>
+			Inicio
+		</a>
+	</li>
+	<li class="">
+		<a href="#third" data-toggle="tab">
+			<span class="block text-center">
+				<i class="fa fa-users fa-2x"></i> 
+			</span>	
+			Usuarios
+		</a>
+	</li>
+</ul>
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('bundles/sisaf/css/morris.css') }}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ asset('bundles/sisaf/js/morris.min.js') }}"></script>
+<script src="{{ asset('bundles/sisaf/js/rapheal.min.js') }}"></script>
+<script src="{{ asset('bundles/sisaf/js/chart.min.js') }}"></script>
+
+<script src="{{ asset('bundles/sisaf/js/list.js') }}"></script>
+<script src="http://listjs.com/no-cdn/list.pagination.js"></script>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.1/isotope.pkgd.min.js">
+
+<script>
+$(document).ready(function(){
+
+	var Cuotas = parseInt($("#Cuotas").text());
+
+	var Ingresos = parseInt($("#Ingresos").text());
+	
+	var Egresos = parseInt($("#Egresos").text());
+	
+	var Gastos = parseInt($("#Gastos").text());
+
+	var Presupuesto = Cuotas+Ingresos-Egresos-Gastos;
+	$("#Presupuesto").html(Presupuesto);
+
+	var barChart = Morris.Bar({
+		element: 'barChart',
+		data: [
+			{ y: 'Cuotas', a: Cuotas },
+			{ y: 'Ingresos', a: Ingresos },
+			{ y: 'Egresos', a: -Egresos },
+			{ y: 'Gastos', a: -Gastos },
+		],
+		xkey: 'y',
+		ykeys: ['a'],
+		grid: false,
+		labels: ['Total'],
+		barColors: ['#3498db'],
+		gridTextColor : '#ffffff'
+	});
+});
+
+/*
+var options = {
+  valueNames: [ 'name' ]
+};
+
+var userList = new List('users', options);
+
+
+var userList = new List('users', options);
+*/
+
+var userList = new List('users', {
+  valueNames: ['name'],
+  page: 20,
+  plugins: [ ListPagination({}) ] 
+});
+
+
+//Filter username & history
+$(".filter_data").hide();
+$('#filer_name').text("...");
+
+$( ".filter_name" ).click(function() {
+	var selected = $(this).text();
+	$('#filer_name').text(selected);
+	var selected_find = $(".filter_data:contains("+selected+")");
+	
+	//Oculta el anterior
+	$(".filter_data").hide();
+	$(selected_find).fadeIn(700);
+	$(".filter_data_name").hide();
+});
+
+</script>
+
+{% endblock %}

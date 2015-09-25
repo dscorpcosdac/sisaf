@@ -1,0 +1,15 @@
+Sisaf\SisafBundle\Entity\Documentos:
+    type: entity
+    table: null
+    repositoryClass: Sisaf\SisafBundle\Entity\DocumentosRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Docs:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MESADIRECTIVA') %}
+
+<h1>Nuevo Aviso</h1>
+
+<form action="{{ path('Avisos_create') }}" method="post" {{ form_enctype(form) }}>
+
+<div class="form-group">
+	<label>Titulo</label>
+	{{ form_widget(form.Titulo, {'attr': {'class': 'form-control'}}) }}
+	<span class="help-block m-b-none">{{ form_errors(form.Titulo) }}</span>
+</div>
+<div class="form-group">
+	<label>Descripción</label>
+	{{ form_widget(form.Descripcion, {'attr': {'class': 'form-control', 'rows': '10'}}) }}
+	<span class="help-block m-b-none">{{ form_errors(form.Descripcion) }}</span>
+</div>
+<div style="display:none;">
+	<div class="form-group">
+		<label>Fecha</label>
+		{{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
+		<span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
+	</div>
+</div>
+<div style="display:none">
+	<div class="form-group">
+		<label>Autor</label>
+		{{ form_widget(form.Autor, {'attr': {'class': 'form-control autor'}}) }}
+		<span class="help-block m-b-none">{{ form_errors(form.Autor) }}</span>
+	</div>
+</div>
+{{ form_widget(form._token) }}
+
+    <p>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('Avisos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+    </p>
+
+{% endif %}
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    var username = $("#username").text();
+    $(".autor").val(username);
+});
+</script>
+{% endblock %}

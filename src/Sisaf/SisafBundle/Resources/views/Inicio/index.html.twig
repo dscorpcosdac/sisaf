@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="panel-stat3 bg-danger">
+                <h2 class="m-top-none" id="userCount">
+                    {% for entity in morosos %}
+                        {{ entity.count }}
+                    {% endfor %}
+                </h2>
+                <h4>Morosos</h4>
+                <p>Periodo de actualización: Mensual</p>
+                <div class="stat-icon">
+                    <i class="fa fa-user fa-3x"></i>
+                </div>
+                <div class="refresh-button">
+                    <i class="fa fa-refresh"></i>
+                </div>
+                <div class="loading-overlay">
+                    <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="panel-stat3 bg-info">
+                <h2 class="m-top-none" id="userCount">
+                    {% for entity in usuario %}
+                        {{ entity.count }}
+                    {% endfor %}
+                </h2>
+                <h4>Residentes</h4>
+                <p>Última actualización: Hoy</p>
+                <div class="stat-icon">
+                    <i class="fa fa-user fa-3x"></i>
+                </div>
+                <div class="refresh-button">
+                    <i class="fa fa-refresh"></i>
+                </div>
+                <div class="loading-overlay">
+                    <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="panel-stat3 bg-success">
+                <h2 class="m-top-none" id="userCount">$
+                    {% for entity in ingresos %}
+                        {{ entity.sum }}
+                    {% endfor %}
+                </h2>
+                <h4>Ingresos</h4>
+                <p>Última actualización: Hoy</p>
+                <div class="stat-icon">
+                    <i class="fa fa-arrow-circle-up fa-3x"></i>
+                </div>
+                <div class="refresh-button">
+                    <i class="fa fa-refresh"></i>
+                </div>
+                <div class="loading-overlay">
+                    <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="panel-stat3 bg-warning">
+                <h2 class="m-top-none" id="userCount">$
+                    {% for entity in gastos %}
+                        {{ entity.sum }}
+                    {% endfor %}
+                </h2>
+                <h4>Gastos</h4>
+                <p>Última actualización: Hoy</p>
+                <div class="stat-icon">
+                    <i class="fa fa-arrow-circle-down fa-3x"></i>
+                </div>
+                <div class="refresh-button">
+                    <i class="fa fa-refresh"></i>
+                </div>
+                <div class="loading-overlay">
+                    <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+Sisaf_homepage:
+    pattern:  /
+    defaults: { _controller: SisafBundle:Default:index }
+
+Sisaf_upload:
+    pattern:  /Archivos
+    defaults: { _controller: SisafBundle:Upload:upload }
+
+sisafBundle_inicio:
+        resource: "@SisafBundle/Resources/config/routing/inicio.yml"
+        prefix:   /Inicio
+
+SisafBundle_usuario:
+        resource: "@SisafBundle/Resources/config/routing/usuario.yml"
+        prefix:   /Usuarios
+
+SisafBundle_Proveedores:
+        resource: "@SisafBundle/Resources/config/routing/proveedores.yml"
+        prefix:   /Proveedores
+
+SisafBundle_visitantes:
+        resource: "@SisafBundle/Resources/config/routing/visitantes.yml"
+        prefix:   /Visitantes
+
+SisafBundle_Avisos:
+        resource: "@SisafBundle/Resources/config/routing/avisos.yml"
+        prefix:   /Avisos
+
+SisafBundle_egresos:
+        resource: "@SisafBundle/Resources/config/routing/egresos.yml"
+        prefix:   /Egresos
+
+SisafBundle_ingresos:
+        resource: "@SisafBundle/Resources/config/routing/ingresos.yml"
+        prefix:   /Ingresos
+
+SisafBundle_presupuesto:
+        resource: "@SisafBundle/Resources/config/routing/presupuesto.yml"
+        prefix:   /Presupuesto
+
+SisafBundle_gastos:
+        resource: "@SisafBundle/Resources/config/routing/gastos.yml"
+        prefix:   /Gastos
+
+SisafBundle_cuotas:
+        resource: "@SisafBundle/Resources/config/routing/cuotas.yml"
+        prefix:   /Cuotas
+
+SisafBundle_estadofinanciero:
+        resource: "@SisafBundle/Resources/config/routing/estadofinanciero.yml"
+        prefix:   /estadofinanciero
+
+SisafBundle_quejassugerencias:
+        resource: "@SisafBundle/Resources/config/routing/quejassugerencias.yml"
+        prefix:   /Quejas_Sugerencias
+
+SisafBundle_morosos:
+        resource: "@SisafBundle/Resources/config/routing/morosos.yml"
+        prefix:   /Pagos_Pendientes
+
+SisafBundle_soporte:
+        resource: "@SisafBundle/Resources/config/routing/soporte.yml"
+        prefix:   /Soporte
+
+SisafBundle_adminareascomunes:
+        resource: "@SisafBundle/Resources/config/routing/adminareascomunes.yml"
+        prefix:   /AdminAreasComunes
+
+SisafBundle_areascomunes:
+        resource: "@SisafBundle/Resources/config/routing/areascomunes.yml"
+        prefix:   /AreasComunes
+
+SisafBundle_departamentos:
+        resource: "@SisafBundle/Resources/config/routing/departamentos.yml"
+        prefix:   /Departamentos
+
+SisafBundle_casas:
+        resource: "@SisafBundle/Resources/config/routing/casas.yml"
+        prefix:   /Casas

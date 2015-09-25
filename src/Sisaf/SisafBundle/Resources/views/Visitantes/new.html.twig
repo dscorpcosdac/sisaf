@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<h1>Nuevo Visitante</h1>
+
+<form action="{{ path('visitantes_create') }}" method="post" {{ form_enctype(form) }}>
+    <div class="form-group">
+        <label>Nombre</label>
+        {{ form_widget(form.Nombre, {'attr': {'class': 'form-control', 'placeholder': 'Nombre y Apellido'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Nombre) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Automovil</label>
+        {{ form_widget(form.Automovil, {'attr': {'class': 'form-control', 'placeholder': 'Placas, Marca, Modelo y Color'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Automovil) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Destino</label>
+        {{ form_widget(form.Destino, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Destino) }}</span>
+    </div>
+    <div style="display:none;">
+        <div class="form-group">
+            <label>F_Entrada</label>
+            {{ form_widget(form.F_Entrada, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.F_Entrada) }}</span>
+        </div>
+        <div class="form-group">
+            <label>H_Entrada</label>
+            {{ form_widget(form.H_Entrada, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.H_Entrada) }}</span>
+        </div>
+        <div class="form-group">
+            <label>H_Salida</label>
+            {{ form_widget(form.H_Salida, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.H_Salida) }}</span>
+        </div>
+    </div>
+
+    {{ form_widget(form._token) }}
+    <p>
+        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Crear</button>
+        <a class="btn btn-warning" href="{{ path('visitantes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+    </p>
+</form>
+
+{% endif %}
+{% endblock %}

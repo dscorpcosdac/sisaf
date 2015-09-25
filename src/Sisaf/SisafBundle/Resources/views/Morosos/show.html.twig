@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>Pago pendiente</h1></div>
+    <div class="panel-body record_properties">
+            <p><b>Id:</b> {{ entity.id }}</p>
+            <p><b>Persona:</b> {{ entity.Persona }}</p>
+            <p><b>Correo:</b> {{ entity.Correo }}</p>
+            <p><b>Telefono:</b> {{ entity.Telefono }}</p>
+            <p><b>Residencia:</b> {{ entity.Residencia }}</p>
+
+        <form action="{{ path('morosos_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-warning" href="{{ path('morosos') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            <a class="btn btn-success" href="{{ path('morosos_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+        </form>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

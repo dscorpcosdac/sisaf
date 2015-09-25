@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+<div class="panel panel-default">
+    <div class="panel-heading"><h1>Visitante</h1></div>
+
+<div class="padding-md">
+    <div class="alert alert-info" role="alert">
+        <div class="text-center">
+          <span class="fa fa-exclamation-triangle fa-2x"></span>
+          <span>RECUERDE REGISTRAR SU HORA DE SALIDA</span>
+        </div>
+    </div>
+</div>
+    <div class="panel-body record_properties">
+        <p><b>Id:</b> {{ entity.id }}</p>
+        <p><b>Nombre:</b> {{ entity.Nombre }}</p>
+        <p><b>Automovil:</b> {{ entity.Automovil }}</p>
+        <p><b>Destino:</b> {{ entity.Destino }}</p>
+        <p><b>Fecha de Entrada:</b> <td>{{ entity.FEntrada|date('Y-m-d') }}</td></p>
+        <p><b>Hora de Entrada:</b> <td>{{ entity.HEntrada|date('H:i:s') }}</td></p>
+        <p><b>Hora de Salida:</b> <td>{{ entity.HSalida|date('H:i:s') }}</td></p>
+
+        <form action="{{ path('visitantes_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+            <a class="btn btn-warning" href="{{ path('visitantes') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+            <a class="btn btn-success" href="{{ path('visitantes_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i>&nbsp;Editar</a>
+        </form>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

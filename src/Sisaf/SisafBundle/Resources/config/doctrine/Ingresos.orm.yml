@@ -1,0 +1,25 @@
+Sisaf\SisafBundle\Entity\Ingresos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Fecha:
+            type: datetime
+        Descripcion:
+            type: string
+            length: 255
+        MontoPagado:
+            type: decimal
+        estado:
+            type: decimal
+            nullable: true
+    manyToOne:           
+        vecino:
+            targetEntity: Sisaf\SisafBundle\Entity\Usuario
+            inversedBy: Ingresos        
+    lifecycleCallbacks: {  }

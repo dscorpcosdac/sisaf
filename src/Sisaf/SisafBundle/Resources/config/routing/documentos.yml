@@ -1,0 +1,30 @@
+documentos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Documentos:index" }
+
+documentos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Documentos:show" }
+
+documentos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Documentos:new" }
+
+documentos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Documentos:create" }
+    requirements: { _method: post }
+
+documentos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Documentos:edit" }
+
+documentos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Documentos:update" }
+    requirements: { _method: post }
+
+documentos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Documentos:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,3 @@
+estadofinanciero:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:EstadoFinanciero:index" }

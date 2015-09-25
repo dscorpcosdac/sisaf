@@ -1,0 +1,34 @@
+ingresos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Ingresos:index" }
+
+ingresos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Ingresos:show" }
+
+ingresos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Ingresos:new" }
+
+ingresos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Ingresos:create" }
+    requirements: { _method: post }
+
+ingresos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Ingresos:edit" }
+
+ingresos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Ingresos:update" }
+    requirements: { _method: post }
+
+ingresos_getCuota:
+    pattern:  /getcuota
+    defaults: { _controller: "SisafBundle:Ingresos:getCuota" }
+    requirements: { _method: post }
+ingresos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Ingresos:delete" }
+    requirements: { _method: post }

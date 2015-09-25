@@ -1,0 +1,30 @@
+Sisaf\SisafBundle\Entity\Morosos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Persona:
+            type: string
+            length: 255
+        Correo:
+            type: string
+            length: 255
+        Telefono:
+            type: string
+            length: 255
+        Residencia:
+            type: string
+            length: 255
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: Morosos
+            joinColumn:
+                name: Morosos_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,56 @@
+Sisaf\SisafBundle\Entity\Usuario:
+    type: entity
+    table: null
+    repositoryClass: Sisaf\SisafBundle\Entity\UsuarioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '25'
+
+        apellidoma:
+            type: string
+            length: '25'
+            nullable: TRUE
+        apellidopa:
+            type: string
+            length: '25'
+        password:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: '60'
+        colonia:
+            type: string
+            length: 255
+            nullable: TRUE
+        calle:
+            type: string
+            length: 255
+            nullable: TRUE
+        numero:
+            type: string
+            length: 255
+            nullable: TRUE
+        edificio:
+            type: string
+            length: 255
+            nullable: TRUE
+        piso:
+            type: string
+            length: 255
+            nullable: TRUE
+        departamento:
+            type: string
+            length: 255
+            nullable: TRUE
+        telefono:
+            type: string
+            length: '13'
+    lifecycleCallbacks: {  }

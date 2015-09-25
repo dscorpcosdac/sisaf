@@ -1,0 +1,30 @@
+clientes:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Clientes:index" }
+
+clientes_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Clientes:show" }
+
+clientes_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Clientes:new" }
+
+clientes_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Clientes:create" }
+    requirements: { _method: post }
+
+clientes_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Clientes:edit" }
+
+clientes_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Clientes:update" }
+    requirements: { _method: post }
+
+clientes_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Clientes:delete" }
+    requirements: { _method: post }

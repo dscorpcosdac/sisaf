@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>Nuevo Egresos</h1>
+
+<form action="{{ path('regegresos_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('regegresos') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

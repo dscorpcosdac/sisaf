@@ -1,0 +1,30 @@
+gastosfijos:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:GastosFijos:index" }
+
+gastosfijos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:GastosFijos:show" }
+
+gastosfijos_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:GastosFijos:new" }
+
+gastosfijos_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:GastosFijos:create" }
+    requirements: { _method: post }
+
+gastosfijos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:GastosFijos:edit" }
+
+gastosfijos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:GastosFijos:update" }
+    requirements: { _method: post }
+
+gastosfijos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:GastosFijos:delete" }
+    requirements: { _method: post }

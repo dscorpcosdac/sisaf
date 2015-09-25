@@ -1,0 +1,3 @@
+presupuesto:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Presupuesto:index" }

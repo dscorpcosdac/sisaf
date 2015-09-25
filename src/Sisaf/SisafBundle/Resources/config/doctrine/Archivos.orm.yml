@@ -1,0 +1,15 @@
+Sisaf\SisafBundle\Entity\Archivos:
+    type: entity
+    table: null
+    repositoryClass: Sisaf\SisafBundle\Entity\ArchivosRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        archivos:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

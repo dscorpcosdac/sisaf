@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% block stylesheets %}
+
+	{#<link href=" {{asset('bundles/sisaf/css/bootstrap.css')}}" rel="stylesheet">
+	<link href="{{asset('bundles/sisaf/css/bootstrap-responsive.css')}}" rel="stylesheet">#}
+	<link href=" {{asset('bundles/sisaf/css/upload/bootstrap-fileupload.css')}}" rel="stylesheet">
+	<link href=" {{asset('bundles/sisaf/css/upload/bootstrap-fileupload.min.css')}}" rel="stylesheet">
+{% endblock %}
+
+
+{%if status is not defined %}
+<div class="panel panel-default">
+	<div class="panel-heading"><h3>Subir archivo</h3></div>
+	<div class="panel-body">
+		<form class="form" method="POST" enctype="mulipart/form-data" action="{{ path('Sisaf_upload') }}">
+			<input type="file" name="img" class="form-control">
+			<p>Archivos válidos: .jpg, .jpeg, .bmp, .png, .pdf</p>
+			<hr>
+			<button type="submit" class="btn btn-success">Subir</button>
+		</form>
+	</div>
+</div>
+{% elseif status=='success'%}
+   {% if uploadedURL is defined%}
+            <img src="{{asset(uploadedURL)}}">
+   {% endif %}
+{% else %} 
+   {% if message is defined%}
+            <div class="alert alert-error">
+                <p>{{message}}</p>
+            </div>
+   {% endif %}
+{% endif %}
+
+
+{% block javascript %}
+	{#<script src="{{asset('bundles/sisaf/js/upload/jquery.js')}}"></script>#}
+	<script src="{{asset('bundles/sisaf/js/upload/bootstrap.js')}}"></script>
+	<script src="{{asset('bundles/sisaf/js/upload/bootstrap-fileupload.js')}}"></script>
+	<script src="{{asset('bundles/sisaf/js/upload/bootstrap-fileupload.min.js')}}"></script>
+{% endblock %}
+
+
+{% endblock %}

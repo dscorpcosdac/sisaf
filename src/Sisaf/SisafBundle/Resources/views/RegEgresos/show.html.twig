@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>Registro de Egreso</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Serie</th>
+            <td>{{ entity.Serie }}</td>
+        </tr>
+        <tr>
+            <th>Folio</th>
+            <td>{{ entity.Folio }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{{ entity.Fecha }}</td>
+        </tr>
+        <tr>
+            <th>Proveedor</th>
+            <td>{{ entity.Proveedor }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ entity.Nombre }}</td>
+        </tr>
+        <tr>
+            <th>Importe</th>
+            <td>{{ entity.Importe }}</td>
+        </tr>
+        <tr>
+            <th>Pagado</th>
+            <td>{{ entity.Pagado }}</td>
+        </tr>
+        <tr>
+            <th>Saldo</th>
+            <td>{{ entity.Saldo }}</td>
+        </tr>
+        <tr>
+            <th>Estatus</th>
+            <td>{{ entity.Estatus }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('regegresos') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('regegresos_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('regegresos_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endblock %}

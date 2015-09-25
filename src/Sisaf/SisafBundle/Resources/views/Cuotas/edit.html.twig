@@ -1,0 +1,165 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO')%}
+<h1>Editar Cuota</h1>
+
+<form action="{{ path('cuotas_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <div class="form-group">
+        <label>Persona</label>
+        <a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Seleccionar personas</a>
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Persona) }}</span>
+    </div>
+    <div style="display:none;">
+        <div class="form-group">
+            <label>Fecha</label>
+            {{ form_widget(edit_form.Fecha, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(edit_form.Fecha) }}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Tipo</label>
+        {{ form_widget(edit_form.Tipo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Tipo) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Descripcion</label>
+        {{ form_widget(edit_form.Descripcion, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Descripcion) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Monto</label>
+        {{ form_widget(edit_form.Monto, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Monto) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Frecuencia de pago</label>
+        {{ form_widget(edit_form.Frecuencia, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.Frecuencia) }}</span>
+    </div>
+
+    {{ form_widget(edit_form._token) }}
+    <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+    <a class="btn btn-warning" href="{{ path('cuotas') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+</form>
+
+    {#<form action="{{ path('cuotas_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit">Delete</button>
+    </form>#}
+
+{% endif %}
+{% endblock %}
+
+{% block modal %}
+<style>
+
+    #modal-table tbody tr td:first-child{
+        width: 40px;
+        text-align: center;
+    }
+    /*
+    .default-label-checkbox input[type=checkbox]{
+        width:5%;
+        opacity: 1;
+        position: relative;
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline;
+    }
+    .default-label-checkbox label{
+        width: 45%;
+    }
+    */
+</style>
+<div class="modal fade" id="formModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Seleccione las personas:</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group default-label-checkbox">
+
+                    <div class="row padding-sm">
+                        <table id="modal-table" class="table table-hover table-striped">
+                            <thead>
+                                <th>
+                                    <label class="label-checkbox">
+                                        <input type="checkbox" id="checkAll">
+                                        <span class="custom-checkbox"></span>
+                                    </label>
+                                </th>
+                                <th>Nombre</th>
+                                <th>Casa/Departamento</th>
+                            </thead>
+                            <tbody>
+                                {% for nombreresidente in residentes %}
+                                    <tr>
+                                        <td>
+                                            <label class="label-checkbox" id="forCheckAll">
+                                                <input type="checkbox" name="{{ nombreresidente.username }}" value="{{ nombreresidente.username }}">
+                                                <span class="custom-checkbox"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{ nombreresidente.username|capitalize }}</td>
+                                        <td>{{ nombreresidente.casadepto|capitalize }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:none;">
+                        {{ form_widget(edit_form.Persona, {'attr': {'class': 'default-label-checkbox form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="form_element.html#formModal" class="btn btn-success" data-toggle="modal">Listo</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock %}
+
+{% block javascript %}
+<script>
+$('#checkAll').click(function(event) {
+    if(this.checked) {
+        $('#forCheckAll input[type="checkbox"]').each(function() {
+            this.checked = true;
+            check.val(getSelectedChecked());
+        });
+    }
+    else{
+        $('#forCheckAll input[type="checkbox"]').each(function(){
+            this.checked = false;
+            check.val(getSelectedChecked());
+        });
+    }
+});
+
+var check = $('#sisaf_sisafbundle_cuotastype_Persona');
+  
+  $('#forCheckAll input[type="checkbox"]').change(function(e){
+     check.val(getSelectedChecked());
+  });
+
+  function getSelectedChecked(){
+   var checked = "";
+   $('#forCheckAll input[type="checkbox"]').each(function(i,cb){
+       if($(this).is(":checked")){
+           checked += $(this).val() + ", ";
+       }
+   });
+   return checked;
+  } 
+
+
+$(document).ready(function(){
+    $('#modal-table').DataTable();
+});
+</script>
+{% endblock%}

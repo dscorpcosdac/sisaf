@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>Nueva Queja/Sugerencia</h1>
+
+<form action="{{ path('quejsug_create') }}" method="post" {{ form_enctype(form) }}>
+    <div class="form-group">
+        <label>Titulo</label>
+        {{ form_widget(form.Titulo, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Titulo) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Descripcion</label>
+        {{ form_widget(form.Descripcion, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Descripcion) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Fecha</label>
+        {{ form_widget(form.Fecha, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Fecha) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Hora</label>
+        {{ form_widget(form.Hora, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.Hora) }}</span>
+    </div>
+
+    {{ form_widget(form._token, {'attr': {'class': 'form-control'}}) }}
+
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('quejsug') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

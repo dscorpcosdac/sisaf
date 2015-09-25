@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Registro de Egresos</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Serie</th>
+                    <th>Folio</th>
+                    <th>Fecha</th>
+                    <th>Proveedor</th>
+                    <th>Nombre</th>
+                    <th>Importe</th>
+                    <th>Pagado</th>
+                    <th>Saldo</th>
+                    <th>Estatus</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('regegresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.Serie }}</td>
+                        <td>{{ entity.Folio }}</td>
+                        <td>{{ entity.Fecha }}</td>
+                        <td>{{ entity.Proveedor }}</td>
+                        <td>{{ entity.Nombre }}</td>
+                        <td>{{ entity.Importe }}</td>
+                        <td>{{ entity.Pagado }}</td>
+                        <td>{{ entity.Saldo }}</td>
+                        <td>{{ entity.Estatus }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('regegresos_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('regegresos_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+
+
+{% endblock %}

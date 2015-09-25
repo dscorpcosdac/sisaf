@@ -1,0 +1,30 @@
+cuotas:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Cuotas:index" }
+
+cuotas_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SisafBundle:Cuotas:show" }
+
+cuotas_new:
+    pattern:  /new
+    defaults: { _controller: "SisafBundle:Cuotas:new" }
+
+cuotas_create:
+    pattern:  /create
+    defaults: { _controller: "SisafBundle:Cuotas:create" }
+    requirements: { _method: post }
+
+cuotas_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SisafBundle:Cuotas:edit" }
+
+cuotas_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SisafBundle:Cuotas:update" }
+    requirements: { _method: post }
+
+cuotas_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SisafBundle:Cuotas:delete" }
+    requirements: { _method: post }

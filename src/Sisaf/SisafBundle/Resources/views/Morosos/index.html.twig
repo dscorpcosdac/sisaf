@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Pagos pendientes</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Persona</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Residencia</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('morosos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.Persona }}</td>
+                        <td>{{ entity.Correo }}</td>
+                        <td>{{ entity.Telefono }}</td>
+                        <td>{{ entity.Residencia }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('morosos_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('morosos_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+
+
+{% endblock %}

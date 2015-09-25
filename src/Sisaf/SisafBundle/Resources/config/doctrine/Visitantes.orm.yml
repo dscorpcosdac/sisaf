@@ -1,0 +1,33 @@
+Sisaf\SisafBundle\Entity\Visitantes:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Nombre:
+            type: string
+            length: 255
+        Automovil:
+            type: string
+            length: 255
+        Destino:
+            type: string
+            length: 255
+        F_Entrada:
+            type: date
+        H_Entrada:
+            type: time
+        H_Salida:
+            type: time
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            inversedBy: Visitantes
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

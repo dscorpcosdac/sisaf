@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MESADIRECTIVA') or is_granted('ROLE_COLONO') %}
+<ul class="list-group records_list">
+    {% for entity in entities %}
+        <a href="{{ path('Avisos_show', { 'id': entity.id }) }}">
+            <li class="list-group-item clearfix inbox-item">
+
+                <label class="label-checkbox inline">
+                    <input type="checkbox" class="chk-item">
+                    <span class="custom-checkbox"></span>
+                </label>
+
+                <span class="from">{{ entity.Autor }}</span>
+                <span>&nbsp;|&nbsp;</span>
+
+                <span class="detail"><b>{{ entity.Titulo }}</b></span>
+                <span class="inline-block pull-right">
+                    <span class="time">{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</span>
+                    {#<span class="attachment">
+                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href=""><i class="fa fa-arrow-right"></i></a>
+                    </span>#}
+                </span>
+            </li>
+        </a>
+    {% endfor %}
+</ul>
+
+{% endif %}
+{% endblock %}
