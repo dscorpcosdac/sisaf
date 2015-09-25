@@ -87,21 +87,32 @@ class CuotasController extends Controller
             $forms=$request->request->get('vecinos',0);           
             $vecinos=explode(',', $forms);
             if(count($vecinos)>0){
-
                 $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                $dias=$request->request->get('txtCantidad',0);
+                $tiempo=$request->request->get('slcPeriodo',0);
+                $recorrido=$request->request->get('slcDia',0);
+                if($dias != 0 && $tiempo != 0 ){
+                    $lafecha=$entity->getFechaDeInicio();
+                    $arrayFecha = $em->getRepository('SisafBundle:EstadoFinanciero')->setFechaUser($dias,$tiempo,$recorrido,$lafecha);
+                    $entity->setDiaproximo($arrayFecha);
+                    $entity->setDiasRecurrencia($dias.'|'.$tiempo.'|'.$recorrido);     
+                }
                 $em->persist($entity);
                 $em->flush();
                 foreach ($vecinos as $key) {
                     if($key>0){
                         $cuotavecino=new cuotaVecino();
                         $cuotavecino->setCuota($entity->getId());
-                        $cuotavecino->setVecino($key);
+                        $cuotavecino->setVecino($key);              
+                        $cuotavecino->setEstado(0);
                         $em->persist($cuotavecino);
                         $em->flush();
-                       // echo $key.'holA<br>';
+                       // echo $key.'holA<br>';              return $this->render('SisafBundle:Cuotas:new.html.twig', array());
                        }
                 }
-
+                // return $this->render('::error.html.twig', array());
                 return $this->redirect($this->generateUrl('cuotas_show', array('id' => $entity->getId())));
             }
             
@@ -197,6 +208,58 @@ class CuotasController extends Controller
 
         return $this->redirect($this->generateUrl('cuotas'));
     }
+
+    /**
+     * Deletes a Cuotas entity.
+     *
+     */
+    public function activarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $date=new \DateTime('2016-11-03');
+        $cuotaVecinos = $em->getRepository('SisafBundle:Cuotas')->findBy(
+                                            array('diaproximo' => $date)
+                                            );
+        foreach ($cuotaVecinos as $cuotaVecino ) {
+            $datos=explode('|',$cuotaVecino->getDiasRecurrencia());
+            if($datos[0] != 0 && $datos[1] != 0 ){
+                    $lafecha=$cuotaVecino->getFechaDeInicio();
+                    $arrayFecha = $em->getRepository('SisafBundle:EstadoFinanciero')->setFechaUser($datos[0],$datos[1],$datos[2],$lafecha);
+                    $cuotaVecino->setDiaproximo($arrayFecha);
+                    $em->persist($cuotaVecino);
+                    $em->flush();
+
+                    $nuevaCuota = new Cuotas();
+                    $nuevaCuota->setDescripcion($cuotaVecino->getDescripcion());
+                    $nuevaCuota->setFechaDeInicio($cuotaVecino->getFechaDeInicio());
+                    $nuevaCuota->setMonto($cuotaVecino->getMonto());
+                    $nuevaCuota->setPadre($cuotaVecino->getId());
+                    $nuevaCuota->setTipo(1);
+                    $em->persist($nuevaCuota);
+                    $em->flush();
+
+                    $arrayVecinos=$em->getRepository('SisafBundle:EstadoFinanciero')->getUserCuota($cuotaVecino->getId());
+                    foreach ($arrayVecinos as $key) {
+                        if($key>0){
+                            $cuotavecino=new cuotaVecino();
+                            $cuotavecino->setCuota($nuevaCuota->getId());
+                            $cuotavecino->setVecino($key['vecino']);              
+                            $cuotavecino->setEstado(0);
+                            $em->persist($cuotavecino);
+                            $em->flush();
+                           // echo $key.'holA<br>';              return $this->render('SisafBundle:Cuotas:new.html.twig', array());
+                           }
+                    }
+
+                    //$entity->setDiasRecurrencia($dias.'|'.$tiempo.'|'.$recorrido);     
+                }
+            
+        }
+return $this->render('::error.html.twig', array());
+        //return $this->redirect($this->generateUrl('cuotas'));
+    }
+
+
 
     private function createDeleteForm($id)
     {

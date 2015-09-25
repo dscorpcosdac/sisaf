@@ -9,8 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Cuotas
  */
 class Cuotas
-{
-   
+{   
     /**
      * @var integer
      */
@@ -32,12 +31,12 @@ class Cuotas
     private $fechaFinal;
 
     /**
-     * @var integer
+     * @var string
      */
     private $diasRecurrencia;
 
     /**
-     * @var integer
+     * @var \DateTime
      */
     private $diaproximo;
 
@@ -50,6 +49,11 @@ class Cuotas
      * @var integer
      */
     private $tipo;
+
+    /**
+     * @var integer
+     */
+    private $padre;
 
 
     /**
@@ -71,7 +75,7 @@ class Cuotas
     public function setDescripcion($descripcion)
     {
         $this->Descripcion = $descripcion;
-
+    
         return $this;
     }
 
@@ -94,7 +98,7 @@ class Cuotas
     public function setFechaDeInicio($fechaDeInicio)
     {
         $this->fechaDeInicio = $fechaDeInicio;
-
+    
         return $this;
     }
 
@@ -117,7 +121,7 @@ class Cuotas
     public function setFechaFinal($fechaFinal)
     {
         $this->fechaFinal = $fechaFinal;
-
+    
         return $this;
     }
 
@@ -134,20 +138,20 @@ class Cuotas
     /**
      * Set diasRecurrencia
      *
-     * @param integer $diasRecurrencia
+     * @param string $diasRecurrencia
      * @return Cuotas
      */
     public function setDiasRecurrencia($diasRecurrencia)
     {
         $this->diasRecurrencia = $diasRecurrencia;
-
+    
         return $this;
     }
 
     /**
      * Get diasRecurrencia
      *
-     * @return integer 
+     * @return string 
      */
     public function getDiasRecurrencia()
     {
@@ -157,20 +161,20 @@ class Cuotas
     /**
      * Set diaproximo
      *
-     * @param integer $diaproximo
+     * @param \DateTime $diaproximo
      * @return Cuotas
      */
     public function setDiaproximo($diaproximo)
     {
         $this->diaproximo = $diaproximo;
-
+    
         return $this;
     }
 
     /**
      * Get diaproximo
      *
-     * @return integer 
+     * @return \DateTime 
      */
     public function getDiaproximo()
     {
@@ -186,7 +190,7 @@ class Cuotas
     public function setMonto($monto)
     {
         $this->monto = $monto;
-
+    
         return $this;
     }
 
@@ -209,7 +213,7 @@ class Cuotas
     public function setTipo($tipo)
     {
         $this->tipo = $tipo;
-
+    
         return $this;
     }
 
@@ -221,5 +225,28 @@ class Cuotas
     public function getTipo()
     {
         return $this->tipo;
+    }
+
+    /**
+     * Set padre
+     *
+     * @param integer $padre
+     * @return Cuotas
+     */
+    public function setPadre($padre)
+    {
+        $this->padre = $padre;
+    
+        return $this;
+    }
+
+    /**
+     * Get padre
+     *
+     * @return integer 
+     */
+    public function getPadre()
+    {
+        return $this->padre;
     }
 }

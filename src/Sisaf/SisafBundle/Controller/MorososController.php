@@ -20,9 +20,10 @@ class MorososController extends Controller
      */
     public function indexAction()
     {
+        $conn = $this->get('database_connection');
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SisafBundle:Morosos')->findAll();
+        $entities = $em->getRepository('SisafBundle:Morosos')->findCuotasUser($conn);
 
         return $this->render('SisafBundle:Morosos:index.html.twig', array(
             'entities' => $entities,

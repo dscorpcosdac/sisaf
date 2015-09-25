@@ -12,20 +12,24 @@ Sisaf\SisafBundle\Entity\Cuotas:
             type: string
             length: 255
         fechaDeInicio:
-            type: datetime
+            type: date
             nullable: true
         fechaFinal:
-            type: datetime
+            type: date
             nullable: true
         diasRecurrencia:
-            type: integer
+            type: string
+            length: 40
             nullable: true
         diaproximo:
-            type: integer
+            type: date
             nullable: true
         monto:
             type: decimal
         tipo:
             type: integer
+        padre:
+            type: integer
+            nullable: true
      
     lifecycleCallbacks: {  }

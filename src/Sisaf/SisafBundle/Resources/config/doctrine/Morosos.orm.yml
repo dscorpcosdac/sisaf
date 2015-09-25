@@ -1,6 +1,7 @@
 Sisaf\SisafBundle\Entity\Morosos:
     type: entity
     table: null
+    repositoryClass: Sisaf\SisafBundle\Entity\MorososRepository
     id:
         id:
             type: integer
@@ -23,7 +24,7 @@ Sisaf\SisafBundle\Entity\Morosos:
     manyToOne:
         usuario:
             targetEntity: Usuario
-            inversedBy: Morosos
+            inversedBy: Morosos 
             joinColumn:
                 name: Morosos_id
                 referencedColumnName: id
