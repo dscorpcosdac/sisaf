@@ -4,4 +4,4 @@
 /build/
 /vendor/
 /composer.phar
-web/bundles/*
+/web/bundles/*
