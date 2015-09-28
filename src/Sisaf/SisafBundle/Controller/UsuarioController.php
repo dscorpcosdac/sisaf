@@ -48,7 +48,12 @@ class UsuarioController extends Controller
 
         return $this->render('SisafBundle:Usuario:show.html.twig', array(
             'entity'      => $entity,
+<<<<<<< HEAD
+            'delete_form' => $deleteForm->createView(),
+        ));
+=======
             'delete_form' => $deleteForm->createView(),        ));
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     }
 
     /**
@@ -60,7 +65,15 @@ class UsuarioController extends Controller
         $entity = new Usuario();
         $form   = $this->createForm(new UsuarioType(), $entity);
 
+<<<<<<< HEAD
+        $conn = $this->get('database_connection');
+        $edificios = $conn->fetchAll('SELECT edificio FROM departamentos GROUP BY edificio;');
+
         return $this->render('SisafBundle:Usuario:new.html.twig', array(
+            'edificios' => $edificios,
+=======
+        return $this->render('SisafBundle:Usuario:new.html.twig', array(
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -181,4 +194,29 @@ class UsuarioController extends Controller
             ->getForm()
         ;
     }
+<<<<<<< HEAD
+
+
+    public function pisoAction(Request $request){
+        $postData = $request->request->get('edificio');
+        $conn = $this->get('database_connection');
+        $data = $conn->fetchAll('SELECT piso from departamentos WHERE edificio ="'.$postData.'" GROUP BY piso;');
+
+        return $this->render('SisafBundle:Usuario:piso.html.twig', array(
+            'data' => $data,
+            ));
+    }
+
+    public function departamentoAction(Request $request){
+        $edificio = $request->request->get('edificio');
+        $piso = $request->request->get('piso');
+        $conn = $this->get('database_connection');
+        $data = $conn->fetchAll('SELECT departamento from departamentos WHERE edificio ="'.$edificio.'" AND piso ="'.$piso.'";');
+        return $this->render('SisafBundle:Usuario:departamento.html.twig', array(
+            'data' => $data,
+            ));
+    }
+
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 }

@@ -1,6 +1,80 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+<<<<<<< HEAD
+{% if is_granted('ROLE_ADMIN') %}
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Residentes</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md">
+        <div class="alert alert-danger" role="alert">
+            <div class="text-center">
+              <span class="fa fa-exclamation-triangle fa-2x"></span>
+              <span class="sr-only">Error:</span>
+              <span>El uso indebido de este modulo afectaría a uno o más usuarios del sistema, usese con precaución.</span>
+            </div>
+        </div>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre(s)</th>
+                    <th>Apellido Materno</th>
+                    <th>Apellido Paterno</th>
+                    <th>Contraseña</th>
+                    <th>Correo</th>
+                    <th>Colonia</th>
+                    <th>Calle</th>
+                    <th>Numero</th>
+                    <th>Edificio</th>
+                    <th>Piso</th>
+                    <th>Departamento</th>
+                    <th>Telefono</th>
+                    {#<th>Permisos</th>#}
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.username }}</td>
+                        <td>{{ entity.apellidoma }}</td>
+                        <td>{{ entity.apellidopa }}</td>
+                        <td>{{ entity.password }}</td>
+                        <td>{{ entity.email }}</td>
+                        <td>{{ entity.colonia }}</td>
+                        <td>{{ entity.calle }}</td>
+                        <td>{{ entity.numero }}</td>
+                        <td>{{ entity.edificio }}</td>
+                        <td>{{ entity.piso }}</td>
+                        <td>{{ entity.departamento }}</td>
+                        <td>{{ entity.telefono }}</td>
+                        {#<td>{{ entity.roles|join }}</td>#}
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('usuario_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+
+{% endif %}
+{% endblock %}
+=======
 <h1>Residentes</h1>
 
 <div class="alert alert-danger" role="alert">
@@ -46,3 +120,4 @@
 </div>
 
 {% endblock %}
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

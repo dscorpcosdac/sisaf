@@ -1,6 +1,28 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+<<<<<<< HEAD
+{% if is_granted('ROLE_ADMIN') %}
+<h1>Registrar Residente</h1>
+
+<form action="{{ path('usuario_create') }}" method="post" {{ form_enctype(form) }}>
+    <div class="form-group col-sm-4">
+        <label>Nombre(s)</label>
+        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Nombre'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.username) }}</span>
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Apellido Materno</label>
+        {{ form_widget(form.apellidoma, {'attr': {'class': 'form-control', 'placeholder': 'Apellido Materno'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.apellidoma) }}</span>
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Apellido Paterno</label>
+        {{ form_widget(form.apellidopa, {'attr': {'class': 'form-control', 'placeholder': 'Apellido Paterno'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.apellidopa) }}</span>
+    </div>
+    <div class="form-group col-sm-6">
+=======
 <h1>Registrar Residente</h1>
 
 <form action="{{ path('usuario_create') }}" method="post" {{ form_enctype(form) }}>
@@ -10,16 +32,76 @@
         <span class="help-block m-b-none">{{ form_errors(form.username) }}</span>
     </div>
     <div class="form-group">
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <label>Contraseña</label>
         {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Algo que no olvide..'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.password) }}</span>
     </div>
+<<<<<<< HEAD
+    <div class="form-group col-sm-6">
+=======
     <div class="form-group">
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <label>Correo</label>
         {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'correo@personal.com'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.email) }}</span>
     </div>
 
+<<<<<<< HEAD
+    <div class="form-group">
+        <label>¿Vive en Casa o Departamento?</label>
+        <select name="" id="tipoVivienda" class="form-control">
+            <option value="" disabled selected>Selecionar</option>
+            <option id="selectCasa" value="1">Casa</option>
+            <option id="selectDepto" value="2">Departamento</option>
+        </select>
+    </div>
+    <div class="row" id="tipoCasa">
+        <div class="form-group col-xs-4">
+            <label>Colonia</label>
+            {{ form_widget(form.colonia, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.colonia) }}</span>
+        </div>
+        <div class="form-group col-xs-4">
+            <label>Calle</label>
+            {{ form_widget(form.calle, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.calle) }}</span>
+        </div>
+        <div class="form-group col-xs-4">
+            <label>Numero</label>
+            {{ form_widget(form.numero, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.numero) }}</span>
+        </div>
+    </div>
+    <div class="row" id="tipoDepartamento">
+        <div class="form-group col-xs-4">
+            <label>Edificio</label>
+            <select class="form-control" id="ajax_edificio">
+                <option value="" disabled selected>Seleccione el edificio</option>
+                {% for query in edificios %}
+                    <option value="{{ query.edificio }}">{{ query.edificio }}</option>
+                {% endfor %}
+            </select>
+            {{ form_widget(form.edificio, {'attr': {'class': 'form-control', 'style': 'display: none'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.edificio) }}</span>
+        </div>
+        <div class="form-group col-xs-4">
+            <label>Piso</label>
+            <div id="ajax-piso"></div>
+            {{ form_widget(form.piso, {'attr': {'class': 'form-control', 'style': 'display: none'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.piso) }}</span>
+        </div>
+        <div class="form-group col-xs-4">
+            <label>Departamento</label>
+            <div id="ajax-departamento"></div>
+            {{ form_widget(form.departamento, {'attr': {'class': 'form-control', 'style': 'display: none'}}) }}
+            <span class="help-block m-b-none">{{ form_errors(form.departamento) }}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Telefono</label>
+        {{ form_widget(form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Telefono celular o fijo'}}) }}
+=======
     <div class="alert alert-info" role="alert">
         <div class="text-center">
           <span class="fa fa-info-circle fa-lg"></span>
@@ -39,6 +121,7 @@
     <div class="form-group">
         <label>Telefono</label>
         {{ form_widget(form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Telefono celular'}}) }}
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <span class="help-block m-b-none">{{ form_errors(form.telefono) }}</span>
     </div>
     {#<div class="form-group">
@@ -55,4 +138,47 @@
     </p>
 </form>
 
+<<<<<<< HEAD
+{% endif %}
 {% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+$( document ).ready(function() {
+    $('#tipoCasa').hide();
+    $('#tipoDepartamento').hide();
+    $('#tipoVivienda').change(function() {
+        // value 1 = casa, value 2 = departamento
+        if ($('#selectCasa').is(":selected")) {
+            $('#tipoCasa').show();
+            $('#tipoDepartamento').hide();
+        }; if ($('#selectDepto').is(":selected")) {
+            $('#tipoCasa').hide();
+            $('#tipoDepartamento').show();
+        };
+    });
+
+    $('#ajax_edificio').change(function(){
+        //var data = {request : $('#appbundle_ventas_cODPOS').val()};
+        var data = $('#ajax_edificio').val();  
+        $.ajax({
+            type: "POST",
+            url: "{{ path('usuario_piso') }}",
+            data: {'edificio':data},
+            success: function(data) {
+                $('#ajax-piso').html(data);
+                $('#sisaf_sisafbundle_usuariotype_piso').val($('#colonia-ajax').val());
+            }
+        });
+    });
+
+});
+/*$('#direccion').html(data);
+$('#sisaf_sisafbundle_usuariotype_piso').val($('#colonia-ajax').val());
+$('#appbundle_ventas_cIUDAD').val($('#ciudad-ajax').val());
+$('#appbundle_ventas_eSTADO').val($('#estado-ajax').val());*/
+</script>
+{% endblock %}
+=======
+{% endblock %}
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

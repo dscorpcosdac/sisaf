@@ -28,3 +28,16 @@ usuario_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SisafBundle:Usuario:delete" }
     requirements: { _method: post }
+<<<<<<< HEAD
+
+usuario_piso:
+    path:     /piso_ajax
+    defaults: { _controller: "SisafBundle:Usuario:piso" }
+    methods:  POST
+
+usuario_departamento:
+    path:     /departamento_ajax
+    defaults: { _controller: "SisafBundle:Usuario:departamento" }
+    methods:  POST
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

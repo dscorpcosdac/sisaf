@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
+
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+    <b>Departamentos</b>
+        <span class="label label-info pull-right"></span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Edificio</th>
+                    <th>Piso</th>
+                    <th>Departamento</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.id }}</td>
+                        <td>{{ entity.edificio }}</td>
+                        <td>{{ entity.piso }}</td>
+                        <td>{{ entity.departamento}}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('departamentos_show', { 'id': entity.id }) }}">Ver</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('departamentos_edit', { 'id': entity.id }) }}">Editar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+
+{% endif %}
+{% endblock %}

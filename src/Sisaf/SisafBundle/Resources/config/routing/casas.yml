@@ -1,0 +1,30 @@
+casas:
+    path:     /
+    defaults: { _controller: "SisafBundle:Casas:index" }
+
+casas_show:
+    path:     /{id}/show
+    defaults: { _controller: "SisafBundle:Casas:show" }
+
+casas_new:
+    path:     /new
+    defaults: { _controller: "SisafBundle:Casas:new" }
+
+casas_create:
+    path:     /create
+    defaults: { _controller: "SisafBundle:Casas:create" }
+    requirements: { _method: post }
+
+casas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SisafBundle:Casas:edit" }
+
+casas_update:
+    path:     /{id}/update
+    defaults: { _controller: "SisafBundle:Casas:update" }
+    requirements: { _method: post|put }
+
+casas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SisafBundle:Casas:delete" }
+    requirements: { _method: post|delete }

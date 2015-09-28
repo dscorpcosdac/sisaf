@@ -12,6 +12,21 @@ class UsuarioType extends AbstractType
     {
         $builder
             ->add('username')
+<<<<<<< HEAD
+            ->add('apellidoma')
+            ->add('apellidopa')
+            ->add('username')
+            ->add('password', 'password')
+            ->add('email', 'email')
+            
+            ->add('colonia')
+            ->add('calle')
+            ->add('numero')
+            ->add('edificio')
+            ->add('piso')
+            ->add('departamento')
+            ->add('telefono', 'integer', array('max_length'=>15))
+=======
             ->add('password', 'password')
             ->add('email', 'email')
             ->add('casadepto')
@@ -20,6 +35,7 @@ class UsuarioType extends AbstractType
 #                'choices'   => array('ROLE_COLONO' => 'COLONO', 'ROLE_TESORERO' => 'TESORERO', 'ROLE_MESADIRECTIVA' => 'MESA DIRECTIVA', 'ROLE_ADMIN' => 'ADMINISTRADOR' ),
 #                'required'  => true,
 #                ))
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             ;
     }
 

@@ -1,15 +1,36 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+<<<<<<< HEAD
+{% if is_granted('ROLE_ADMIN') %}
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 <h1>Editar Residente</h1>
 
 <form action="{{ path('usuario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="form-group">
+<<<<<<< HEAD
+        <label>Nombre(s)</label>
+=======
         <label>Nombre y Apellidos</label>
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         {{ form_widget(edit_form.username, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.username) }}</span>
     </div>
     <div class="form-group">
+<<<<<<< HEAD
+        <label>Apellido Materno</label>
+        {{ form_widget(edit_form.apellidoma, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.apellidoma) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Apellido Paterno</label>
+        {{ form_widget(edit_form.apellidopa, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.apellidopa) }}</span>
+    </div>
+    <div class="form-group">
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <label>Contraseña</label>
         {{ form_widget(edit_form.password, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.password) }}</span>
@@ -20,9 +41,40 @@
         <span class="help-block m-b-none">{{ form_errors(edit_form.email) }}</span>
     </div>
     <div class="form-group">
+<<<<<<< HEAD
+        <label>Colonia</label>
+        {{ form_widget(edit_form.colonia, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.colonia) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Calle</label>
+        {{ form_widget(edit_form.calle, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.calle) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Numero</label>
+        {{ form_widget(edit_form.numero, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.numero) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Edificio</label>
+        {{ form_widget(edit_form.edificio, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.edificio) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Piso</label>
+        {{ form_widget(edit_form.piso, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.piso) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Departamento</label>
+        {{ form_widget(edit_form.departamento, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.departamento) }}</span>
+=======
         <label>Casa/Departamento</label>
         {{ form_widget(edit_form.casadepto, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.casadepto) }}</span>
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     </div>
     <div class="form-group">
         <label>Telefono</label>
@@ -36,7 +88,20 @@
     </div>#}
 
     {{ form_widget(edit_form._token) }}
+<<<<<<< HEAD
+
+    <button class="btn btn-success" type="submit"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
+        <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+        <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-times"></i>&nbsp;Eliminar</button>
+        </form>
+</form>
+
+{% endif %}
+=======
     <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp;Actualizar</button>
     <a class="btn btn-warning" href="{{ path('usuario') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
 </form>
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 {% endblock %}

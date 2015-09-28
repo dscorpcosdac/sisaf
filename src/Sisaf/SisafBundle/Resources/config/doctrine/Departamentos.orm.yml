@@ -1,0 +1,22 @@
+Sisaf\SisafBundle\Entity\Departamentos:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        edificio:
+            type: string
+            length: 255
+            column: Edificio
+        piso:
+            type: string
+            length: 255
+            column: Piso
+        departamento:
+            type: string
+            length: 255
+            column: Departamento
+    lifecycleCallbacks: {  }

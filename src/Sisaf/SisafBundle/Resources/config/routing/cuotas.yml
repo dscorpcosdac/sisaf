@@ -28,6 +28,9 @@ cuotas_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SisafBundle:Cuotas:delete" }
     requirements: { _method: post }
+<<<<<<< HEAD
+=======
 cuotas_aplicar:
     pattern:  /aplicar
     defaults: { _controller: "SisafBundle:Cuotas:activar" }
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

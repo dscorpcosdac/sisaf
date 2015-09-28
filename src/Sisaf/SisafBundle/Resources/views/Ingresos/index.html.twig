@@ -13,9 +13,17 @@
             <thead>
                 <tr>
                     <th>Id</th>
+<<<<<<< HEAD
+                    <th>Tipo</th>
+                    <th>Persona</th>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+                    <th>Monto</th>
+=======
                     <th>Fecha</th>
                     <th>Vecino</th>
                     <th>Descripcion</th>
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
                     <th>Monto Total Pagado</th>
                     <th>Actions</th>
                 </tr>
@@ -24,9 +32,17 @@
                 {% for entity in entities %}
                     <tr>
                         <td><a href="{{ path('ingresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+<<<<<<< HEAD
+                        <td>{{ entity.Tipo }}</td>
+                        <td>{{ entity.Persona }}</td>
+                        <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
+                        <td>{{ entity.Descripcion }}</td>
+                        <td>{{ entity.Monto }}</td>
+=======
                         <td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
                         <td>{{ entity.vecino }}</td>
                         <td>{{ entity.Descripcion }}</td>
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
                         <td>{{ entity.MontoPagado }}</td>
                         <td>
                             <ul>
@@ -48,6 +64,8 @@
 
 {% endif %}
 {% endblock %}
+<<<<<<< HEAD
+=======
 {% block javascript %}
 <script>
    $(document).ready(function() {
@@ -68,3 +86,4 @@
     });
 </script>
 {% endblock %}
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

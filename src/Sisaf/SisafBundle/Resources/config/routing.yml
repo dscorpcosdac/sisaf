@@ -69,3 +69,14 @@ SisafBundle_adminareascomunes:
 SisafBundle_areascomunes:
         resource: "@SisafBundle/Resources/config/routing/areascomunes.yml"
         prefix:   /AreasComunes
+<<<<<<< HEAD
+
+SisafBundle_departamentos:
+        resource: "@SisafBundle/Resources/config/routing/departamentos.yml"
+        prefix:   /Departamentos
+
+SisafBundle_casas:
+        resource: "@SisafBundle/Resources/config/routing/casas.yml"
+        prefix:   /Casas
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

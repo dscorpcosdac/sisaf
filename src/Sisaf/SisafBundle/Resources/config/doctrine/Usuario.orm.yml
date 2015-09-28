@@ -12,15 +12,53 @@ Sisaf\SisafBundle\Entity\Usuario:
         username:
             type: string
             length: '25'
+<<<<<<< HEAD
+
+        apellidoma:
+            type: string
+            length: '25'
+            nullable: TRUE
+        apellidopa:
+            type: string
+            length: '25'
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         password:
             type: string
             length: 255
         email:
             type: string
             length: '60'
+<<<<<<< HEAD
+        colonia:
+            type: string
+            length: 255
+            nullable: TRUE
+        calle:
+            type: string
+            length: 255
+            nullable: TRUE
+        numero:
+            type: string
+            length: 255
+            nullable: TRUE
+        edificio:
+            type: string
+            length: 255
+            nullable: TRUE
+        piso:
+            type: string
+            length: 255
+            nullable: TRUE
+        departamento:
+            type: string
+            length: 255
+            nullable: TRUE
+=======
         casadepto:
             type: string
             length: 255
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         telefono:
             type: string
             length: '13'

@@ -29,6 +29,19 @@ class Usuario implements UserInterface, \Serializable
     private $username;
 
     /**
+<<<<<<< HEAD
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $apellidoma;
+
+    /**
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $apellidopa;
+
+    /**
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      * @ORM\Column(type="string", length=64)
      */
     private $password;
@@ -41,7 +54,36 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      */
+<<<<<<< HEAD
+    private $colonia;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $calle;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numero;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $edificio;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $piso;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $departamento;
+=======
     private $casadepto;
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -81,6 +123,55 @@ class Usuario implements UserInterface, \Serializable
         return $this->username;
     }
 
+<<<<<<< HEAD
+    /**
+     * Set apellidoma
+     *
+     * @param string $apellidoma
+     * @return Usuario
+     */
+    public function setApellidoma($apellidoma)
+    {
+        $this->apellidoma = $apellidoma;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidoma
+     *
+     * @return string 
+     */
+    public function getApellidoma()
+    {
+        return $this->apellidoma;
+    }
+
+    /**
+     * Set apellidopa
+     *
+     * @param string $apellidopa
+     * @return Usuario
+     */
+    public function setApellidopa($apellidopa)
+    {
+        $this->apellidopa = $apellidopa;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidopa
+     *
+     * @return string 
+     */
+    public function getApellidopa()
+    {
+        return $this->apellidopa;
+    }
+
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     public function getSalt()
     {
         // you *may* need a real salt depending on your encoder
@@ -162,7 +253,11 @@ class Usuario implements UserInterface, \Serializable
         return $this->email;
     }
 
+<<<<<<< HEAD
+    private $roles;
+=======
     public $roles;
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 
     /**
      * Get roles
@@ -177,6 +272,132 @@ class Usuario implements UserInterface, \Serializable
 
 
     /**
+<<<<<<< HEAD
+     * Set colonia
+     *
+     * @param string $colonia
+     * @return Usuario
+     */
+    public function setColonia($colonia)
+    {
+        $this->colonia = $colonia;
+
+        return $this;
+    }
+
+    /**
+     * Get colonia
+     *
+     * @return string 
+     */
+    public function getColonia()
+    {
+        return $this->colonia;
+    }
+
+
+    /**
+     * Set calle
+     *
+     * @param string $calle
+     * @return Usuario
+     */
+    public function setCalle($calle)
+    {
+        $this->calle = $calle;
+
+        return $this;
+    }
+
+    /**
+     * Get calle
+     *
+     * @return string 
+     */
+    public function getCalle()
+    {
+        return $this->calle;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param string $numero
+     * @return Usuario
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return string 
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set edificio
+     *
+     * @param string $edificio
+     * @return Usuario
+     */
+    public function setEdificio($edificio)
+    {
+        $this->edificio = $edificio;
+
+        return $this;
+    }
+
+    /**
+     * Get edificio
+     *
+     * @return string 
+     */
+    public function getEdificio()
+    {
+        return $this->edificio;
+    }
+
+    /**
+     * Set piso
+     *
+     * @param string $piso
+     * @return Usuario
+     */
+    public function setPiso($piso)
+    {
+        $this->piso = $piso;
+
+        return $this;
+    }
+
+    /**
+     * Get piso
+     *
+     * @return string 
+     */
+    public function getPiso()
+    {
+        return $this->piso;
+    }
+
+    /**
+     * Set departamento
+     *
+     * @param string $departamento
+     * @return Usuario
+     */
+    public function setDepartamento($departamento)
+    {
+        $this->departamento = $departamento;
+=======
      * Set casadepto
      *
      * @param string $casadepto
@@ -185,11 +406,21 @@ class Usuario implements UserInterface, \Serializable
     public function setCasadepto($casadepto)
     {
         $this->casadepto = $casadepto;
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
+     * Get departamento
+     *
+     * @return string 
+     */
+    public function getDepartamento()
+    {
+        return $this->departamento;
+=======
      * Get casadepto
      *
      * @return string 
@@ -197,6 +428,7 @@ class Usuario implements UserInterface, \Serializable
     public function getCasadepto()
     {
         return $this->casadepto;
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     }
 
     /**
