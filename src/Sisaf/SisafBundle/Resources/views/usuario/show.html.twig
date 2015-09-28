@@ -7,10 +7,17 @@
     <div class="panel-heading"><h1>Residente #{{ entity.id }}</h1></div>
     <div class="panel-body record_properties">
         <p><b>Id:</b> {{ entity.id }}</p>
-        <p><b>Nombre:</b> {{ entity.username }}</p>
+        <p><b>Nombre(s):</b> {{ entity.username }}</p>
+        <p><b>Apellido Materno</b>{{ entity.apellidoma }}</p>
+        <p><b>Apellido Paterno</b>{{ entity.apellidopa }}</p>
         <p><b>Contraseña:</b> {{ entity.password }}</p>
         <p><b>Correo:</b> {{ entity.email }}</p>
-        <p><b>Casa/Departamento:</b> {{ entity.casadepto }}</p>
+        <p><b>Colonia:</b> {{ entity.colonia }}</p>
+        <p><b>Calle:</b> {{ entity.calle }}</p>
+        <p><b>Numero:</b> {{ entity.numero }}</p>
+        <p><b>Edificio:</b> {{ entity.edificio }}</p>
+        <p><b>Piso:</b> {{ entity.piso }}</p>
+        <p><b>Departamento:</b> {{ entity.departamento }}</p>
         <p><b>Telefono:</b> {{ entity.telefono }}</p>
         {#<p><b>Permisos:</b> {{ entity.roles|join }}</p>#}
 
