@@ -25,8 +25,8 @@ public function findCuotasUser($conn ) {
             where cv.estado < 99";//group by p.id
 
        $morosos = $conn->fetchAll( $dql );
-       echo '<pre>';print_r($morosos);echo '</pre>';
-        return $morosos;
+       //echo '<pre>';print_r($morosos);echo '</pre>';
+       return $morosos;
      }
 
 }

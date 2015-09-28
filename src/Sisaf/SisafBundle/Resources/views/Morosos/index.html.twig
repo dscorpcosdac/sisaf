@@ -11,21 +11,21 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Persona</th>
-                    <th>Correo</th>
-                    <th>Telefono</th>
-                    <th>Residencia</th>
-                    <th>Actions</th>
+                    <th>Residente</th>
+                    <th>Descripcion</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+                    <th>Accciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for entity in entities %}
                     <tr>
                         <td><a href="{{ path('morosos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                        <td>{{ entity.Persona }}</td>
-                        <td>{{ entity.Correo }}</td>
-                        <td>{{ entity.Telefono }}</td>
-                        <td>{{ entity.Residencia }}</td>
+                        <td>{{ entity.username }}</td>
+                        <td>{{ entity.Descripcion }}</td>
+                        <td>{{ entity.monto }}</td>
+                        <td>{{ entity.fechaDeInicio }}</td>
                         <td>
                             <ul>
                                 <li>

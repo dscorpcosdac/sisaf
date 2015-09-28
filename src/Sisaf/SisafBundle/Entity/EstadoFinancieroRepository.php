@@ -87,7 +87,7 @@ public function setCuotaUser($vecino,$cuota,$monto,$pago) {
      }
 
 public function setFechaUser($dias,$tiempo,$recorrido,$fechaI){
-    echo $fechaI->format('Y-m-d').'<br>';
+    ///echo $fechaI->format('Y-m-d').'<br>';
     switch ($tiempo) {
         case 1:
             $fechaI->add(new \DateInterval('P'.$dias.'D'));echo 'P'.$dias.'D';
