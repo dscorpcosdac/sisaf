@@ -6,9 +6,19 @@
 
 <form action="{{ path('usuario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <div class="form-group">
-        <label>Nombre y Apellidos</label>
+        <label>Nombre(s)</label>
         {{ form_widget(edit_form.username, {'attr': {'class': 'form-control'}}) }}
         <span class="help-block m-b-none">{{ form_errors(edit_form.username) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Apellido Materno</label>
+        {{ form_widget(edit_form.apellidoma, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.apellidoma) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Apellido Paterno</label>
+        {{ form_widget(edit_form.apellidopa, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.apellidopa) }}</span>
     </div>
     <div class="form-group">
         <label>Contraseña</label>
@@ -21,9 +31,34 @@
         <span class="help-block m-b-none">{{ form_errors(edit_form.email) }}</span>
     </div>
     <div class="form-group">
-        <label>Casa/Departamento</label>
-        {{ form_widget(edit_form.casadepto, {'attr': {'class': 'form-control'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(edit_form.casadepto) }}</span>
+        <label>Colonia</label>
+        {{ form_widget(edit_form.colonia, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.colonia) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Calle</label>
+        {{ form_widget(edit_form.calle, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.calle) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Numero</label>
+        {{ form_widget(edit_form.numero, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.numero) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Edificio</label>
+        {{ form_widget(edit_form.edificio, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.edificio) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Piso</label>
+        {{ form_widget(edit_form.piso, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.piso) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Departamento</label>
+        {{ form_widget(edit_form.departamento, {'attr': {'class': 'form-control'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(edit_form.departamento) }}</span>
     </div>
     <div class="form-group">
         <label>Telefono</label>
