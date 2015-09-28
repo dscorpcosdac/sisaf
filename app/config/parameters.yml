@@ -2,15 +2,24 @@ parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: sisaf
+<<<<<<< HEAD
     database_user: alex
     database_password: dev
+=======
+    database_user: root
+    database_password: admin
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
     locale: es
+<<<<<<< HEAD
     database_driver: pdo_mysql
+=======
+    database_driver:   pdo_mysql
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 
 
 #Default:witouth postgres

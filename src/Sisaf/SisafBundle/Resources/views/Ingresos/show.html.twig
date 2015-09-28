@@ -9,6 +9,7 @@
         		<th>Ingreso #{{ entity.id }}</th>
         		<th></th>
         	</thead>
+<<<<<<< HEAD
             <tbody>
             	<tr>
             		<td><b>Id</b></td>
@@ -22,10 +23,14 @@
                     <td><b>Persona</b></td>
                     <td>{{ entity.Persona }}</td>
                 </tr>
+=======
+            <tbody>            	            	
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             	<tr>
             		<td>Fecha</td>
             		<td>{% if entity.Fecha %}{{ entity.Fecha|date('d/m/Y') }}{% endif %}</td>
             	</tr>
+<<<<<<< HEAD
             	<tr>
             		<td>Descripcion</td>
             		<td>{{ entity.Descripcion }}</td>
@@ -34,6 +39,16 @@
                     <td>Monto</td>
                     <td>{{ entity.Monto }}</td>
                 </tr>
+=======
+                <tr>
+                    <td>Residente</td>
+                    <td>{{ entity.vecino }}</td>
+                </tr>
+            	<tr>
+            		<td>Descripcion</td>
+            		<td>{{ entity.Descripcion }}</td>
+            	</tr>               
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
                 <tr>
                     <td>Monto Total Pagado</td>
                     <td>{{ entity.MontoPagado }}</td>
@@ -67,7 +82,11 @@
 {% block javascript %}
 
 <script>
+<<<<<<< HEAD
     $(document).ready(function() {
+=======
+   $(document).ready(function() {
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         var table = $('#ingresos').DataTable({
             'info': false,
             "bPaginate": false,

@@ -13,8 +13,12 @@ class GastosFijosType extends AbstractType
         $builder
             ->add('Nombre')
             ->add('Descripcion')
+<<<<<<< HEAD
             #->add('Monto')
             ->add('Monto', 'integer', array('max_length'=>15))
+=======
+            ->add('Monto')
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         ;
     }
 

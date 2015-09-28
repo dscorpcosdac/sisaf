@@ -48,8 +48,12 @@ class UsuarioController extends Controller
 
         return $this->render('SisafBundle:Usuario:show.html.twig', array(
             'entity'      => $entity,
+<<<<<<< HEAD
             'delete_form' => $deleteForm->createView(),
         ));
+=======
+            'delete_form' => $deleteForm->createView(),        ));
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     }
 
     /**
@@ -61,11 +65,15 @@ class UsuarioController extends Controller
         $entity = new Usuario();
         $form   = $this->createForm(new UsuarioType(), $entity);
 
+<<<<<<< HEAD
         $conn = $this->get('database_connection');
         $edificios = $conn->fetchAll('SELECT edificio FROM departamentos GROUP BY edificio;');
 
         return $this->render('SisafBundle:Usuario:new.html.twig', array(
             'edificios' => $edificios,
+=======
+        return $this->render('SisafBundle:Usuario:new.html.twig', array(
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -186,6 +194,7 @@ class UsuarioController extends Controller
             ->getForm()
         ;
     }
+<<<<<<< HEAD
 
 
     public function pisoAction(Request $request){
@@ -208,4 +217,6 @@ class UsuarioController extends Controller
             ));
     }
 
+=======
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 }

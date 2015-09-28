@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Cuotas
  */
 class Cuotas
+<<<<<<< HEAD
 {
    
     /**
@@ -222,4 +223,7 @@ class Cuotas
     {
         return $this->tipo;
     }
+=======
+{   
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 }

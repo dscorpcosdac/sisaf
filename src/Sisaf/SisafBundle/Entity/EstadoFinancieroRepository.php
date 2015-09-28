@@ -73,7 +73,13 @@ public function setCuotaUser($vecino,$cuota,$monto,$pago) {
             }
             if($monto > $pago){
                 $porcentaje=$monto/100;
+<<<<<<< HEAD
                 $porcentaje=$pago/$monto;
+=======
+                //echo $porcentaje.'<br>';
+                $porcentaje=($pago/$monto)*100;
+                //echo $porcentaje;
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
                 $cuotaVecino->setEstado($porcentaje);
             }
 
@@ -83,5 +89,62 @@ public function setCuotaUser($vecino,$cuota,$monto,$pago) {
        // echo '<pre>';print_r($producto);echo '</pre>';
         return $estado;
      }
+<<<<<<< HEAD
+=======
+
+public function setFechaUser($dias,$tiempo,$recorrido,$fechaI){
+    echo $fechaI->format('Y-m-d').'<br>';
+    switch ($tiempo) {
+        case 1:
+            $fechaI->add(new \DateInterval('P'.$dias.'D'));echo 'P'.$dias.'D';
+            break;
+        case 2:
+            $fechaI->add(new \DateInterval('P'.$dias.'M'));echo 'P'.$dias.'M';
+            break;
+        case 3:
+            $fechaI->add(new \DateInterval('P'.$dias.'Y'));echo 'P'.$dias.'Y';
+            break;
+       
+    }
+    echo $fechaI->format('Y-m-d').'<br>';
+    if($recorrido > 0){
+
+        switch ($fechaI->format('l') ) {
+            case 'Sunday':
+                    if($recorrido=1){
+                        $fechaI->add(new \DateInterval('P1D'));
+                    }
+                    if($recorrido=2){
+                        $fechaI->diff(new \DateInterval('P2D'));
+                    }
+                break;
+            case 'Saturday':
+                if($recorrido=1){
+                        $fechaI->add(new \DateInterval('P2D'));
+                    }
+                    if($recorrido=2){
+                        $fechaI->diff(new \DateInterval('P1D'));
+                    }
+                break;
+            
+        }
+    }
+echo $fechaI->format('Y-m-d');
+    return $fechaI;
+}
+
+public function getUserCuota($cuota) {
+        $em = $this->getEntityManager();
+        $dql = "select cv.vecino 
+                from SisafBundle:cuotaVecino cv 
+                where cv.cuota=:cuota";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('cuota', $cuota);
+        $result = $query->getArrayResult();
+       // echo '<pre>';print_r($producto);echo '</pre>';
+        return $result;
+     }
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     
 }

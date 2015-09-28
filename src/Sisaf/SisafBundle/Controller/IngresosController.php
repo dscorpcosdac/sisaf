@@ -7,6 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sisaf\SisafBundle\Entity\Ingresos;
+<<<<<<< HEAD
+=======
+use Sisaf\SisafBundle\Entity\ingresosCuotas;
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 use Sisaf\SisafBundle\Form\IngresosType;
 
 /**
@@ -90,7 +94,11 @@ class IngresosController extends Controller
             $vecinoO=$em->getRepository('SisafBundle:Usuario')->find($vecino);
             $entity->setDescripcion('hola');
             $entity->setVecino($vecinoO);
+<<<<<<< HEAD
             //$entity->setEstado($cuotas);
+=======
+            $entity->setEstado($cuotas);
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             $em->persist($entity);
             $em->flush();
 
@@ -100,7 +108,11 @@ class IngresosController extends Controller
             $em->persist($ingresosCuotas);
             $em->flush();
             return $this->redirect($this->generateUrl('ingresos_show', array('id' => $entity->getId())));
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         }
 
         return $this->render('SisafBundle:Ingresos:new.html.twig', array(

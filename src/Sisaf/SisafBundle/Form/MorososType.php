@@ -16,8 +16,12 @@ class MorososType extends AbstractType
                 'property' => 'username',
                 ))
             ->add('Correo')
+<<<<<<< HEAD
             #->add('Telefono')
             ->add('Telefono', 'integer', array('max_length'=>15))
+=======
+            ->add('Telefono')
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             ->add('Residencia')
         ;
     }

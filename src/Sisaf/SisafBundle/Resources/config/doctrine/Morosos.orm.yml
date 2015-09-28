@@ -1,6 +1,10 @@
 Sisaf\SisafBundle\Entity\Morosos:
     type: entity
     table: null
+<<<<<<< HEAD
+=======
+    repositoryClass: Sisaf\SisafBundle\Entity\MorososRepository
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     id:
         id:
             type: integer
@@ -23,7 +27,11 @@ Sisaf\SisafBundle\Entity\Morosos:
     manyToOne:
         usuario:
             targetEntity: Usuario
+<<<<<<< HEAD
             inversedBy: Morosos
+=======
+            inversedBy: Morosos 
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
             joinColumn:
                 name: Morosos_id
                 referencedColumnName: id

@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+<<<<<<< HEAD
 {% if is_granted('ROLE_ADMIN') %}
 <h1>Registrar Residente</h1>
 
@@ -21,16 +22,32 @@
         <span class="help-block m-b-none">{{ form_errors(form.apellidopa) }}</span>
     </div>
     <div class="form-group col-sm-6">
+=======
+<h1>Registrar Residente</h1>
+
+<form action="{{ path('usuario_create') }}" method="post" {{ form_enctype(form) }}>
+    <div class="form-group">
+        <label>Nombre</label>
+        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Nombre y Apellido'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.username) }}</span>
+    </div>
+    <div class="form-group">
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <label>Contraseña</label>
         {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Algo que no olvide..'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.password) }}</span>
     </div>
+<<<<<<< HEAD
     <div class="form-group col-sm-6">
+=======
+    <div class="form-group">
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <label>Correo</label>
         {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'correo@personal.com'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.email) }}</span>
     </div>
 
+<<<<<<< HEAD
     <div class="form-group">
         <label>¿Vive en Casa o Departamento?</label>
         <select name="" id="tipoVivienda" class="form-control">
@@ -84,6 +101,27 @@
     <div class="form-group">
         <label>Telefono</label>
         {{ form_widget(form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Telefono celular o fijo'}}) }}
+=======
+    <div class="alert alert-info" role="alert">
+        <div class="text-center">
+          <span class="fa fa-info-circle fa-lg"></span>
+          <span class="sr-only">Error:</span>
+          <span>
+          Se recomienda utilizar un formato para todas las casas/departamentos, por ejemplo: <br>
+          Casa 135, Calle abcde y abcde | Edificio 1, Piso 3, Casa 5, | Departamento 135, Edificio 1
+          </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Casa/Departamento</label>
+        {{ form_widget(form.casadepto, {'attr': {'class': 'form-control', 'placeholder': 'Edificio A, Piso 2, Departamento 224'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.casadepto) }}</span>
+    </div>
+    <div class="form-group">
+        <label>Telefono</label>
+        {{ form_widget(form.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Telefono celular'}}) }}
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         <span class="help-block m-b-none">{{ form_errors(form.telefono) }}</span>
     </div>
     {#<div class="form-group">
@@ -100,6 +138,7 @@
     </p>
 </form>
 
+<<<<<<< HEAD
 {% endif %}
 {% endblock %}
 
@@ -140,3 +179,6 @@ $('#appbundle_ventas_cIUDAD').val($('#ciudad-ajax').val());
 $('#appbundle_ventas_eSTADO').val($('#estado-ajax').val());*/
 </script>
 {% endblock %}
+=======
+{% endblock %}
+>>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
