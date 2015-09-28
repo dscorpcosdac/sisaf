@@ -87,12 +87,7 @@ class CuotasController extends Controller
             $forms=$request->request->get('vecinos',0);           
             $vecinos=explode(',', $forms);
             if(count($vecinos)>0){
-<<<<<<< HEAD
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $em->flush();
-=======
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($entity);
                 $em->flush();
@@ -107,20 +102,10 @@ class CuotasController extends Controller
                 }
                 $em->persist($entity);
                 $em->flush();
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
                 foreach ($vecinos as $key) {
                     if($key>0){
                         $cuotavecino=new cuotaVecino();
                         $cuotavecino->setCuota($entity->getId());
-<<<<<<< HEAD
-                        $cuotavecino->setVecino($key);
-                        $em->persist($cuotavecino);
-                        $em->flush();
-                       // echo $key.'holA<br>';
-                       }
-                }
-
-=======
                         $cuotavecino->setVecino($key);              
                         $cuotavecino->setEstado(0);
                         $em->persist($cuotavecino);
@@ -129,7 +114,6 @@ class CuotasController extends Controller
                        }
                 }
                 // return $this->render('::error.html.twig', array());
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
                 return $this->redirect($this->generateUrl('cuotas_show', array('id' => $entity->getId())));
             }
             
@@ -226,8 +210,7 @@ class CuotasController extends Controller
         return $this->redirect($this->generateUrl('cuotas'));
     }
 
-<<<<<<< HEAD
-=======
+
     /**
      * Deletes a Cuotas entity.
      *
@@ -279,8 +262,6 @@ return $this->render('::error.html.twig', array());
     }
 
 
-
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

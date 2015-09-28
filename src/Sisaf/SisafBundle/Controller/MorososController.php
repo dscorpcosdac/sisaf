@@ -20,17 +20,10 @@ class MorososController extends Controller
      */
     public function indexAction()
     {
-<<<<<<< HEAD
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('SisafBundle:Morosos')->findAll();
-=======
         $conn = $this->get('database_connection');
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('SisafBundle:Morosos')->findCuotasUser($conn);
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
-
         return $this->render('SisafBundle:Morosos:index.html.twig', array(
             'entities' => $entities,
             'new' => $this->generateUrl('morosos_new'),

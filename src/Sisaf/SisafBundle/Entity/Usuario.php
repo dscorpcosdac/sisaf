@@ -29,7 +29,6 @@ class Usuario implements UserInterface, \Serializable
     private $username;
 
     /**
-<<<<<<< HEAD
      * @ORM\Column(type="string", length=25, unique=true)
      */
     private $apellidoma;
@@ -40,8 +39,6 @@ class Usuario implements UserInterface, \Serializable
     private $apellidopa;
 
     /**
-=======
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      * @ORM\Column(type="string", length=64)
      */
     private $password;
@@ -54,7 +51,6 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      */
-<<<<<<< HEAD
     private $colonia;
 
     /**
@@ -81,9 +77,6 @@ class Usuario implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $departamento;
-=======
-    private $casadepto;
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -123,7 +116,7 @@ class Usuario implements UserInterface, \Serializable
         return $this->username;
     }
 
-<<<<<<< HEAD
+
     /**
      * Set apellidoma
      *
@@ -170,8 +163,6 @@ class Usuario implements UserInterface, \Serializable
         return $this->apellidopa;
     }
 
-=======
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     public function getSalt()
     {
         // you *may* need a real salt depending on your encoder
@@ -253,11 +244,9 @@ class Usuario implements UserInterface, \Serializable
         return $this->email;
     }
 
-<<<<<<< HEAD
-    private $roles;
-=======
+
     public $roles;
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
 
     /**
      * Get roles
@@ -272,7 +261,6 @@ class Usuario implements UserInterface, \Serializable
 
 
     /**
-<<<<<<< HEAD
      * Set colonia
      *
      * @param string $colonia
@@ -397,22 +385,10 @@ class Usuario implements UserInterface, \Serializable
     public function setDepartamento($departamento)
     {
         $this->departamento = $departamento;
-=======
-     * Set casadepto
-     *
-     * @param string $casadepto
-     * @return Usuario
-     */
-    public function setCasadepto($casadepto)
-    {
-        $this->casadepto = $casadepto;
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
-
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Get departamento
      *
      * @return string 
@@ -420,15 +396,6 @@ class Usuario implements UserInterface, \Serializable
     public function getDepartamento()
     {
         return $this->departamento;
-=======
-     * Get casadepto
-     *
-     * @return string 
-     */
-    public function getCasadepto()
-    {
-        return $this->casadepto;
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
     }
 
     /**

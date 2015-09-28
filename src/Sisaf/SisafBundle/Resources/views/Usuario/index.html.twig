@@ -1,7 +1,6 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<<<<<<< HEAD
 {% if is_granted('ROLE_ADMIN') %}
 <div class="panel panel-default table-responsive">
     <div class="panel-heading">
@@ -74,50 +73,5 @@
 
 {% endif %}
 {% endblock %}
-=======
-<h1>Residentes</h1>
 
-<div class="alert alert-danger" role="alert">
-    <div class="text-center">
-      <span class="fa fa-exclamation-triangle fa-2x"></span>
-      <span class="sr-only">Error:</span>
-      <span>El uso indebido de este modulo afectaría a uno o más usuarios del sistema, usese con precaución.</span>
-    </div>
-</div>
-<table class="records_list table table-hover panel panel-default">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Casa/Departamento</th>
-            {#<th>Permisos</th>#}
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.username }}</td>
-            <td>{{ entity.email }}</td>
-            <td>{{ entity.casadepto }}</td>
-            {#<td>{{ entity.roles|join }}</td>#}
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('usuario_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-</div>
 
-{% endblock %}
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9

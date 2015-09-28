@@ -73,13 +73,11 @@ public function setCuotaUser($vecino,$cuota,$monto,$pago) {
             }
             if($monto > $pago){
                 $porcentaje=$monto/100;
-<<<<<<< HEAD
-                $porcentaje=$pago/$monto;
-=======
+
                 //echo $porcentaje.'<br>';
                 $porcentaje=($pago/$monto)*100;
                 //echo $porcentaje;
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
                 $cuotaVecino->setEstado($porcentaje);
             }
 
@@ -89,8 +87,6 @@ public function setCuotaUser($vecino,$cuota,$monto,$pago) {
        // echo '<pre>';print_r($producto);echo '</pre>';
         return $estado;
      }
-<<<<<<< HEAD
-=======
 
 public function setFechaUser($dias,$tiempo,$recorrido,$fechaI){
     ///echo $fechaI->format('Y-m-d').'<br>';
@@ -145,6 +141,6 @@ public function getUserCuota($cuota) {
        // echo '<pre>';print_r($producto);echo '</pre>';
         return $result;
      }
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
     
 }

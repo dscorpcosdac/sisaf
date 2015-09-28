@@ -9,12 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Cuotas
  */
 class Cuotas
-<<<<<<< HEAD
 {
-   
-=======
-{   
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
     /**
      * @var integer
      */
@@ -36,20 +32,12 @@ class Cuotas
     private $fechaFinal;
 
     /**
-<<<<<<< HEAD
-     * @var integer
-=======
      * @var string
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      */
     private $diasRecurrencia;
 
     /**
-<<<<<<< HEAD
-     * @var integer
-=======
      * @var \DateTime
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      */
     private $diaproximo;
 
@@ -63,14 +51,11 @@ class Cuotas
      */
     private $tipo;
 
-<<<<<<< HEAD
-=======
     /**
      * @var integer
      */
     private $padre;
 
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
 
     /**
      * Get id
@@ -91,11 +76,6 @@ class Cuotas
     public function setDescripcion($descripcion)
     {
         $this->Descripcion = $descripcion;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
@@ -118,11 +98,6 @@ class Cuotas
     public function setFechaDeInicio($fechaDeInicio)
     {
         $this->fechaDeInicio = $fechaDeInicio;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
@@ -145,11 +120,6 @@ class Cuotas
     public function setFechaFinal($fechaFinal)
     {
         $this->fechaFinal = $fechaFinal;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
@@ -166,32 +136,19 @@ class Cuotas
     /**
      * Set diasRecurrencia
      *
-<<<<<<< HEAD
-     * @param integer $diasRecurrencia
-=======
      * @param string $diasRecurrencia
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      * @return Cuotas
      */
     public function setDiasRecurrencia($diasRecurrencia)
     {
         $this->diasRecurrencia = $diasRecurrencia;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
     /**
      * Get diasRecurrencia
      *
-<<<<<<< HEAD
-     * @return integer 
-=======
      * @return string 
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      */
     public function getDiasRecurrencia()
     {
@@ -201,32 +158,19 @@ class Cuotas
     /**
      * Set diaproximo
      *
-<<<<<<< HEAD
-     * @param integer $diaproximo
-=======
      * @param \DateTime $diaproximo
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      * @return Cuotas
      */
     public function setDiaproximo($diaproximo)
     {
         $this->diaproximo = $diaproximo;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
     /**
      * Get diaproximo
      *
-<<<<<<< HEAD
-     * @return integer 
-=======
      * @return \DateTime 
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
      */
     public function getDiaproximo()
     {
@@ -242,11 +186,6 @@ class Cuotas
     public function setMonto($monto)
     {
         $this->monto = $monto;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
@@ -269,11 +208,6 @@ class Cuotas
     public function setTipo($tipo)
     {
         $this->tipo = $tipo;
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         return $this;
     }
 
@@ -286,8 +220,7 @@ class Cuotas
     {
         return $this->tipo;
     }
-<<<<<<< HEAD
-=======
+
 
     /**
      * Set padre
@@ -311,5 +244,5 @@ class Cuotas
     {
         return $this->padre;
     }
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
 }

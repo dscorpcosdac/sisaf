@@ -1,16 +1,15 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
-<<<<<<< HEAD
+
 {% if is_granted('ROLE_ADMIN') %}
-=======
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
 <div class="panel panel-default">
 
     <div class="panel-heading"><h1>Residente #{{ entity.id }}</h1></div>
     <div class="panel-body record_properties">
         <p><b>Id:</b> {{ entity.id }}</p>
-<<<<<<< HEAD
+
         <p><b>Nombre(s):</b> {{ entity.username }}</p>
         <p><b>Apellido Materno</b>{{ entity.apellidoma }}</p>
         <p><b>Apellido Paterno</b>{{ entity.apellidopa }}</p>
@@ -23,12 +22,7 @@
         <p><b>Piso:</b> {{ entity.piso }}</p>
         <p><b>Departamento:</b> {{ entity.departamento }}</p>
         <p><b>Telefono:</b> {{ entity.telefono }}</p>
-=======
-        <p><b>Nombre:</b> {{ entity.username }}</p>
-        {#<p><b>Contraseña:</b> {{ entity.password }}</p>#}
-        <p><b>Correo:</b> {{ entity.email }}</p>
-        <p><b>Casa/Departamento:</b> {{ entity.casadepto }}</p>
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
         {#<p><b>Permisos:</b> {{ entity.roles|join }}</p>#}
 
         <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
@@ -40,8 +34,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 {% endif %}
-=======
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
+
 {% endblock %}

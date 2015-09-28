@@ -14,12 +14,7 @@ class PresupuestoType extends AbstractType
             ->add('Nombre')
             ->add('Descripcion')
             ->add('Fecha')
-<<<<<<< HEAD
-            #->add('Monto')
             ->add('Monto', 'integer', array('max_length'=>15))
-=======
-            ->add('Monto')
->>>>>>> a8cfb7fd1de2239305c78222c67776e4b269bdb9
         ;
     }
 
