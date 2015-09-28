@@ -50,7 +50,6 @@ class UsuarioController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
-
     }
 
     /**
@@ -61,6 +60,7 @@ class UsuarioController extends Controller
     {
         $entity = new Usuario();
         $form   = $this->createForm(new UsuarioType(), $entity);
+
         $conn = $this->get('database_connection');
         $edificios = $conn->fetchAll('SELECT edificio FROM departamentos GROUP BY edificio;');
 
@@ -82,10 +82,6 @@ class UsuarioController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            //$this->setSecurePassword($entity);
-            //$rol= $em->getRepository('usuarioBundle:role')->find(2);
-            //$entity->addRole($rol);
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -207,5 +203,4 @@ class UsuarioController extends Controller
             'data' => $data,
             ));
     }
-
 }
