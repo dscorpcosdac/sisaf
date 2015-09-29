@@ -10,6 +10,10 @@ sisafBundle_inicio:
         resource: "@SisafBundle/Resources/config/routing/inicio.yml"
         prefix:   /Inicio
 
+SisafBundle_perfil:
+        resource: "@SisafBundle/Resources/config/routing/perfil.yml"
+        prefix:   /Perfil
+
 SisafBundle_usuario:
         resource: "@SisafBundle/Resources/config/routing/usuario.yml"
         prefix:   /Usuarios
@@ -77,4 +81,3 @@ SisafBundle_departamentos:
 SisafBundle_casas:
         resource: "@SisafBundle/Resources/config/routing/casas.yml"
         prefix:   /Casas
-
