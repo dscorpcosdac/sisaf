@@ -1,0 +1,12 @@
+perfil_index:
+    pattern:  /
+    defaults: { _controller: "SisafBundle:Usuario:indexprofile" }
+
+perfil_editar:
+    pattern:  /editar
+    defaults: { _controller: "SisafBundle:Usuario:editprofile" }
+
+perfil_update:
+    pattern:  /updateprofile
+    defaults: { _controller: "SisafBundle:Usuario:updateprofile" }
+    requirements: { _method: post }
