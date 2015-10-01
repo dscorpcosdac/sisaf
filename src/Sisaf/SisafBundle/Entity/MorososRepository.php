@@ -16,8 +16,6 @@ class MorososRepository extends EntityRepository
 
 public function findCuotasUser($conn ) {
 
-        
-        $em = $this->getEntityManager();
         $dql = "select c.id,c.Descripcion, c.monto,c.fechaDeInicio,v.*
             from Cuotas as c
             inner join cuotaVecino as cv on c.id=cv.cuota
@@ -27,6 +25,27 @@ public function findCuotasUser($conn ) {
        $morosos = $conn->fetchAll( $dql );
        //echo '<pre>';print_r($morosos);echo '</pre>';
        return $morosos;
+     }
+
+public function findCuotasPendientes($cuota,$vecino,$cuotaActual ) {
+
+        $conn=$this->getEntityManager()->getConnection();
+        //$em = $this->getEntityManager();
+        
+        if($cuota->getPadre()>0){
+                    $padre=$cuota->getPadre();
+                    $padre2=$cuota->getPadre();
+                    }else{
+                        $padre=0;
+                        $padre2=$cuota->getId();
+                    }
+        $dql = "SELECT Cuotas.id,Cuotas.padre,Cuotas.monto FROM Cuotas
+                INNER JOIN `cuotaVecino` ON Cuotas.`id`=cuotaVecino.`cuota`
+                WHERE (Cuotas.id=".$padre." OR padre=".$padre2.") AND vecino = ".$vecino." AND estado < 99 AND cuotaVecino.cuota!=".$cuota->getId()." Order by Cuotas.id";//group by p.id
+        //echo $dql;
+       $morosos = $conn->fetchAll( $dql );
+       ///echo '<pre>';print_r($morosos);echo '</pre>';
+       return $morosos[0];
      }
 
 }

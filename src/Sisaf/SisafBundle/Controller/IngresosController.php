@@ -103,6 +103,7 @@ class IngresosController extends Controller
             $em->persist($ingresosCuotas);
             $em->flush();
             return $this->redirect($this->generateUrl('ingresos_show', array('id' => $entity->getId())));
+            //return $this->render('::error.html.twig', array());
         }
 
         return $this->render('SisafBundle:Ingresos:new.html.twig', array(

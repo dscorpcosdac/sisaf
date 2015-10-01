@@ -65,24 +65,36 @@ public function setCuotaUser($vecino,$cuota,$monto,$pago) {
         }
             if($monto==$pago){
                 $cuotaVecino->setEstado(100);
+                $em->persist($cuotaVecino);
+                $em->flush();
             }
             if($monto < $pago){
                 $cuotaVecino->setEstado(100);
+                $em->persist($cuotaVecino);
+                $em->flush();
+                $sobrante=$pago-$monto;
+                $cuotaObj=$em->getRepository('SisafBundle:Cuotas')->find($cuota);
+
+                    $coutaSiguiente=$em->getRepository('SisafBundle:Morosos')->findCuotasPendientes($cuotaObj,$vecino,$cuotaVecino->getId());
+                   // echo $sobrante.'|'.$coutaSiguiente['monto'].'<br>';
+                    $this->setCuotaUser($vecino,$coutaSiguiente['id'],$coutaSiguiente['monto'],$sobrante);
+                
                 $estado=1;
                 //
             }
             if($monto > $pago){
                 $porcentaje=$monto/100;
 
-                //echo $porcentaje.'<br>';
+               // echo $porcentaje.'<br>';
                 $porcentaje=($pago/$monto)*100;
                 //echo $porcentaje;
 
                 $cuotaVecino->setEstado($porcentaje);
+                $em->persist($cuotaVecino);
+                $em->flush();
             }
 
-            $em->persist($cuotaVecino);
-            $em->flush();
+           
         
        // echo '<pre>';print_r($producto);echo '</pre>';
         return $estado;
