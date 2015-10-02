@@ -22,8 +22,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre(s)</th>
-                    <th>Apellido Materno</th>
                     <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
                     <th>Contraseña</th>
                     <th>Correo</th>
                     <th>Colonia</th>
@@ -42,8 +42,8 @@
                     <tr>
                         <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                         <td>{{ entity.username }}</td>
-                        <td>{{ entity.apellidoma }}</td>
                         <td>{{ entity.apellidopa }}</td>
+                        <td>{{ entity.apellidoma }}</td>
                         <td>{{ entity.password }}</td>
                         <td>{{ entity.email }}</td>
                         <td>{{ entity.colonia }}</td>
