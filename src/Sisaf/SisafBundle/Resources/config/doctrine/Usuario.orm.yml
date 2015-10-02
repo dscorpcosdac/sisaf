@@ -25,7 +25,6 @@ Sisaf\SisafBundle\Entity\Usuario:
         email:
             type: string
             length: '60'
-
         colonia:
             type: string
             length: 255
@@ -50,8 +49,10 @@ Sisaf\SisafBundle\Entity\Usuario:
             type: string
             length: 255
             nullable: TRUE
-
         telefono:
             type: string
             length: '13'
+#        userpic:
+#            type: text
+#            nullable: TRUE
     lifecycleCallbacks: {  }
