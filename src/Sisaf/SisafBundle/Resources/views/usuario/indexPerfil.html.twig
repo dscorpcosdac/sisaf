@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}<h3>Su usuario tiene permisos de adminsitrador, por seguiridad no cuenta con un perfil.</h3>{% endif %}
+
+{% for entity in entities %}
+
+<h1>{{ entity.username|capitalize }} {{ entity.apellidopa|capitalize }} {{ entity.apellidoma|capitalize }}</h1>
+<h4>Correo electrónico:</h4> <p>{{ entity.email }}</p>
+<h4>Telefono:</h4> <p>{{ entity.telefono }}</p>
+<h4>Direccion:</h4> 
+<p>
+	{% if entity.edificio|length >= 1 %}
+		{{ entity.edificio|capitalize }}, {{ entity.piso|capitalize }}, {{ entity.departamento|capitalize }}.
+	{% endif %}
+	{% if entity.colonia|length >= 1%}
+		{{ entity.colonia|capitalize }}, {{ entity.calle|capitalize }}, {{ entity.numero|capitalize }}.
+	{% endif %}
+</p>
+
+{#<a href="{{ path('perfil_editar') }}" class="btn btn-info">Editar perfil</a>#}
+
+{% endfor %}
+{% endblock %}
