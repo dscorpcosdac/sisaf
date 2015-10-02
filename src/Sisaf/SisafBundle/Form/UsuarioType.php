@@ -17,6 +17,7 @@ class UsuarioType extends AbstractType
             ->add('username')
             ->add('password', 'password')
             ->add('email', 'email')
+            #->add('userpic', 'file')
             
             ->add('colonia')
             ->add('calle')
@@ -24,7 +25,8 @@ class UsuarioType extends AbstractType
             ->add('edificio')
             ->add('piso')
             ->add('departamento')
-            ->add('telefono', 'integer', array('max_length'=>15))
+            //->add('telefono', 'integer', array('max_length'=>15))
+            ->add('telefono')
             ;
     }
 
