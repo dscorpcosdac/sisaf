@@ -1,0 +1,22 @@
+<select class="form-control" id="ajax_piso_select">
+<option value="" disabled selected>Seleccione el piso</option>
+{% for select in data %}
+<option value="{{ select.piso }}">{{ select.piso }}</option>
+{% endfor %}
+</select>
+
+<script>
+    $('#ajax_piso_select').change(function(){
+        //var data = {request : $('#appbundle_ventas_cODPOS').val()};
+        var edificio = $('#ajax_edificio').val();
+        var piso = $('#ajax_piso_select').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ path('usuario_departamento') }}",
+            data: {'edificio':edificio, 'piso':piso },
+            success: function(data) {
+                $('#ajax-departamento').html(data);
+            }
+        });
+    });
+</script>
