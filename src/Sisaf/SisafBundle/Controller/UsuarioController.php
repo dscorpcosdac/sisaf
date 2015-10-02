@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sisaf\SisafBundle\Entity\Usuario;
 use Sisaf\SisafBundle\Form\UsuarioType;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Usuario controller.
  *
@@ -202,5 +204,86 @@ class UsuarioController extends Controller
         return $this->render('SisafBundle:Usuario:departamento.html.twig', array(
             'data' => $data,
             ));
+    }
+
+
+
+    // Editar perfil
+    public function indexprofileAction(){
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $username = $usr->getUsername();
+
+        $conn = $this->get('database_connection');
+        $entities = $conn->fetchAll('SELECT * from usuario WHERE username = "'.$username.'";');
+
+        return $this->render('SisafBundle:Usuario:indexPerfil.html.twig', array(
+            'entities' => $entities,
+            'perfil_editar' => $this->generateUrl('perfil_editar'),
+        ));
+    }
+    public function editprofileAction(){
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $email = $usr->getEmail();
+
+        $em = $this->getDoctrine()->getManager();
+
+        // Para encontrar el usuario
+        $entity = $em->getRepository('SisafBundle:Usuario')->findOneByEmail($email);
+        if (!$entity) { throw $this->createNotFoundException('Unable to find Usuario entity.'); }
+
+        $editForm = $this->createForm(new UsuarioType(), $entity);
+
+        return $this->render('SisafBundle:Usuario:editarPerfil.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        ));
+    }
+
+    public function updateprofileAction(Request $request)
+    {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $email = $usr->getEmail();
+
+        $em = $this->getDoctrine()->getManager();
+
+        //$entity = $em->getRepository('SisafBundle:Usuario')->find($id);
+        $entity = $em->getRepository('SisafBundle:Usuario')->findOneByEmail($email);
+
+        echo $entity;
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+
+        $editForm = $this->createForm(new UsuarioType(), $entity);
+        $editForm->bind($request);
+
+        if ($editForm->isValid()) {
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('perfil_index'));
+        }
+
+        return $this->render('SisafBundle:Usuario:editarPerfil.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        ));
+
+    }
+
+    public function userpicAction(Request $request){
+        $userpic = $request->request->get('userpic');
+        $uploadDir = $this->get('kernel')->getRootDir().'/../web/uploads/';
+        echo $uploadDir;
+        echo $request;
+        /*
+        $sourcePath = $_FILES['file']['tmp_pic'];
+        $targetPath = $uploadDir.$_FILES['file']['name'];
+        echo "<br>";
+        echo $targetPath;
+        move_uploaded_file($sourcePath,$targetPath);
+        */
+        return new Response("hola");
     }
 }
