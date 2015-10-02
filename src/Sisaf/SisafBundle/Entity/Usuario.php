@@ -83,6 +83,8 @@ class Usuario implements UserInterface, \Serializable
      */
     private $telefono;
 
+    //private $userpic;
+
     /**
      * Get id
      *
@@ -115,7 +117,6 @@ class Usuario implements UserInterface, \Serializable
     {
         return $this->username;
     }
-
 
     /**
      * Set apellidoma
@@ -244,9 +245,7 @@ class Usuario implements UserInterface, \Serializable
         return $this->email;
     }
 
-
-    public $roles;
-
+    private $roles;
 
     /**
      * Get roles
@@ -385,6 +384,7 @@ class Usuario implements UserInterface, \Serializable
     public function setDepartamento($departamento)
     {
         $this->departamento = $departamento;
+
         return $this;
     }
 
@@ -412,17 +412,34 @@ class Usuario implements UserInterface, \Serializable
     }
 
     /**
-     * Get telefono
+     * Get userpic
      *
      * @return string 
      */
     public function getTelefono()
     {
-        return $this->telefono;
+        return $this->userpic;
     }
 
     public function __toString()
     {
     return strval($this->casadepto);
     }
+
+
+
+    /*------ Userpic ------
+    public function getUserpic()
+    {
+        return $this->userpic;
+    }
+
+    public function setUserpic($userpic)
+    {
+        $this->userpic = $userpic;
+
+        return $this;
+    }
+    */
+
 }
