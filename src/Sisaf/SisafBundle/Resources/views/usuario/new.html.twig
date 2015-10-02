@@ -11,14 +11,14 @@
         <span class="help-block m-b-none">{{ form_errors(form.username) }}</span>
     </div>
     <div class="form-group col-sm-4">
-        <label>Apellido Materno</label>
-        {{ form_widget(form.apellidoma, {'attr': {'class': 'form-control', 'placeholder': 'Apellido Materno'}}) }}
-        <span class="help-block m-b-none">{{ form_errors(form.apellidoma) }}</span>
-    </div>
-    <div class="form-group col-sm-4">
         <label>Apellido Paterno</label>
         {{ form_widget(form.apellidopa, {'attr': {'class': 'form-control', 'placeholder': 'Apellido Paterno'}}) }}
         <span class="help-block m-b-none">{{ form_errors(form.apellidopa) }}</span>
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Apellido Materno</label>
+        {{ form_widget(form.apellidoma, {'attr': {'class': 'form-control', 'placeholder': 'Apellido Materno'}}) }}
+        <span class="help-block m-b-none">{{ form_errors(form.apellidoma) }}</span>
     </div>
     <div class="form-group col-sm-6">
         <label>Contraseña</label>
@@ -134,9 +134,5 @@ $( document ).ready(function() {
     });
 
 });
-/*$('#direccion').html(data);
-$('#sisaf_sisafbundle_usuariotype_piso').val($('#colonia-ajax').val());
-$('#appbundle_ventas_cIUDAD').val($('#ciudad-ajax').val());
-$('#appbundle_ventas_eSTADO').val($('#estado-ajax').val());*/
 </script>
 {% endblock %}
