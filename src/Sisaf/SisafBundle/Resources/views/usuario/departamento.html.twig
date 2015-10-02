@@ -1,0 +1,14 @@
+<select class="form-control" id="ajax_departamento_select">
+<option value="" disabled selected>Seleccione el Departamento</option>
+{% for select in data %}
+<option value="{{ select.departamento }}">{{ select.departamento }}</option>
+{% endfor %}
+</select>
+
+<script>
+	$('#ajax_departamento_select').change(function(){
+		$('#sisaf_sisafbundle_usuariotype_edificio').val($('#ajax_edificio').val());
+		$('#sisaf_sisafbundle_usuariotype_piso').val($('#ajax_piso_select').val());
+		$('#sisaf_sisafbundle_usuariotype_departamento').val($('#ajax_departamento_select').val());
+	});
+</script>
