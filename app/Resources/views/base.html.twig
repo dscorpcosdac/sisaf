@@ -217,7 +217,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li><a tabindex="-1" href="#" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
+                        <li><a tabindex="-1" href="{{ path('perfil_index') }}" class="main-link"><i class="fa fa-edit fa-lg"></i> Ver perfil</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
                     </ul>
@@ -243,7 +243,7 @@
                     <div class="detail">
                         <strong><div id="username">{{ app.user.username }}</div></strong>
                         <ul class="list-inline">
-                            <li><a href="#">Perfil</a></li>
+                            <li><a href="{{ path('perfil_index') }}">Perfil</a></li>
                         </ul>
                     </div>
                 </div><!-- /user-block -->
@@ -278,15 +278,12 @@
                                     <span class="menu-hover"></span>
                                 </a>
                                 <ul class="submenu">
-                          
                                     <li><a href="{{ path('visitantes') }}"><span class="submenu-label">Visitantes</span></a></li>
                                     <li><a href=" {{ path ('areascomunes') }}"><span class="submenu-label">Areas Comunes</span></a></li>
                                     <li><a href=" {{ path ('adminareascomunes') }}"><span class="submenu-label">Administrador de Areas Comunes</span></a></li>
                                     <li><a href="{{ path('Avisos') }}"><span class="submenu-label">Mensajes/Avisos</span></a></li>
                                     <li><a href="{{ path('Sisaf_upload') }}"><span class="submenu-label">Documentos</span></a></li>
-
                                     <li><a href="{{ path('departamentos') }}"><span class="submenu-label">Departamentos</span></a></li>
-
                                 </ul>
                             </li>
                             <li class="openable">
@@ -662,6 +659,14 @@
                     <span class="shortcut-icon">
                         <i class="fa fa-cog"></i></span>
                     <span class="text">Soporte</span>
+                </a>
+            {% endif %}
+
+            {% if perfil_editar is defined %}
+                <a href="{% if perfil_editar is defined %} {{ path('perfil_editar') }} {% endif %}" class="shortcut-link">
+                    <span class="shortcut-icon">
+                        <i class="fa fa-pencil"></i></span>
+                    <span class="text">Editar Perfil</span>
                 </a>
             {% endif %}
 
