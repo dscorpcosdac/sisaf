@@ -118,16 +118,23 @@
                                 <th>Casa/Departamento</th>
                             </thead>
                             <tbody>
-                                {% for nombreresidente in residentes %}
+                                {% for residente in residentes %}
                                     <tr>
                                         <td>
                                             <label class="label-checkbox" id="forCheckAll">
-                                                <input type="checkbox" name="{{ nombreresidente.id }}" value="{{ nombreresidente.id }}">
+                                                <input type="checkbox" name="{{ residente.id }}" value="{{ residente.id }}">
                                                 <span class="custom-checkbox"></span>
                                             </label>
                                         </td>
-                                        <td>{{ nombreresidente.username|capitalize }}</td>
-                                        <td>{{ nombreresidente.casadepto|capitalize }}</td>
+                                        <td>{{ residente.username|capitalize }} {{ residente.apellidopa|capitalize }} {{ residente.apellidoma|capitalize }}</td>
+                                        <td>{#{{ residente.casadepto|capitalize }}#}
+                                            {% if residente.edificio|length >= 1 %}
+                                                {{ residente.edificio|capitalize }}, {{ residente.piso|capitalize }}, {{ residente.departamento|capitalize }}.
+                                            {% endif %}
+                                            {% if residente.colonia|length >= 1%}
+                                                {{ residente.colonia|capitalize }}, {{ residente.calle|capitalize }}, {{ residente.numero|capitalize }}.
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
