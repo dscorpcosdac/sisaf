@@ -34,13 +34,13 @@
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('cuotas_show', { 'id': entity.id }) }}">show</a>
+                                    <a href="{{ path('cuotas_show', { 'id': entity.id }) }}">Ver</a>
                                 </li>
-                                <li>
+                                {#<li>
                                     <a href="{{ path('cuotas_edit', { 'id': entity.id }) }}">edit</a>
-                                </li>
+                                </li>#}
                                 <li>
-                                    <a href="">Asignar Residente</a>
+                                    <a href="{{ path('cuotas_asignarnuevo', { 'id': entity.id }) }}">Asignar Residente</a>
                                 </li>
                             </ul>
                         </td>
