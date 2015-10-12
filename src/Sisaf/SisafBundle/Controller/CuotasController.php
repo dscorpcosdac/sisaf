@@ -78,13 +78,12 @@ class CuotasController extends Controller
      */
     public function createAction(Request $request)
     {
-        
 
         $entity  = new Cuotas();
         $form = $this->createForm(new CuotasType(), $entity);
         $form->bind($request);
         if ($form->isValid()) {
-            $forms=$request->request->get('vecinos',0);           
+            $forms=$request->request->get('vecinos',0);
             $vecinos=explode(',', $forms);
             if(count($vecinos)>0){
 
@@ -98,7 +97,7 @@ class CuotasController extends Controller
                     $lafecha=$entity->getFechaDeInicio();
                     $arrayFecha = $em->getRepository('SisafBundle:EstadoFinanciero')->setFechaUser($dias,$tiempo,$recorrido,$lafecha);
                     $entity->setDiaproximo($arrayFecha);
-                    $entity->setDiasRecurrencia($dias.'|'.$tiempo.'|'.$recorrido);     
+                    $entity->setDiasRecurrencia($dias.'|'.$tiempo.'|'.$recorrido);
                 }
                 $em->persist($entity);
                 $em->flush();
@@ -106,7 +105,7 @@ class CuotasController extends Controller
                     if($key>0){
                         $cuotavecino=new cuotaVecino();
                         $cuotavecino->setCuota($entity->getId());
-                        $cuotavecino->setVecino($key);              
+                        $cuotavecino->setVecino($key);
                         $cuotavecino->setEstado(0);
                         $em->persist($cuotavecino);
                         $em->flush();
@@ -176,7 +175,8 @@ class CuotasController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cuotas_edit', array('id' => $id)));
+            //return $this->redirect($this->generateUrl('cuotas_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('cuotas_show', array('id' => $id)));
         }
 
         return $this->render('SisafBundle:Cuotas:edit.html.twig', array(
@@ -220,8 +220,8 @@ class CuotasController extends Controller
         $em = $this->getDoctrine()->getManager();
         $date=new \DateTime('2016-11-03');
         $cuotaVecinos = $em->getRepository('SisafBundle:Cuotas')->findBy(
-                                            array('diaproximo' => $date)
-                                            );
+            array('diaproximo' => $date)
+        );
         foreach ($cuotaVecinos as $cuotaVecino ) {
             $datos=explode('|',$cuotaVecino->getDiasRecurrencia());
             if($datos[0] != 0 && $datos[1] != 0 ){
@@ -253,7 +253,7 @@ class CuotasController extends Controller
                            }
                     }
 
-                    //$entity->setDiasRecurrencia($dias.'|'.$tiempo.'|'.$recorrido);     
+                    //$entity->setDiasRecurrencia($dias.'|'.$tiempo.'|'.$recorrido);
                 }
             
         }
@@ -268,5 +268,52 @@ return $this->render('::error.html.twig', array());
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+
+    // Asignar nuevo residente
+    public function asignarnuevoAction($id)
+    {
+        $conn = $this->get('database_connection');
+        $residentes = $conn->fetchAll('SELECT * FROM Usuario');
+        $vecinos = $conn->fetchAll('SELECT vecino FROM cuotavecino WHERE cuota ='.$id);
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('SisafBundle:Cuotas')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Cuotas entity.');
+        }
+
+        $editForm = $this->createForm(new CuotasType(), $entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('SisafBundle:Cuotas:asignarnuevo.html.twig', array(
+            'vecinos' => $vecinos,
+            'residentes' => $residentes,
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    public function updateresidenteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('SisafBundle:Cuotas')->find($id);
+
+        $data = $request->request->get('vecinos');
+        $vecinos = explode(',', $data);
+        foreach ($vecinos as $key) {
+            $cuotavecino = new cuotaVecino();
+
+            $cuotavecino->setCuota($entity->getId());
+            $cuotavecino->setVecino($key);
+            $cuotavecino->setEstado(0);
+            
+            $em->persist($cuotavecino);
+            $em->flush();
+        }
+        return $this->redirect($this->generateUrl('cuotas_show', array('id' => $id)));
+
     }
 }
