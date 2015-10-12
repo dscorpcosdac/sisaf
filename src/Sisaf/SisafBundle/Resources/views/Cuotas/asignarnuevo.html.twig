@@ -1,0 +1,108 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_TESORERO') %}
+<h1>Registrar nueva Cuota</h1>
+
+<form action="{{ path('cuotas_update_residente', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+
+	<table id="modal-table" class="table table-hover table-striped">
+		<thead>
+			<th>
+				<label class="label-checkbox">
+					<input type="checkbox" id="checkAll">
+					<span class="custom-checkbox"></span>
+				</label>
+			</th>
+			<th>Nombre</th>
+			<th>Casa/Departamento</th>
+		</thead>
+		<tbody>
+			{% for residente in residentes %}
+				<tr>
+					<td>
+						<label class="label-checkbox" id="forCheckAll">
+							<input type="checkbox" name="{{ residente.id }}" value="{{ residente.id }}">
+							<span class="custom-checkbox"></span>
+						</label>
+					</td>
+					<td>{{ residente.username|capitalize }} {{ residente.apellidopa|capitalize }} {{ residente.apellidoma|capitalize }}</td>
+					<td>{#{{ residente.casadepto|capitalize }}#}
+						{% if residente.edificio|length >= 1 %}
+							{{ residente.edificio|capitalize }}, {{ residente.piso|capitalize }}, {{ residente.departamento|capitalize }}.
+						{% endif %}
+						{% if residente.colonia|length >= 1%}
+							{{ residente.colonia|capitalize }}, {{ residente.calle|capitalize }}, {{ residente.numero|capitalize }}.
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{{ form_widget(edit_form._token, {'attr': {'class': 'form-control'}}) }}
+	<input type="hidden" id="sisaf_sisafbundle_cuotastype_Persona" name="vecinos" required="required" class="default-label-checkbox form-control">
+	<p>
+		<button class="btn btn-success" type="submit"><i class="fa fa-plus"></i>&nbsp;Asignar residentes.</button>
+		<a class="btn btn-warning" href="{{ path('cuotas') }}"><i class="fa fa-reply"></i>&nbsp;Regresar</a>
+	</p>
+{% endif %}
+{% endblock %}
+
+
+{% block javascript %}
+<style type="text/css">
+	.ctnOculto{
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+	$(".slcShow" ).on('change', function() {
+			valor= $( this ).val() ;
+			if(valor==1){
+				$(".ctnOculto").hide(	);
+			}else{
+				$( ".ctnOculto" ).show(	);
+			}
+	});
+</script>
+<script>
+$(document).ready(function(){
+
+	$('#sisaf_sisafbundle_cuotastype_Persona').val(" {% for p in vecinos %}{{ p.vecino }},{% endfor %} ");
+	{% for p in vecinos %}$('#forCheckAll input[type="checkbox"][name="{{ p.vecino }}"]').prop('checked', true);{% endfor %}	
+
+	$('#checkAll').click(function(event) {
+		if(this.checked) {
+			$('#forCheckAll input[type="checkbox"]').each(function() {
+				this.checked = true;
+				check.val(getSelectedChecked());
+			});
+		}
+		else{
+			$('#forCheckAll input[type="checkbox"]').each(function(){
+				this.checked = false;
+				check.val(getSelectedChecked());
+			});
+		}
+	});
+
+	var check = $('#sisaf_sisafbundle_cuotastype_Persona');
+		$('#forCheckAll input[type="checkbox"]').change(function(e){
+			check.val(getSelectedChecked());
+		});
+
+	function getSelectedChecked(){
+		var checked = "";
+		$('#forCheckAll input[type="checkbox"]').each(function(i,cb){
+			if($(this).is(":checked")){
+				checked += $(this).val() + ",";
+			}
+		});
+		return checked;
+	} 
+
+	$('#modal-table').DataTable();
+
+});
+</script>
+{% endblock%}
