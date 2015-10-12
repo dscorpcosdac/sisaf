@@ -15,9 +15,9 @@ cuotas_create:
     defaults: { _controller: "SisafBundle:Cuotas:create" }
     requirements: { _method: post }
 
-cuotas_edit:
-    pattern:  /{id}/edit
-    defaults: { _controller: "SisafBundle:Cuotas:edit" }
+#cuotas_edit:
+#    pattern:  /{id}/edit
+#    defaults: { _controller: "SisafBundle:Cuotas:edit" }
 
 cuotas_update:
     pattern:  /{id}/update
@@ -28,7 +28,16 @@ cuotas_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "SisafBundle:Cuotas:delete" }
     requirements: { _method: post }
+
 cuotas_aplicar:
     pattern:  /aplicar
     defaults: { _controller: "SisafBundle:Cuotas:activar" }
 
+cuotas_asignarnuevo:
+    pattern:  /{id}/asignar
+    defaults: { _controller: "SisafBundle:Cuotas:asignarnuevo" }
+
+cuotas_update_residente:
+    pattern:  /{id}/updateresidente
+    defaults: { _controller: "SisafBundle:Cuotas:updateresidente" }
+    requirements: { _method: post }
