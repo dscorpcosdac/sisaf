@@ -47,7 +47,10 @@ class CuotasController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+        $fechaexpedicion = date("d/M/Y");
+
         return $this->render('SisafBundle:Cuotas:show.html.twig', array(
+            'fechaexpedicion' => $fechaexpedicion,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
